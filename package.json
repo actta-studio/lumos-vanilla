@@ -1,0 +1,53 @@
+{
+  "name": "vanilla-boilerplate",
+  "version": "1.0.0",
+  "description": "A VanillaJS Boilerplate for ACTTA Studio",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run dev",
+    "backend:development": "nodemon app.js",
+    "backend:build": "node app.js",
+    "frontend:development": "webpack serve --progress --config webpack.config.dev.js",
+    "frontend:build": "webpack --progress --config webpack.config.build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/actta-studio/vanilla-boilerplate.git"
+  },
+  "author": "Nonso Anetoh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/actta-studio/vanilla-boilerplate/issues"
+  },
+  "homepage": "https://github.com/actta-studio/vanilla-boilerplate#readme",
+  "devDependencies": {
+    "@squoosh/lib": "^0.5.3",
+    "babel-loader": "^9.1.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
+    "file-loader": "^6.2.0",
+    "glslify-loader": "^2.0.0",
+    "image-minimizer-webpack-plugin": "^3.8.3",
+    "imagemin": "^8.0.1",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-optipng": "^8.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^10.0.1",
+    "mini-css-extract-plugin": "^2.7.6",
+    "nodemon": "^3.0.1",
+    "postcss-loader": "^7.3.3",
+    "sass": "^1.69.4",
+    "sass-loader": "^13.3.2",
+    "terser-webpack-plugin": "^5.3.9",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
+    "webpack-merge": "^5.9.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
