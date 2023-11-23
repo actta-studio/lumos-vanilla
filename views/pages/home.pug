@@ -1,0 +1,73 @@
+extends ../base.pug 
+
+block variables
+	- var template = 'home'
+
+block content 
+	.home 
+		.home__wrapper 	
+			//- section.home__hero
+			//- 	.home__hero__wrapper
+			//- 		.home__hero__logo__wrapper
+			//- 			svg.home__hero__logo
+			//- 				use(xlink:href=`sprite-${home.data.hero_logo.toLowerCase()}`)
+			//- 		.home__hero__content
+			//- 			span.home__hero__content__wrapper
+			//- 				h2.home__hero__label=home.data.hero_label
+			//- 				svg.home__hero__illustration
+			//- 				use(xlink:href=`sprite-${home.data.hero_illustration.toLowerCase()}`)
+			//- 	.home__hero__background__wrapper
+			//- 		figure.home__hero__background
+			//- 			img.home__hero__background__image(src=home.data.hero_image.url alt=home.data.hero_image.alt)
+			each section in home.data.body
+				//- if (section.slice_type == 'gallery')
+				//- 	section.home__gallery
+				//- 		.home__gallery__wrapper
+				//- 			each media in section.items 
+				//- 				figure.home__gallery__media
+				//- 					img.home__gallery__media__image(src=media.image.url alt=media.image.alt)
+				if (section.slice_type == 'content')
+					section.home__content
+						.home__content__wrapper(class=`grid ${section.primary.content_type === 'Left-Aligned-Text' ? "home__content__wrapper--align-left"
+					 : section.primary.content_type === "Right-Aligned-Text" ? "home__content__wrapper--align-right"
+						: "home__content__wrapper--align-bottom"}`)
+							.home__content__description!=Prismic.asHTML(section.primary.content_description)
+							.home__content__media__wrapper
+								figure.home__content__media
+									img.home__content__media__image(src=section.primary.content_image.url alt=section.primary.content_image.alt)
+								if (section.primary.content_image_label) 
+									p.home__content__image__label=section.primary.content_image_label
+				if (section.slice_type == 'highlight')
+					section.home__highlight
+						.home__highlight__wrapper(class="grid")
+							h3.home__highlight__title!=section.primary.highlight_text.replace(/&/g, '<span class="ampersand">&</span>')
+							each media in section.items
+								figure.home__highlight__media
+									img.home__highlight__media__image(src=media.highlight_image.url alt=media.highlight_image.alt)
+				if (section.slice_type == 'product_grid')
+					section.home__product__grid(class="grid")
+						h3.home__product__grid__title!=section.primary.grid_title
+						.home__product__grid__wrapper
+							each item in section.items
+								article.home__product
+									figure.home__product__grid__item__media
+										img.home__product__grid__item__media__image(src=item.product.data.image.url alt=item.product.data.image.alt)
+									.home__product__link__wrapper
+										a.home__product__link(href=Link(item.product))=item.product.data.title
+										svg.home__product__link__icon(viewBox="0 0 24 23" fill="currentColor" stroke-wid xmlns="http://www.w3.org/2000/svg")
+											path(d="M23.5661 2.13419C23.5661 1.32948 22.8759 0.677141 22.0244 0.677141H8.14855C7.29706 0.677141 6.6068 1.32948 6.6068 2.13419C6.6068 2.93889 7.29706 3.59123 8.14855 3.59123H20.4826V15.2476C20.4826 16.0523 21.1729 16.7046 22.0244 16.7046C22.8759 16.7046 23.5661 16.0523 23.5661 15.2476V2.13419ZM2.75303 22.4072L23.1146 3.16447L20.9342 1.1039L0.572654 20.3467L2.75303 22.4072Z")
+										svg.home__product__link__icon(viewBox="0 0 24 23" fill="currentColor" xmlns="http://www.w3.org/2000/svg")
+											path(d="M23.5661 2.13419C23.5661 1.32948 22.8759 0.677141 22.0244 0.677141H8.14855C7.29706 0.677141 6.6068 1.32948 6.6068 2.13419C6.6068 2.93889 7.29706 3.59123 8.14855 3.59123H20.4826V15.2476C20.4826 16.0523 21.1729 16.7046 22.0244 16.7046C22.8759 16.7046 23.5661 16.0523 23.5661 15.2476V2.13419ZM2.75303 22.4072L23.1146 3.16447L20.9342 1.1039L0.572654 20.3467L2.75303 22.4072Z")
+				if (section.slice_type == 'article_cta')
+					section.home__article__cta(class="grid")
+						.home__article__cta__content
+							h3.home__article__cta__title!=section.primary.description.replace(/\n/g, '<br>')
+							.home__article__cta__link__wrapper
+								a.home__article__cta__link(href=Link(section.primary.cta_link))=section.primary.cta_label
+								svg.home__article__cta__icon(viewBox="0 0 24 23" fill="currentColor" stroke-wid xmlns="http://www.w3.org/2000/svg")
+									path(d="M23.5661 2.13419C23.5661 1.32948 22.8759 0.677141 22.0244 0.677141H8.14855C7.29706 0.677141 6.6068 1.32948 6.6068 2.13419C6.6068 2.93889 7.29706 3.59123 8.14855 3.59123H20.4826V15.2476C20.4826 16.0523 21.1729 16.7046 22.0244 16.7046C22.8759 16.7046 23.5661 16.0523 23.5661 15.2476V2.13419ZM2.75303 22.4072L23.1146 3.16447L20.9342 1.1039L0.572654 20.3467L2.75303 22.4072Z")
+								svg.home__article__cta__icon(viewBox="0 0 24 23" fill="currentColor" xmlns="http://www.w3.org/2000/svg")
+									path(d="M23.5661 2.13419C23.5661 1.32948 22.8759 0.677141 22.0244 0.677141H8.14855C7.29706 0.677141 6.6068 1.32948 6.6068 2.13419C6.6068 2.93889 7.29706 3.59123 8.14855 3.59123H20.4826V15.2476C20.4826 16.0523 21.1729 16.7046 22.0244 16.7046C22.8759 16.7046 23.5661 16.0523 23.5661 15.2476V2.13419ZM2.75303 22.4072L23.1146 3.16447L20.9342 1.1039L0.572654 20.3467L2.75303 22.4072Z")
+						figure.home__article__cta__media
+							img.home__article__cta__media__image(src=section.primary.image.url alt=section.primary.image.alt)
+
