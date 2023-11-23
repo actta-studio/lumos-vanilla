@@ -1,0 +1,24 @@
+.preloader {
+	@extend %cover;
+	@extend %center;
+
+	display: none;
+
+	color: $color-white;
+	background-color: $color-silver;
+	z-index: z("preloader");
+
+	&__text {
+		@extend %title-30;
+		max-width: 90rem;
+		text-align: center;
+	}
+
+	&__progress {
+		@extend %description-18;
+		position: absolute;
+		bottom: calc(#{$layout-spacing} * 2);
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}

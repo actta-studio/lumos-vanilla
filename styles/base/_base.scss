@@ -1,0 +1,51 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	// NOTE: Pixel perfect designs - 100vw / width of the design in pixels * 10
+	font-size: calc((100vw / 1920) * 10);
+
+	@include media("<=tablet") {
+		font-size: calc((100vw / 1024) * 10);
+	}
+
+	@include media("<=phone") {
+		font-size: calc((100vw / 320) * 10);
+	}
+
+	// @include media("<=sphone") {
+	// 	font-size: calc((100vw / 320) * 10);
+	// }
+}
+
+body {
+	@extend %description-18;
+	font-family: $font-general-sans;
+	overscroll-behavior-y: none;
+	background-color: $color-silver;
+	color: $color-white;
+	line-height: 1.4;
+}
+
+img {
+	max-width: 100%;
+	// removes small gaps under images when they are wrapped in a link
+	vertical-align: middle;
+}
+
+button {
+	background: none;
+	color: inherit;
+	border: none;
+	cursor: pointer;
+	outline: none;
+}
+
+a {
+	outline: none;
+	text-decoration: none;
+	color: inherit;
+}

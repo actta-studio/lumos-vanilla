@@ -1,0 +1,19 @@
+extends ../base.pug 
+
+block variables
+	- var template = 'lookbook'
+
+block content 
+	.lookbook
+		.lookbook__wrapper 
+			each collection, index in collections 
+				.collections__titles(class=`${index === 0 ? 'collections__titles--active' : ''}`)
+						.collections__titles__title=`${collection.data.collection_title} (${collection.data.products.length})`
+				.collections__gallery 
+					.collections__gallery__wrapper 
+						each collection in collections
+							each product in collection.data.products
+								a.collections__gallery__link(href=Link(product.products_product))
+									figure.collections__gallery__media
+										img.collections__gallery__media__image(alt=product.products_product.data.image.alt src=product.products_product.data.image.url)
+			
