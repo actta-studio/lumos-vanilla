@@ -1,45 +1,47 @@
 const asyncHandler = require("../utils/async-handler");
+const { PrismicError } = require("@prismicio/client");
 const { client } = require("../config/prismic-config");
-const { getLang } = require("../config/site-config");
+const siteConfig = require("../config/site-config");
 
 const router = require("express").Router();
 
-const handleDefaultRequests = async () => {
-	const lang = getLang();
+const handleDefaultRequests = async (lang) => {
+	siteConfig.setLang(lang || siteConfig.defaultLanguage);
+
 	const preloader = await client
 		.getSingle("preloader", {
 			lang,
 		})
 		.catch((err) => {
-			if (err.response && err.response.status === 404) {
-				console.log("Preloader not found");
-				return null;
-			} else {
-				console.log(err.message);
-				return {};
+			if (
+				!(err instanceof PrismicError) ||
+				err.message !== "No documents were returned"
+			) {
+				console.log(err);
 			}
+			return null;
 		});
 
 	const meta = await client.getSingle("meta", { lang }).catch((err) => {
-		if (err.response && err.response.status === 404) {
-			console.log("Metadata not found");
-			return null;
-		} else {
-			console.log(err.message);
-			return null;
+		if (
+			!(err instanceof PrismicError) ||
+			err.message !== "No documents were returned"
+		) {
+			console.log(err);
 		}
+		return null;
 	});
 
 	const navigation = await client
 		.getSingle("navigation", { lang })
 		.catch((err) => {
-			if (err.response && err.response.status === 404) {
-				console.log("Navigation not found");
-				return null;
-			} else {
-				console.log(err.message);
-				return null;
+			if (
+				!(err instanceof PrismicError) ||
+				err.message !== "No documents were returned"
+			) {
+				console.log(err);
 			}
+			return null;
 		});
 
 	return {
@@ -49,111 +51,157 @@ const handleDefaultRequests = async () => {
 	};
 };
 
-router.get(
-	"/",
-	asyncHandler(async (req, res) => {
-		const lang = getLang();
-		const defaults = await handleDefaultRequests();
+router.get("/", (req, res) => {
+	res.redirect(siteConfig.defaultLanguage);
+});
 
-		const home = await client
+router.get(
+	"/:lang",
+	asyncHandler(async (req, res) => {
+		const lang = req.params.lang;
+		const defaults = await handleDefaultRequests(lang);
+
+		const document = await client
 			.getSingle("home", {
 				lang,
 				fetchLinks: ["product.image", "product.title"],
 			})
 			.catch((err) => {
-				if (err.response && err.response.status === 404) {
-					console.log("Homepage not found");
-					return null;
-				} else {
-					console.log(err.message);
-					return null;
+				if (
+					!(err instanceof PrismicError) ||
+					err.message !== "No documents were returned"
+				) {
+					console.log(err);
 				}
+				return null;
 			});
 
-		home.data.body.forEach((slice) => {
-			console.log(slice.slice_type);
-			if (slice.slice_type === "product_grid") {
-				console.log(slice.items);
-				// slice.items.forEach((item) => {
-				// 	console.log(item);
-				// });
+		console.log("document", document);
+
+		if (!document) {
+			res.status(404).render("pages/404", { lang: lang });
+		} else {
+			res.render("pages/home", { ...defaults, document });
+		}
+	})
+);
+
+router.get(
+	"/:lang/shop",
+	asyncHandler(async (req, res) => {
+		const lang = req.params.lang;
+		const defaults = await handleDefaultRequests(lang);
+
+		const document = await client.getSingle("shop", { lang }).catch((err) => {
+			if (
+				!(err instanceof PrismicError) ||
+				err.message !== "No documents were returned"
+			) {
+				console.log(err);
 			}
+			return null;
 		});
 
-		res.render("pages/home", { ...defaults, home });
+		if (!document) {
+			res.status(404).render("pages/404", { lang: lang });
+		} else {
+			res.render("pages/shop", { ...defaults, document });
+		}
 	})
 );
 
 router.get(
-	"/shop",
+	"/:lang/lookbook",
 	asyncHandler(async (req, res) => {
-		const lang = getLang();
-		const defaults = await handleDefaultRequests();
+		const lang = req.params.lang;
+		const defaults = await handleDefaultRequests(lang);
 
-		res.render("pages/shop", { ...defaults });
-	})
-);
-
-router.get(
-	"/lookbook",
-	asyncHandler(async (req, res) => {
-		const lang = getLang();
-		const defaults = await handleDefaultRequests();
-
-		const collections = await client
+		const document = await client
 			.getAllByType("collection", {
 				lang,
 				fetchLinks: "product.image",
 			})
 			.catch((err) => {
-				if (err.response && err.response.status === 404) {
-					console.log("Lookbook Collections not found");
-					return null;
-				} else {
-					console.log(err.message);
-					return {};
+				if (
+					!(err instanceof PrismicError) ||
+					err.message !== "No documents were returned"
+				) {
+					console.log(err);
 				}
+				return null;
 			});
 
-		res.render("pages/lookbook", { collections, ...defaults });
+		if (!document) {
+			res.status(404).render("pages/404", { lang: lang });
+		} else {
+			res.render("pages/lookbook", { ...defaults, document });
+		}
 	})
 );
 
 router.get(
-	"/product/:uid",
+	"/:lang/product/:uid",
 	asyncHandler(async (req, res) => {
-		const { uid } = req.params;
-		const lang = getLang();
-		const defaults = await handleDefaultRequests();
+		const { lang, uid } = req.params;
+		const defaults = await handleDefaultRequests(lang);
 
-		const product = await client
+		const document = await client
 			.getByUID("product", uid, {
 				lang,
 				fetchLinks: "collection.collection_title",
 			})
 			.catch((err) => {
-				if (err.response && err.response.status === 404) {
-					console.log("Product not found");
-					return null;
-				} else {
-					console.log(err.message);
-					return {};
+				if (
+					!(err instanceof PrismicError) ||
+					err.message !== "No documents were returned"
+				) {
+					console.log(err);
 				}
+				return null;
 			});
 
-		console.log(product.data.collection.data.collection_title);
-
-		res.render("pages/product", { ...defaults, product });
+		if (!document) {
+			res.status(404).render("pages/404", { lang: lang });
+		} else {
+			res.render("pages/product", { ...defaults, document });
+		}
 	})
 );
 
 router.get(
-	"/contact",
+	"/:lang/contact",
 	asyncHandler(async (req, res) => {
-		const lang = getLang();
-		const defaults = await handleDefaultRequests();
+		const lang = req.params.lang;
+		const defaults = await handleDefaultRequests(lang);
 
-		res.render("pages/contact", { ...defaults });
+		const document = await client
+			.getSingle("contact_us", {
+				lang,
+			})
+			.catch((err) => {
+				if (
+					!(err instanceof PrismicError) ||
+					err.message !== "No documents were returned"
+				) {
+					console.log(err);
+				}
+				return null;
+			});
+
+		if (!document) {
+			res.status(404).render("pages/404", { lang: lang });
+		} else {
+			res.render("pages/contact", { ...defaults, document });
+		}
+	})
+);
+
+router.get(
+	"/:lang/*",
+	asyncHandler(async (req, res) => {
+		const lang = req.params.lang;
+
+		res.status(404).render("pages/404", { lang: lang });
 	})
 );
 
