@@ -10,13 +10,14 @@ html {
 	// NOTE: Pixel perfect designs - 100vw / width of the design in pixels * 10
 	font-size: calc((100vw / 1920) * 10);
 
-	@media("<phone"){}
+	@media ("<phone") {
+	}
 	scroll-behavior: smooth;
 }
 
 body {
 	@extend %description-23;
-	font-family: "Roboto", sans-serif;
+	font-family: $font-neue-montreal;
 	overscroll-behavior-y: none;
 	overflow-x: hidden;
 	background-color: $color-cararra;
