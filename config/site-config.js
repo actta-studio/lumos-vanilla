@@ -20,6 +20,8 @@ module.exports = {
 			return `/${doc.lang}/contact`;
 		} else if (doc.type === "product") {
 			return `/${doc.lang}/product/${doc.uid}`;
+		} else if (doc.type === "collection") {
+			return `/${doc.lang}/product/?collection=${doc.uid}`;
 		} else {
 			return `/${doc.lang}/`;
 		}
@@ -27,11 +29,11 @@ module.exports = {
 	handleLanguageDisplay: (lang) => {
 		switch (lang) {
 			case "en-us":
-				return "EN";
+				return "En";
 			case "fr-ca":
-				return "FR";
+				return "Fr";
 			default:
-				return "EN";
+				return "En";
 		}
 	},
 };
