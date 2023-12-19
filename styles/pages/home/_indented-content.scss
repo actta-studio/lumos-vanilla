@@ -1,0 +1,65 @@
+section.indented-content {
+	padding: 0 $layout-spacing;
+	position: relative;
+
+	&--1 {
+		// margin-bottom: 15.8rem;
+	}
+
+	&--2,
+	&--3 {
+		// margin-bottom: 25.9rem;
+		margin-top: 41rem;
+	}
+
+	&--3 {
+		margin-bottom: 25rem;
+	}
+}
+
+section.indented-content .indented-content__label {
+	// NOTE: ADD HEIRACHY
+	font-weight: 400;
+	&.label-position-left {
+		position: absolute;
+		top: $layout-spacing;
+		left: $layout-spacing;
+	}
+
+	&.label-position-right {
+		position: absolute;
+		top: $layout-spacing;
+		right: $layout-spacing;
+	}
+}
+
+section.indented-content .content-wrapper {
+	&.indent-size-small {
+		.indented-content__text__wrapper:nth-of-type(2) .indented-content__text {
+			text-indent: 41.4rem;
+		}
+	}
+
+	&.indent-size-medium {
+		.indented-content__text__wrapper:nth-of-type(1) .indented-content__text {
+			text-indent: 55.25rem;
+		}
+	}
+
+	&.indent-size-large {
+		.indented-content__text__wrapper:nth-of-type(1) .indented-content__text {
+			text-indent: 100.5rem;
+		}
+	}
+}
+
+.indented-content__text__wrapper {
+	display: block;
+	@extend %description-70;
+}
+
+.indented-content__text {
+	// NOTE: WEIGHT
+	font-weight: 500;
+	display: block;
+}
