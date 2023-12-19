@@ -1,0 +1,30 @@
+@keyframes blink {
+	50% {
+		opacity: 0.3;
+	}
+	0%,
+	100% {
+		opacity: 1;
+	}
+}
+
+a[data-animate="blink"]:hover,
+a[data-animate="blink"]:focus-visible {
+	cursor: pointer;
+	animation: blink 0.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+a[data-animate="underline"] {
+	display: inline-block;
+	position: relative;
+}
+
+a[data-animate="underline"]::before {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 2px;
+	width: 100%;
+	background-color: $color-black;
+}
