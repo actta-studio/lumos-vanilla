@@ -64,7 +64,11 @@ router.get(
 		const document = await client
 			.getSingle("home", {
 				lang,
-				fetchLinks: ["product.image", "product.title"],
+				fetchLinks: [
+					"product.image",
+					"product.title",
+					"collection.collection_title",
+				],
 			})
 			.catch((err) => {
 				if (
@@ -76,7 +80,11 @@ router.get(
 				return null;
 			});
 
-		console.log("document", document);
+		document.data.body.forEach((slice) => {
+			if (slice.slice_type === "collections") {
+				console.log(slice.items[0].collection.data);
+			}
+		});
 
 		if (!document) {
 			res.status(404).render("pages/404", { lang: lang });
