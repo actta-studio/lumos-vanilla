@@ -3,7 +3,6 @@
 // Prismic client.
 const fetch = import("node-fetch");
 const prismic = require("@prismicio/client");
-const { getLang } = require("./site-config");
 
 const repoName = "lumos"; // Fill in your repository name.
 const accessToken = process.env.PRISMIC_ACCESS_TOKEN; // If your repository is private, add an access token.
@@ -18,23 +17,6 @@ const routes = [
 		path: "/",
 	},
 ];
-
-module.exports.linkResolver = function linkResolver(doc) {
-	// const lang = getLang();
-	if (doc.type === "home") {
-		return `/?lang=${doc.lang}`;
-	}
-	return `/${doc.lang}`;
-};
-
-// module.exports.customLinks = function customLinks(path) {
-// 	const lang = getLang();
-// 	if (path === "/") {
-// 		return `/?lang=${lang}`;
-// 	} else {
-// 		return `${path}/?lang=${lang}`;
-// 	}
-// };
 
 module.exports.client = prismic.createClient(repoName, {
 	fetch,
