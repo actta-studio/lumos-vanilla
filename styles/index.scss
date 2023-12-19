@@ -24,7 +24,18 @@
 @import "./pages/home/content";
 @import "./pages/home/article-cta";
 @import "./pages/home/product-grid";
+@import "./pages/home/indented-content";
+@import "./pages/home/product-showcase";
 @import "./pages/lookbook/lookbook";
+@import "./pages/404";
 @import "./pages/shop/shop";
 @import "./pages/product/product";
 @import "./pages/contact/contact";
+
+.hero-placeholder {
+	margin: 0 auto;
+	width: 186rem;
+	height: 108rem;
+	background-color: #d9d9d9;
+	margin-bottom: 9.6rem;
+}
