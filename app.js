@@ -12,7 +12,13 @@ const favicon = require("serve-favicon");
 
 const prismic = require("@prismicio/client");
 const port = 3000;
-const { handleLinkResolver, isolatedViews } = require("./config/site-config");
+const {
+	handleLinkResolver,
+	isolatedViews,
+	handleLanguageDisplay,
+} = require("./config/site-config");
+const asyncHandler = require("./utils/async-handler");
+const siteConfig = require("./config/site-config");
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -26,8 +32,10 @@ app.use((req, res, next) => {
 	res.locals.Prismic = prismic;
 	res.locals.Link = handleLinkResolver;
 	res.locals.isolatedViews = isolatedViews;
+	res.locals.Lang = handleLanguageDisplay;
 	next();
 });
+
 app.use(favicon("public/favicon.png"));
 
 if (process.env.NODE_ENV === "development") {
