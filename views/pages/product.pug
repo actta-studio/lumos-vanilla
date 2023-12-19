@@ -4,29 +4,7 @@ block variables
 	- var template = 'product'
 
 block content 
-	.product
-		.product__wrapper
-			figure.product__media 
-				img.product__media__image(src=product.data.image.url alt=product.data.image.alt)
-			.product__information
-				span.product__information__collection=product.data.collection.data.collection_title
-				h1.product__information__title=product.data.title
-				.product__information__content
-					.product__information__highlights
-						each highlight in product.data.highlights
-							p.product__information__highlight
-								svg.product__information__highlight__icon
-									use(xlink:href=`sprite-${highlight.highlights_icon.toLowerCase()}`)
-									//- concatenation
-								span.product__information__highlight__text!=highlight.highlights_text.replace(/\n/, '<br>')
-					.product__information__list
-						each item in product.data.information
-							p.product__information__item
-								strong.product__information__item__label=item.information_label 
-								span.product__information__item__description=item.information_description
-					
-					a.product__information__link(href=product.data.product_link_url.url target="_blank" rel="noopener noreferrer")=product.data.product_link_text
-		button.product__button Close
-			svg.product__button__icon(viewBox="0 0 279 125" xmlns="http://www.w3.org/2000/svg")
-				path(fill="none" stroke="currentColor" stroke-width="2" d="M278 62.5C278 70.8068 274.247 78.794 267.31 86.1413C260.369 93.494 250.278 100.161 237.733 105.782C212.644 117.022 177.914 124 139.5 124C101.086 124 66.356 117.022 41.2675 105.782C28.7221 100.161 18.6311 93.494 11.6898 86.1413C4.75344 78.794 1 70.8068 1 62.5C1 54.1932 4.75344 46.206 11.6898 38.8587C18.6311 31.506 28.7221 24.8391 41.2675 19.2184C66.356 7.97806 101.086 1 139.5 1C177.914 1 212.644 7.97806 237.733 19.2184C250.278 24.8391 260.369 31.506 267.31 38.8587C274.247 46.206 278 54.1932 278 62.5Z" )
-			
+	- if (document)
+		p=document.data.title
+	- else
+		include 404.pug
