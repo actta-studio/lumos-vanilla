@@ -1,57 +1,30 @@
-footer(class="navigation navigation--footer grid") 
-	span.line
-	a.navigation--footer__link__icon__wrapper(href="/") 
-		svg.navigation--footer__link__icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 941.98 218.4")
-			path(fill="currentColor" d="m588.59,212.07h-47.65V84.05h-1.44c-2.15,9.15-5.38,18.28-10.39,29.54l-34.04,68.58h-44.8l-33.68-68.58c-4.65-10.56-8.23-20.4-10.4-29.54h-1.8v128.02h-45.51V3.16h50.52l50.89,104.79c4.65,10.2,10.03,23.21,12.54,31.3h1.8c2.51-8.1,7.89-21.1,12.54-31.3L538.06,3.16h50.52v208.91Zm249.86-151.22c0-13.02,11.82-19.69,34.05-19.69,16.69,0,40.65,4.57,52.12,11.61l8.68-41.51c-15.29-7.38-41.69-11.26-61.86-11.26-33.33,0-58.03,11.87-70.7,31.36-18.98-17.7-45-28.19-75.1-28.19-62.54,0-108.08,45.72-108.08,107.61s45.52,107.61,108.08,107.61c22.82,0,43.29-6.05,60.12-16.66v.04c14.59,7.74,45.71,13.46,71.08,13.46,54.9,0,85.14-25.67,85.14-66.12,0-73.85-103.55-55.21-103.55-88.28h.01Zm-112.79,115.71c-35.1,0-60.12-27.79-60.12-65.77s25.02-65.77,60.12-65.77,60.12,27.79,60.12,65.77-24.67,65.77-60.12,65.77Zm132.59-2.46c-13.22,0-27.47-2.35-39.71-5.95,8.26-13.89,13.42-30.08,14.79-47.81,28.66,11.42,61.4,13.82,61.4,33,0,14.07-11.47,20.75-36.49,20.75h.02ZM284.06,1.58v116.76c0,33.05-13.98,52.4-45.14,52.4s-45.51-19.34-45.51-52.4V1.58h-47.65v120.28c0,19.44,3.78,36.04,10.92,49.59H47.65V3.16H0v210.49h232.61v-.1c1.72.06-8.11.1,5.22.1,57.68,0,92.09-33.05,92.09-91.79V1.58h-45.87.01Z")
-	.link-block
-		h3.link-block__header Site Links 
-		ul.navigation--footer__list
-				li.navigation--footer__list__item(class='navigation__list__item')
-					a.navigation--footer__list__item__link(href="#") Home
-				li.navigation--footer__list__item(class='navigation__list__item')
-					a.navigation--footer__list__item__link(href="#") Shop
-				li.navigation--footer__list__item(class='navigation__list__item')
-					a.navigation--footer__list__item__link(href="#") Lookbook
-				li.navigation--footer__list__item(class='navigation__list__item')
-					a.navigation--footer__list__item__link(href="#") Articles
-				li.navigation--footer__list__item(class='navigation__list__item')
-					a.navigation--footer__list__item__link(href="#") Contact
-	.link-block
-		h3.link-block__header Contact Info
-		ul.navigation--footer__list
-				li.navigation--footer__list__item(class='navigation__list__item')
-					span.navigation--footer__list__item__link__label Phone
-					a.navigation--footer__list__item__link(href="tel:+1-234-567-8910") +12 34 567 8910
-				li.navigation--footer__list__item(class='navigation__list__item')
-					span.navigation--footer__list__item__link__label Email
-					a.navigation--footer__list__item__link(href="mailto:hello@actta.studio") hello@actta.studio
-				li.navigation--footer__list__item(class='navigation__list__item')
-					span.navigation--footer__list__item__link__label Address
-					address.navigation--footer__list__item__content(href="mailto:info@lumos.com")
-						| 1231 Redwood Avenue<br>
-						| London,<br>
-						| United Kingdom
-	.link-block
-		h3.link-block__header Social Media 
-		ul.navigation--footer__list
-				li.navigation--footer__list__item(class='navigation__list__item')
-					a.navigation--footer__list__item__link(href="https://www.instagram.com/actta.studio/" target="_blank") Instagram
-				li.navigation--footer__list__item(class='navigation__list__item')
-					a.navigation--footer__list__item__link(href="https://twitter.com/actta_studio" target="_blank") Twitter
-				li.navigation--footer__list__item(class='navigation__list__item')
-					a.navigation--footer__list__item__link(href="#") Dribbble
-				li.navigation--footer__list__item(class='navigation__list__item')
-					a.navigation--footer__list__item__link(href="#") Behance
-	.link-block
-		h3.link-block__header Documentation 
-		ul.navigation--footer__list
-				//- li.navigation--footer__list__item(class='navigation__list__item')
-				//- 	a.navigation--footer__list__item__link(href="#") FAQ
-				li.navigation--footer__list__item(class='navigation__list__item')
-					a.navigation--footer__list__item__link(href="#") Return Policy
-				li.navigation--footer__list__item(class='navigation__list__item')
-					a.navigation--footer__list__item__link(href="#") Shipping Information
-				li.navigation--footer__list__item(class='navigation__list__item')
-					a.navigation--footer__list__item__link(href="#") Terms & Conditions
-
-					
+if navigation	
+	header(class="navigation navigation--footer") 
+		.logo 
+			h1(aria-label="Lumos")
+				a.logo__link(href=Link(document))
+					svg.logo__image(viewbox='0 0 1861 319' fill='red' xmlns='http://www.w3.org/2000/svg')
+						path.one(d='M517.7 6V194.2C517.7 217.9 508.8 235.6 491.1 247.5C473.8 259 448.9 264.8 416.5 264.8C384.1 264.8 359 259 341.3 247.5C323.5 235.7 314.7 217.9 314.7 194.2V6H224.8V199C224.8 227.2 233.6 250.6 251.1 269.3H112.5V6H0V319.9H376.7L397 319.5C403.3 319.8 409.8 319.9 416.5 319.9C475.5 319.9 522.1 309.7 556.3 289.2C590.5 268.4 607.6 238.3 607.6 199V6H517.7Z' fill='#363636')
+						path.two(d='M1848.1 187.8C1840.9 176.1 1827.8 165.7 1808.5 156.6C1789.3 147.5 1762 139.6 1726.7 133C1701.2 128.3 1681.3 124 1667.1 120.2C1653.2 116.4 1643.4 112.2 1637.6 107.4C1631.8 102.7 1628.9 96.4 1628.9 88.5C1628.9 74.9 1636.9 66.0999 1653 61.9999C1669.1 57.5999 1691.2 55.3999 1719.4 55.3999C1759.2 55.3999 1797.4 60.3 1834 70.1V13.7999C1820.1 10.2999 1802 7.29995 1779.7 4.79995C1757.4 2.29995 1733.2 0.999948 1707.3 0.999948C1651.9 0.999948 1609.7 8.59995 1580.6 23.6999C1576.6 25.7999 1572.9 27.9999 1569.4 30.2999C1506.2 -12.2001 1352.5 -9.80005 1299.9 37.6999C1268.5 62.6999 1252.8 103.3 1252.8 159.4C1237.3 304.4 1430.3 349.7 1545.1 295.3C1562.5 300.7 1576 307.222 1606.8 310.8C1630.9 313.6 1656.9 315.1 1684.6 315.1C1744 315.1 1788.1 307.1 1816.6 291C1845.2 274.9 1859.5 253.6 1859.5 227.2C1859.5 212.5 1855.6 199.5 1848.1 187.8ZM1439.5 261.2C1368.1 261.2 1334.7 230.5 1334.5 159.4C1334.6 82.9999 1365.6 55.7999 1439.5 54.7999C1513.3 55.7999 1544.1 83.4999 1544.4 159.4C1544 230 1510.8 261.2 1439.5 261.2ZM1744.8 255C1730 259.1 1707 261.1 1675.8 261.1C1653.9 261.1 1631.6 259.4 1608.8 255.9C1605.6 255.4 1602.5 254.9 1599.3 254.4C1617.8 231.9 1628.4 203.5 1626.8 169C1636.8 171.6 1647.8 174.1 1659.7 176.4C1687.9 181.8 1709.5 186.6 1724.7 191.1C1740.3 195.2 1751.3 199.9 1757.5 205.3C1763.8 210.7 1766.9 217.9 1766.9 227.1C1767 241.6 1759.6 250.9 1744.8 255Z' fill='#363636')
+						path.three(d='M1042.9 5.80005L930.5 194.5L818.1 5.80005H737.2V319.8H817.5V115.5L907.3 265.7H953.7L1042.9 115.5V319.8H1123.2V5.80005H1042.9Z' fill='#363636')
+		nav 
+			.group
+				a(href="mailto:hello@actta.studio") hello@actta.studio
+				.set
+					a(href="mailto:hello@actta.studio") Facebook
+					a(href="mailto:hello@actta.studio") Instagram
+			.group
+				p 1231 Redwood Ave, 
+				p London, United Kingdom
+			.group
+				a(href="") Shipping Info 
+				a(href="") Terms & Conditions
+			.group
+				p Website By 
+				a(href="https://www.actta.studio" target="_blank") 
+					| AC
+					span.merged(style="letter-spacing: -3px") T
+					span.merged T
+					| A Studio
+			
+				
