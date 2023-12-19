@@ -21,7 +21,7 @@ module.exports = {
 		} else if (doc.type === "product") {
 			return `/${doc.lang}/product/${doc.uid}`;
 		} else if (doc.type === "collection") {
-			return `/${doc.lang}/product/?collection=${doc.uid}`;
+			return `/${doc.lang}/shop/?collection=${doc.uid}`;
 		} else {
 			return `/${doc.lang}/`;
 		}
