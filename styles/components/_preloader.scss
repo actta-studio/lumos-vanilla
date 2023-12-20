@@ -15,9 +15,8 @@
 	}
 
 	&__progress {
-		@extend %description-18;
 		position: absolute;
-		bottom: calc(#{$layout-spacing} * 2);
+		bottom: calc(var(--layout-spacing) * 2);
 		left: 50%;
 		transform: translateX(-50%);
 	}
