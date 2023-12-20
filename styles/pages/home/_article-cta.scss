@@ -1,6 +1,10 @@
 section.article-cta {
-	padding: 0 $layout-spacing;
-	margin-bottom: 5.9rem;
+	padding: 0 var(--layout-spacing);
+	margin-bottom: 6.9rem;
+
+	@include media("<=tablet") {
+		margin-bottom: 5.9rem;
+	}
 }
 
 .article-cta__wrapper {
@@ -13,6 +17,10 @@ section.article-cta {
 	display: flex;
 	flex-direction: row;
 	gap: 1.7rem;
+
+	@include media("<=tablet") {
+		gap: 0.6rem;
+	}
 }
 
 .article-cta__wrapper .cta-content__text {
@@ -20,30 +28,88 @@ section.article-cta {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+
+	@include media("<=tablet") {
+		height: 15.3rem;
+	}
+}
+
+.article-cta__wrapper .cta-content__text h3 {
+	@extend %description-20;
+	text-transform: uppercase;
+	font-weight: 500;
+
+	@include media("<=tablet") {
+		font-size: 1rem;
+	}
 }
 
 .article-cta__wrapper .cta-content__text a {
+	@extend %description-27;
+	font-weight: 500;
 	position: relative;
 	display: inline-block;
-	text-decoration: underline;
-	top: 0.25rem;
+	top: 0.7rem;
+
+	@include media("<=tablet") {
+		font-size: 1.6rem;
+		top: 0.3rem;
+	}
 }
 
 .article-cta__wrapper .cta-content__image {
 	width: 46.4rem;
 	height: 29.7rem;
+
+	@include media("<=tablet") {
+		width: 17.2rem;
+		height: 15.3rem;
+	}
 }
 
-.article-cta__wrapper .article .article__image-wrapper {
+.article__text {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 }
+
+.article__text a {
+	@extend %description-27;
+	font-weight: 500;
+
+	@include media("<=tablet") {
+		font-size: 1.6rem;
+	}
+}
+
+.article__text p {
+	@extend %description-20;
+	font-weight: 500;
+	text-transform: uppercase;
+
+	@include media("<=tablet") {
+		font-size: 1rem;
+	}
+}
+
 .article-cta__wrapper .article .article__image-wrapper .article__primary-image {
 	width: 85rem;
 	height: 97.8rem;
 	background-color: #d9d9d9;
+
+	@include media("<=tablet") {
+		width: 38.3rem;
+		height: 33.6rem;
+	}
 }
 
 .article-cta__wrapper .article .article__wrapper {
 	display: flex;
 	flex-direction: column;
 	gap: 1.7rem;
+
+	@include media("<=tablet") {
+		gap: 0.3rem;
+	}
 }
