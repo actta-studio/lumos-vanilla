@@ -1,0 +1,47 @@
+section.collections {
+	padding: 0 var(--layout-spacing);
+	margin: 50.2rem 0 57.8rem 0;
+
+	@include media("<=tablet") {
+		margin: 19.7rem 0 34.9rem 0;
+	}
+
+	.collections__wrapper {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		align-items: center;
+		gap: 22.7rem;
+
+		@include media("<=tablet") {
+			gap: 9.8rem;
+		}
+
+		.collections__item {
+			@extend %description-20;
+			font-weight: 500;
+			text-transform: uppercase;
+
+			@include media("<=tablet") {
+				font-size: 1.4rem;
+			}
+		}
+
+		.collections__item--1 {
+			@extend %description-25;
+			flex: 1;
+		}
+	}
+}
+
+section.collections--fr-ca {
+	.collections__wrapper {
+		@include media("<=tablet") {
+			gap: 5.7rem;
+		}
+		.collections__item--2 {
+			// POLLY: This is not the same. why?
+			// margin-right: 16.4rem;
+		}
+	}
+}
