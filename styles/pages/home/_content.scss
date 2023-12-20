@@ -12,7 +12,7 @@
 }
 
 .home__content__image__label {
-	@extend %description-28;
+	@extend %description-23;
 }
 
 .home__content__media__wrapper {
@@ -37,7 +37,7 @@
 
 .home__content__description {
 	grid-area: description;
-	@extend %description-28;
+	@extend %description-23;
 	width: 63rem;
 
 	p + p {
