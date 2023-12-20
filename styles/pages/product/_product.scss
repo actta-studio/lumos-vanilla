@@ -9,7 +9,7 @@
 	&__button {
 		position: absolute;
 		left: 50%;
-		bottom: calc(#{$layout-spacing} * 2);
+		bottom: calc(var(--layout-spacing) * 2);
 		transform: translateX(-50%);
 		z-index: 1;
 
@@ -43,7 +43,7 @@
 			aspect-ratio: 3/4;
 
 			@include media("<phone") {
-				width: calc(100vw - (#{$layout-spacing} * 2));
+				width: calc(100vw - (var(--layout-spacing) * 2));
 				height: initial;
 				aspect-ratio: 3/4;
 				margin: 0 auto;
@@ -58,14 +58,14 @@
 
 		.product__information {
 			padding-left: 8rem;
-			width: calc(100vw - (#{$layout-spacing} * 2));
+			width: calc(100vw - (var(--layout-spacing) * 2));
 
 			@include media("<phone") {
 				padding-left: 0;
 			}
 
 			&__collection {
-				@extend %description-18;
+				@extend %description-23;
 				// margin-bottom: -2rem;
 				text-transform: uppercase;
 			}
@@ -104,7 +104,7 @@
 					}
 
 					&__text {
-						@extend %description-20;
+						@extend %description-23;
 					}
 				}
 			}
@@ -121,7 +121,7 @@
 					}
 
 					&__label {
-						@extend %description-16;
+						@extend %description-23;
 						width: 7rem;
 						text-transform: uppercase;
 
@@ -131,7 +131,7 @@
 					}
 
 					&__description {
-						@extend %description-20;
+						@extend %description-23;
 						max-width: 44rem;
 					}
 				}
