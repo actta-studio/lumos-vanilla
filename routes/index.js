@@ -63,12 +63,12 @@ router.get(
 
 		const document = await client
 			.getSingle("home", {
-				lang,
 				fetchLinks: [
 					"product.image",
 					"product.title",
 					"collection.collection_title",
 				],
+				lang,
 			})
 			.catch((err) => {
 				if (
