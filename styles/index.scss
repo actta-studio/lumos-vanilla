@@ -1,11 +1,10 @@
 @import "./base/reset";
 
+@import "./vendor/vendor";
 @import "./abstract/variables";
 @import "./abstract/functions";
 @import "./abstract/mixins";
 @import "./abstract/animations";
-
-@import "./vendor/vendor";
 
 @import "./shared/titles";
 @import "./shared/descriptions";
@@ -26,6 +25,7 @@
 @import "./pages/home/product-grid";
 @import "./pages/home/indented-content";
 @import "./pages/home/product-showcase";
+@import "./pages/home/collections";
 @import "./pages/lookbook/lookbook";
 @import "./pages/404";
 @import "./pages/shop/shop";
@@ -38,4 +38,10 @@
 	height: 108rem;
 	background-color: #d9d9d9;
 	margin-bottom: 9.6rem;
+
+	@include media("<=tablet") {
+		width: 72.8rem;
+		height: 58.7rem;
+		margin-bottom: 5rem;
+	}
 }
