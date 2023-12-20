@@ -10,10 +10,11 @@ block content
 			if document
 				- var showcaseIndex = 0
 				- var indentedIndex = 0
+				- var collectionItemIndex = 0
 				each section, index in document.data.body
 					if (section.slice_type == 'indented_content')
 						- indentedIndex++
-						section.indented-content(class=`indented-content--${indentedIndex}`)
+						section.indented-content(class=`indented-content--${indentedIndex} indented-content--${document.lang}`)
 							h2.indented-content__label(class=`label-position-${section.primary.label_position.toLowerCase()}`)
 								span.indented-content__label__text= section.primary.label
 							- var paragraphs = section.primary.text.split('\n')
@@ -23,14 +24,21 @@ block content
 										span.indented-content__text!= paragraph
 					if (section.slice_type == 'product_showcase')
 						- showcaseIndex++
-						section.product-showcase(class=`product-showcase--${showcaseIndex}`)
+						section.product-showcase(class=`product-showcase--${showcaseIndex} product-showcase--${document.lang}`)
 							.product-showcase__wrapper(class=`product-showcase__wrapper--${section.primary.type.toLowerCase()}`)
 								each item in section.items
 									figure.product-showcase__item
 										img.product-showcase__item__image(src=item.image.url)
 								a.product-showcase__link(href=Link(section.primary.cta_link))=section.primary.cta_label
+					if (section.slice_type == 'collections')
+						section.collections(class=`collections--${document.lang}`)
+							ul.collections__wrapper
+								each collection in section.items
+									- collectionItemIndex++
+									li.collections__item(class=`collections__item--${collectionItemIndex}`)
+										a.collections__item__title(href=Link(collection.collection))=collection.collection.data.collection_title
 					if (section.slice_type == "article_cta") 
-						section.article-cta
+						section.article-cta(class=`article-cta--${document.lang}`)
 							.article-cta__wrapper
 								.cta-content
 									figure.cta-content__image__wrapper
@@ -43,7 +51,8 @@ block content
 										figure.article__image-wrapper
 											div.article__primary-image
 										.article__text
-											p.article__text__description Article (№023)
+											a.article__text__cta(href="#") #{document.lang === "fr-ca" ? "Lire" : "Read"}
+											p.article__text__description Article №023
 
 
 
