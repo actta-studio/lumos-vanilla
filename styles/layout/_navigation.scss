@@ -2,7 +2,8 @@
 	position: relative;
 
 	&--header {
-		padding: $layout-spacing;
+		padding: var(--layout-spacing);
+		padding-top: 1.9rem;
 		z-index: z("navigation");
 
 		nav {
@@ -12,18 +13,51 @@
 			justify-content: space-between;
 			align-items: center;
 
+			@include media("<=tablet") {
+				margin-bottom: 3.4rem;
+			}
+
+			.tagline {
+				@extend %description-23;
+				font-weight: 500;
+
+				@include media("<=tablet") {
+					font-size: 1.4rem;
+				}
+			}
+
 			.group {
 				display: flex;
 				flex-direction: row;
+				align-items: center;
 
 				.navigation-links {
-					margin-right: 14.1rem;
+					margin-right: 13.5rem;
 					display: flex;
 					flex-direction: row;
+					align-items: center;
 					gap: 0.5rem;
 
+					@include media("<=tablet") {
+						margin-right: 6.5rem;
+
+						&--fr-ca {
+							margin-right: 3.4rem;
+						}
+					}
+
 					.navigation-link {
-						// font-weight: 400;
+						display: flex;
+						align-items: center;
+
+						&__link {
+							@extend %description-23;
+							font-weight: 500;
+
+							@include media("<=tablet") {
+								font-size: 1.4rem;
+							}
+						}
 					}
 
 					.navigation-link:hover {
@@ -31,7 +65,13 @@
 					}
 
 					.navigation-link::after {
+						position: relative;
+						bottom: 0;
 						content: ",";
+
+						@include media("<=tablet") {
+							bottom: 0.5rem;
+						}
 					}
 
 					.navigation-link:last-of-type::after {
@@ -40,9 +80,38 @@
 				}
 
 				.language-toggle {
-					margin-right: 24.1rem;
+					display: flex;
+					align-items: center;
+					margin-right: 24.8rem;
 					display: flex;
 					gap: 0.5rem;
+
+					&--tablet {
+						display: none;
+
+						@include media("<=tablet") {
+							display: flex;
+							align-self: center;
+							margin-right: 11.3rem;
+
+							&--fr-ca {
+								margin-right: 10.9rem;
+							}
+						}
+					}
+
+					@include media("<=tablet") {
+						display: none;
+					}
+
+					&__link {
+						@extend %description-23;
+						font-weight: 500;
+
+						@include media("<=tablet") {
+							font-size: 1.4rem;
+						}
+					}
 
 					a:hover {
 						text-decoration: underline;
@@ -56,18 +125,25 @@
 						content: "";
 					}
 				}
+
+				.time-data {
+					@extend %description-23;
+					font-weight: 500;
+					align-self: center;
+
+					display: flex;
+					align-items: center;
+
+					@include media("<=tablet") {
+						font-size: 1.4rem;
+					}
+				}
 			}
-		}
-
-		.logo {
-		}
-
-		.logo .logo__image {
 		}
 	}
 
 	&--footer {
-		padding: 0 $layout-spacing;
+		padding: 0 var(--layout-spacing);
 		z-index: z("navigation");
 
 		display: flex;
@@ -85,8 +161,16 @@
 				display: flex;
 				flex-direction: column;
 
-				.merged {
-					letter-spacing: -13;
+				p,
+				a,
+				span {
+					@extend %description-20;
+					font-weight: 500;
+					text-transform: uppercase;
+				}
+
+				.merged:first-of-type {
+					letter-spacing: -3px;
 				}
 
 				a:hover {
