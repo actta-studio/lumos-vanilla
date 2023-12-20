@@ -1,3 +1,13 @@
+:root {
+	--layout-spacing: 3rem;
+}
+
+@include media("<=tablet") {
+	:root {
+		--layout-spacing: 2rem;
+	}
+}
+
 $color-white: #fff;
 $color-black: #363636;
 $color-silver: #b7b7b7;
@@ -11,7 +21,6 @@ $font-primary: "Roboto", sans-serif;
 
 $ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 
-$layout-spacing: 2.8rem;
 $section-spacing: 45rem;
 
 $z-indexes: ("preloader", "navigation", "content");
