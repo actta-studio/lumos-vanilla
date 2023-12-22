@@ -1,3 +1,70 @@
 section.not-found {
 	@extend %cover;
+	background-color: #000;
+	color: $color-cararra;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 7.6rem var(--layout-spacing);
+
+	@include media("<=tablet") {
+		padding: 5.4rem var(--layout-spacing);
+	}
+
+	.fill {
+		flex: 1;
+	}
+
+	.content {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+
+		.header {
+			@extend %description-20;
+			font-weight: 500;
+			text-transform: uppercase;
+			margin-bottom: 0.8rem;
+
+			@include media("<=tablet") {
+				font-size: 1rem;
+			}
+		}
+
+		.tagline {
+			@extend %description-110;
+			font-weight: 500;
+			margin-bottom: 4.5rem;
+			line-height: 0.9;
+
+			@include media("<=tablet") {
+				font-size: 7rem;
+				margin-bottom: 2.5rem;
+			}
+		}
+
+		.description {
+			@extend %description-23;
+			font-weight: 500;
+
+			@include media("<=tablet") {
+				font-size: 1.6rem;
+			}
+		}
+	}
+
+	.back {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-self: flex-start;
+		font-weight: 500;
+		@extend %description-25;
+
+		@include media("<=tablet") {
+			font-size: 1.6rem;
+		}
+	}
 }
