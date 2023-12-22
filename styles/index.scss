@@ -45,4 +45,10 @@
 		height: 58.7rem;
 		margin-bottom: 5rem;
 	}
+
+	@include media("<=phone") {
+		width: 38rem;
+		height: 35.9rem;
+		margin-bottom: 5rem;
+	}
 }
