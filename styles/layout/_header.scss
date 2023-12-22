@@ -1,54 +1,125 @@
 .navigation {
 	position: relative;
 
+	&--404 {
+		color: $color-cararra;
+	}
+
 	&--header {
 		padding: var(--layout-spacing);
-		padding-top: 1.9rem;
+		padding-top: 2.3rem;
 		z-index: z("navigation");
 
-		nav {
-			margin-bottom: 5.8rem;
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-			align-items: center;
+		@include media("<=tablet") {
+			padding-top: 1.9rem;
+		}
 
-			@include media("<=tablet") {
-				margin-bottom: 3.4rem;
-			}
+		@include media("<=phone") {
+			padding-top: 1.5rem;
+		}
 
-			.tagline {
-				@extend %description-23;
-				font-weight: 500;
-
-				@include media("<=tablet") {
-					font-size: 1.4rem;
-				}
-			}
-
-			.group {
+		.nav {
+			&--expanded {
+				margin-bottom: 5.8rem;
 				display: flex;
 				flex-direction: row;
+				justify-content: space-between;
 				align-items: center;
 
-				.navigation-links {
-					margin-right: 13.5rem;
+				@include media("<=tablet") {
+					margin-bottom: 3.4rem;
+				}
+
+				@include media("<=phone") {
+					display: none;
+				}
+
+				.tagline {
+					@extend %description-23;
+					font-weight: 500;
+
+					@include media("<=tablet") {
+						font-size: 1.4rem;
+					}
+				}
+
+				.group {
 					display: flex;
 					flex-direction: row;
 					align-items: center;
-					gap: 0.5rem;
 
-					@include media("<=tablet") {
-						margin-right: 6.5rem;
+					.navigation-links {
+						margin-right: 13.5rem;
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+						gap: 0.5rem;
 
-						&--fr-ca {
-							margin-right: 3.4rem;
+						@include media("<=tablet") {
+							margin-right: 6.5rem;
+
+							&--fr-ca {
+								margin-right: 3.4rem;
+							}
+						}
+
+						.navigation-link {
+							display: flex;
+							align-items: center;
+
+							&__link {
+								@extend %description-23;
+								font-weight: 500;
+
+								@include media("<=tablet") {
+									font-size: 1.4rem;
+								}
+							}
+						}
+
+						.navigation-link:hover {
+							text-decoration: underline;
+						}
+
+						.navigation-link::after {
+							position: relative;
+							bottom: 0;
+							content: ",";
+
+							@include media("<=tablet") {
+								bottom: 0.5rem;
+							}
+						}
+
+						.navigation-link:last-of-type::after {
+							content: "";
 						}
 					}
 
-					.navigation-link {
+					.language-toggle {
 						display: flex;
 						align-items: center;
+						margin-right: 24.8rem;
+						display: flex;
+						gap: 0.5rem;
+
+						&--tablet {
+							display: none;
+
+							@include media("<=tablet") {
+								display: flex;
+								align-self: center;
+								margin-right: 11.3rem;
+
+								&--fr-ca {
+									margin-right: 10.9rem;
+								}
+							}
+						}
+
+						@include media("<=tablet") {
+							display: none;
+						}
 
 						&__link {
 							@extend %description-23;
@@ -58,87 +129,62 @@
 								font-size: 1.4rem;
 							}
 						}
-					}
 
-					.navigation-link:hover {
-						text-decoration: underline;
-					}
+						a:hover {
+							text-decoration: underline;
+						}
 
-					.navigation-link::after {
-						position: relative;
-						bottom: 0;
-						content: ",";
+						a::after {
+							content: ",";
+						}
 
-						@include media("<=tablet") {
-							bottom: 0.5rem;
+						a:last-of-type::after {
+							content: "";
 						}
 					}
 
-					.navigation-link:last-of-type::after {
-						content: "";
-					}
-				}
-
-				.language-toggle {
-					display: flex;
-					align-items: center;
-					margin-right: 24.8rem;
-					display: flex;
-					gap: 0.5rem;
-
-					&--tablet {
-						display: none;
-
-						@include media("<=tablet") {
-							display: flex;
-							align-self: center;
-							margin-right: 11.3rem;
-
-							&--fr-ca {
-								margin-right: 10.9rem;
-							}
-						}
-					}
-
-					@include media("<=tablet") {
-						display: none;
-					}
-
-					&__link {
+					.time-data {
 						@extend %description-23;
 						font-weight: 500;
+						align-self: center;
+
+						display: flex;
+						align-items: center;
 
 						@include media("<=tablet") {
 							font-size: 1.4rem;
 						}
 					}
+				}
+			}
 
-					a:hover {
-						text-decoration: underline;
-					}
+			&--collapsed {
+				display: none;
 
-					a::after {
-						content: ",";
-					}
-
-					a:last-of-type::after {
-						content: "";
-					}
+				@include media("<=phone") {
+					display: flex;
+					justify-content: flex-end;
+					margin-bottom: 1.8rem;
 				}
 
-				.time-data {
-					@extend %description-23;
-					font-weight: 500;
-					align-self: center;
-
+				.nav-toggle {
 					display: flex;
-					align-items: center;
+					flex-direction: column;
+					gap: 0.15rem;
 
-					@include media("<=tablet") {
-						font-size: 1.4rem;
+					span {
+						width: 2.3rem;
+						height: 0.15rem;
+						background-color: $color-black;
 					}
 				}
 			}
 		}
+	}
+}
+
+.no-logo {
+	.logo {
+		display: none;
 	}
 }
