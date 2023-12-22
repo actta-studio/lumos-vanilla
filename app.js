@@ -15,6 +15,9 @@ const port = 3000;
 const {
 	handleLinkResolver,
 	isolatedViews,
+	noHeader,
+	noFooter,
+	noHeaderLogo,
 	handleLanguageDisplay,
 } = require("./config/site-config");
 const asyncHandler = require("./utils/async-handler");
@@ -31,7 +34,9 @@ app.use((req, res, next) => {
 	}
 	res.locals.Prismic = prismic;
 	res.locals.Link = handleLinkResolver;
-	res.locals.isolatedViews = isolatedViews;
+	res.locals.noHeader = noHeader;
+	res.locals.noFooter = noFooter;
+	res.locals.noHeaderLogo = noHeaderLogo;
 	res.locals.Lang = handleLanguageDisplay;
 	next();
 });
