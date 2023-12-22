@@ -87,7 +87,7 @@ router.get(
 		});
 
 		if (!document) {
-			res.status(404).render("pages/404", { lang: lang });
+			res.status(404).render("pages/404", { ...defaults, lang: lang });
 		} else {
 			res.render("pages/home", { ...defaults, document });
 		}
@@ -111,38 +111,9 @@ router.get(
 		});
 
 		if (!document) {
-			res.status(404).render("pages/404", { lang: lang });
+			res.status(404).render("pages/404", { ...defaults, lang: lang });
 		} else {
 			res.render("pages/shop", { ...defaults, document });
-		}
-	})
-);
-
-router.get(
-	"/:lang/lookbook",
-	asyncHandler(async (req, res) => {
-		const lang = req.params.lang;
-		const defaults = await handleDefaultRequests(lang);
-
-		const document = await client
-			.getAllByType("collection", {
-				lang,
-				fetchLinks: "product.image",
-			})
-			.catch((err) => {
-				if (
-					!(err instanceof PrismicError) ||
-					err.message !== "No documents were returned"
-				) {
-					console.log(err);
-				}
-				return null;
-			});
-
-		if (!document) {
-			res.status(404).render("pages/404", { lang: lang });
-		} else {
-			res.render("pages/lookbook", { ...defaults, document });
 		}
 	})
 );
@@ -169,7 +140,7 @@ router.get(
 			});
 
 		if (!document) {
-			res.status(404).render("pages/404", { lang: lang });
+			res.status(404).render("pages/404", { ...defaults, lang: lang });
 		} else {
 			res.render("pages/product", { ...defaults, document });
 		}
@@ -196,8 +167,10 @@ router.get(
 				return null;
 			});
 
+		console.log("here too");
+
 		if (!document) {
-			res.status(404).render("pages/404", { lang: lang });
+			res.status(404).render("pages/404", { ...defaults, lang: lang });
 		} else {
 			res.render("pages/contact", { ...defaults, document });
 		}
@@ -208,8 +181,25 @@ router.get(
 	"/:lang/*",
 	asyncHandler(async (req, res) => {
 		const lang = req.params.lang;
+		const defaults = await handleDefaultRequests(lang);
 
-		res.status(404).render("pages/404", { lang: lang });
+		const document = await client
+			.getSingle("404", {
+				lang,
+			})
+			.catch((err) => {
+				if (
+					!(err instanceof PrismicError) ||
+					err.message !== "No documents were returned"
+				) {
+					console.log(err);
+				}
+				return null;
+			});
+
+		console.log("here: ", document);
+
+		res.status(404).render("pages/404", { ...defaults, lang: lang, document });
 	})
 );
 
