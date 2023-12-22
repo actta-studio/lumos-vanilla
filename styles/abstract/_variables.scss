@@ -8,6 +8,12 @@
 	}
 }
 
+@include media("<=phone") {
+	:root {
+		--layout-spacing: 1rem;
+	}
+}
+
 $color-white: #fff;
 $color-black: #363636;
 $color-silver: #b7b7b7;
