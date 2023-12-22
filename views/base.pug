@@ -42,13 +42,14 @@ html(lang="en")
 		//- 	include ../public/main.css
 
 	body
-		main.page-wrapper
 			include ./partials/preloader
-			if (!isolatedViews.includes(template))
-				include ./partials/header
+			header(class=`${noHeaderLogo.includes(template) ? "no-logo navigation--404" :""} navigation navigation--header`) 
+				if (!noHeader.includes(template))
+					include ./partials/header
 
-			.content#content(data-template=template)
-				block content
+			main.page-wrapper
+				.content#content(data-template=template)
+					block content
 
-			if (!isolatedViews.includes(template))
+			if (!noFooter.includes(template))
 				include ./partials/footer
