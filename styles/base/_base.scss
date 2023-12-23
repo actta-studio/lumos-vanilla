@@ -16,7 +16,7 @@ html {
 	}
 
 	@include media("<=phone") {
-		font-size: calc((100vw / 390) * 10);
+		font-size: calc((100vw / 430) * 10);
 	}
 }
 
@@ -52,4 +52,28 @@ a {
 	outline: none;
 	text-decoration: none;
 	color: inherit;
+}
+
+.only-desktop {
+	display: none;
+
+	@include media(">tablet") {
+		display: block;
+	}
+}
+
+.only-tablet {
+	display: none;
+
+	@include media("<=tablet") {
+		display: block;
+	}
+}
+
+.only-phone {
+	display: none;
+
+	@include media("<=phone") {
+		display: block;
+	}
 }
