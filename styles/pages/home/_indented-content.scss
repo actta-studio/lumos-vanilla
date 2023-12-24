@@ -1,14 +1,12 @@
-section.indented-content {
+.indented-content {
 	padding: 0 var(--layout-spacing);
 	position: relative;
-
-	&--1 {
-	}
 
 	&--2 {
 		margin-top: 47.3rem;
 
 		@include media("<=tablet") {
+			// TODO: Check this value
 			margin-top: 17.8rem;
 		}
 	}
@@ -22,104 +20,133 @@ section.indented-content {
 			margin-bottom: 17.4rem;
 		}
 	}
-}
 
-section.indented-content .indented-content__label {
-	font-weight: 500;
-	text-transform: uppercase;
-	@extend %description-20;
+	&__label {
+		font-weight: 500;
+		text-transform: uppercase;
+		@extend %description-20;
 
-	@include media("<=tablet") {
-		font-size: 1rem;
-	}
-
-	&.label-position-left {
-		position: absolute;
-		top: 2.3rem;
-		left: var(--layout-spacing);
-
-		@include media("<=tablet") {
-			top: 1.5rem;
-		}
-	}
-
-	&.label-position-right {
-		position: absolute;
-		top: 2.3rem;
-		right: var(--layout-spacing);
-
-		@include media("<=tablet") {
-			top: 1.5rem;
-		}
-	}
-}
-
-.indented-content__text__wrapper {
-	display: block;
-	@extend %description-75;
-
-	@include media("<=tablet") {
-		font-size: 3.3rem;
-	}
-
-	font-weight: 500;
-}
-
-.indented-content__text__wrapper span {
-	display: block;
-}
-
-section.indented-content .content-wrapper {
-	&.indent-size-small {
-		.indented-content__text__wrapper:nth-of-type(2) .indented-content__text {
-			text-indent: 41.4rem;
+		&--position-left {
+			position: absolute;
+			top: 2.3rem;
+			left: var(--layout-spacing);
+			transform: translateY(25%);
 
 			@include media("<=tablet") {
-				text-indent: initial;
+				top: 1.25rem;
+			}
+		}
+
+		&--position-right {
+			position: absolute;
+			top: 2.3rem;
+			right: var(--layout-spacing);
+			transform: translateY(25%);
+
+			@include media("<=tablet") {
+				top: 1.25rem;
+			}
+		}
+
+		@include media("<=tablet") {
+			font-size: 1rem;
+		}
+
+		@include media("<=phone") {
+			display: none;
+		}
+	}
+
+	&__text {
+		display: block;
+		font-weight: 500;
+		@extend %description-75;
+
+		&--desktop {
+			@include media("<=tablet") {
+				display: none;
+			}
+		}
+
+		&--tablet {
+			display: none;
+
+			@include media("<=tablet", ">phone") {
 				display: block;
+			}
+		}
+
+		&--phone {
+			display: none;
+
+			@include media("<=phone") {
+				display: block;
+			}
+		}
+
+		span {
+			display: block;
+		}
+
+		&--small {
+			span:nth-of-type(2) {
+				text-indent: 41.4rem;
+
+				@include media("<=tablet") {
+					text-indent: initial;
+					text-align: end;
+				}
+			}
+		}
+
+		&--medium {
+			span:nth-of-type(1) {
 				text-align: end;
 			}
 		}
-	}
 
-	&.indent-size-medium {
-		.indented-content__text__wrapper:nth-of-type(1) .indented-content__text {
-			// text-indent: 51.2rem;
-			text-align: end;
-		}
-	}
-
-	&.indent-size-large {
-		.indented-content__text__wrapper:nth-of-type(1) .indented-content__text {
-			text-align: end;
-			// text-indent: 98.6rem;
-		}
-	}
-}
-
-.indented-content__text {
-	font-weight: 500;
-	display: block;
-}
-
-section.indented-content--fr-ca .content-wrapper {
-	&.indent-size-small {
-		.indented-content__text__wrapper:nth-of-type(2) .indented-content__text {
-			text-indent: 40.9rem;
-
-			@include media("<=tablet") {
-				text-indent: 12rem;
+		&--large {
+			span:nth-of-type(1) {
+				text-align: end;
 			}
 		}
+
+		@include media("<=tablet") {
+			font-size: 3.3rem;
+		}
+
+		@include media("<=phone") {
+			font-size: 2.4rem;
+		}
 	}
-}
 
-section.indented-content--fr-ca .indented-content__text__wrapper {
-	display: block;
-	@extend %description-68;
-	font-weight: 500;
+	&--fr-ca {
+		.indented-content__text {
+			@extend %description-68;
 
-	@include media("<=tablet") {
-		font-size: 3.4rem;
+			@include media("<=tablet") {
+				font-size: 3.4rem;
+			}
+
+			@include media("<=phone") {
+				font-size: 2.2rem;
+			}
+
+			&--small {
+				span:nth-of-type(2) {
+					text-indent: 40.9rem;
+
+					@include media("<=tablet") {
+						text-indent: 12rem;
+					}
+				}
+			}
+
+			&--large {
+				span:nth-of-type(1) {
+					text-align: end;
+				}
+			}
+		}
 	}
 }
