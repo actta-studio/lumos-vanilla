@@ -35,20 +35,23 @@
 
 .hero-placeholder {
 	margin: 0 auto;
-	width: 186rem;
-	height: 108rem;
+	width: 42.3rem;
+	height: 59.7rem;
 	background-color: #d9d9d9;
-	margin-bottom: 9.6rem;
+	margin-bottom: 42.2rem;
+	margin-top: 4.81rem;
 
 	@include media("<=tablet") {
-		width: 72.8rem;
-		height: 58.7rem;
-		margin-bottom: 5rem;
+		width: 22rem;
+		height: 37.5rem;
+		margin-top: 12.8rem;
+		margin-bottom: 16.5rem;
 	}
 
 	@include media("<=phone") {
-		width: 41rem;
-		height: 45.6rem;
-		margin-bottom: 5rem;
+		width: 10.9rem;
+		height: 18.7rem;
+		margin-top: 6.6rem;
+		margin-bottom: 13.9rem;
 	}
 }
