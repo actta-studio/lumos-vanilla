@@ -1,9 +1,9 @@
 const store = require("store");
 
 module.exports = {
-	noHeader: ["product", "contact"],
+	noHeader: ["product"],
 	noFooter: ["product", "404"],
-	noHeaderLogo: ["404"],
+	noHeaderLogo: ["404", "contact"],
 	defaultLanguage: "en-us",
 	getLang: () => {
 		return store.get("lang") || "en-us";
