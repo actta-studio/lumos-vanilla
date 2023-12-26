@@ -41,7 +41,7 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.use(favicon("public/favicon.png"));
+app.use(favicon("public/favicon.ico"));
 
 if (process.env.NODE_ENV === "development") {
 	app.use(errorHandler());
