@@ -6,6 +6,10 @@ section.collections {
 		margin: 19.7rem 0 34.9rem 0;
 	}
 
+	@include media("<=phone") {
+		margin: 19rem 0 32.8rem 0;
+	}
+
 	.collections__wrapper {
 		display: flex;
 		flex-direction: row;
@@ -17,6 +21,10 @@ section.collections {
 			gap: 9.8rem;
 		}
 
+		@include media("<=phone") {
+			gap: 2.4rem;
+		}
+
 		.collections__item {
 			@extend %description-20;
 			font-weight: 500;
@@ -25,11 +33,23 @@ section.collections {
 			@include media("<=tablet") {
 				font-size: 1.4rem;
 			}
+
+			@include media("<=phone") {
+				font-size: 1.1rem;
+			}
 		}
 
 		.collections__item--1 {
 			@extend %description-25;
 			flex: 1;
+
+			@include media("<=tablet") {
+				font-size: 1.4rem;
+			}
+
+			@include media("<=phone") {
+				font-size: 1.1rem;
+			}
 		}
 	}
 }
@@ -39,9 +59,9 @@ section.collections--fr-ca {
 		@include media("<=tablet") {
 			gap: 5.7rem;
 		}
-		.collections__item--2 {
-			// POLLY: This is not the same. why?
-			// margin-right: 16.4rem;
+
+		@include media("<=phone") {
+			gap: 3rem;
 		}
 	}
 }
