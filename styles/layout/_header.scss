@@ -1,7 +1,9 @@
 .navigation {
+	--theme-color: #363636;
 	position: relative;
 
 	&--404 {
+		--theme-color: #eceae5;
 		color: $color-cararra;
 	}
 
@@ -87,6 +89,8 @@
 							position: relative;
 							bottom: 0;
 							content: ",";
+							font-size: inherit;
+							font-weight: 500;
 
 							@include media("<=tablet") {
 								bottom: 0.5rem;
@@ -138,6 +142,8 @@
 
 						a::after {
 							content: ",";
+							font-size: inherit;
+							font-weight: 500;
 						}
 
 						a:last-of-type::after {
@@ -178,7 +184,7 @@
 					span {
 						width: 2.3rem;
 						height: 0.2rem;
-						background-color: $color-black;
+						background-color: var(--theme-color);
 					}
 				}
 			}
