@@ -43,7 +43,7 @@ html(lang="en")
 
 	body
 			include ./partials/preloader
-			header(class=`${noHeaderLogo.includes(template) ? "no-logo navigation--404" :""} navigation navigation--header`) 
+			header(class=`${noHeaderLogo.includes(template) ? "no-logo navigation--" + template :""} navigation navigation--header`) 
 				if (!noHeader.includes(template))
 					include ./partials/header
 
