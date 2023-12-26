@@ -1,7 +1,7 @@
 const store = require("store");
 
 module.exports = {
-	noHeader: ["product"],
+	noHeader: ["product", "contact"],
 	noFooter: ["product", "404"],
 	noHeaderLogo: ["404"],
 	defaultLanguage: "en-us",
