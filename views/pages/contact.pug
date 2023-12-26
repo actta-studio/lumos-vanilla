@@ -3,5 +3,24 @@ extends ../base.pug
 block variables
 	- var template = 'contact'
 
-block content 
-	h1.contact__title Contact Us
+block content
+	section.contact
+		.contact__wrapper
+			.intro-text__wrapper
+				p.intro-text__text(class=`intro-text__text--${document.lang}`)= document.data.intro_text
+			.info
+				.content 
+					h1.info__title
+						span=document.data.title
+					ul.links
+						each item in document.data.links
+							li.links__item
+								span.links__item__label=item.label
+								if item.link_type==="email"
+									a.links__item__link(href='mailto:'+item.value)=item.value
+								else if item.link_type==="website"
+									a.links__item__link(target="_blank" href='https://'+item.value)=item.value
+								else
+									a.links__item__link(target="_blank" href='https://instagram.com/'+item.value)="@"+item.value
+				figure.image
+					img(src=document.data.image.url alt=document.data.image.alt)
