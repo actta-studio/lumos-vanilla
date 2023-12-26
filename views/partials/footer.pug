@@ -1,5 +1,5 @@
 if navigation	
-	header(class="navigation navigation--footer") 
+	footer(class="navigation navigation--footer") 
 		.logo 
 			a.logo__link(href=Link(document))
 				svg.logo__image(viewbox='0 0 1861 319' fill='red' xmlns='http://www.w3.org/2000/svg')
@@ -17,12 +17,20 @@ if navigation
 				.set
 					a(href=Link(document)) Facebook
 					a(href=Link(document)) Instagram
+			.group(class="group--phone")
+				a(href=Link(document)) IG
+				a(href=Link(document)) FACEBOOK
 			.group(class="group--desktop")
 				p 1231 Redwood Ave, 
 				p #{document.lang === "fr-ca" ? "Londres, Royaume-Uni" : "London, United Kingdom"} 
 			.group(class="group--tablet")
 				a(href=Link(document))
-					span TERMS
+					span #{document.lang === "fr-ca" ? "TERMES" : "TERMS"} 
+					br
+					span & CONDITIONS 
+			.group(class="group--phone")
+				a(href=Link(document))
+					span #{document.lang === "fr-ca" ? "TERMES" : "TERMS"} 
 					br
 					span & CONDITIONS 
 			.group(class="group--desktop")
@@ -38,6 +46,9 @@ if navigation
 			.group(class="group--tablet")
 				a(href=Link(document)) #{document.lang === "fr-ca" ? "La livraison" : "Shipping info"}
 				a(href=Link(document)) #{document.lang === "fr-ca" ? "Site web par ACTTA STUDIO" : "Website by ACTTA STUDIO"}  
+			.group(class="group--phone")
+				a(href=Link(document)) #{document.lang === "fr-ca" ? "Site web par" : "Website by"}  
+				a(href=Link(document)) ACTTA STUDIO 
 
 			
 				
