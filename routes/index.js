@@ -81,8 +81,8 @@ router.get(
 			});
 
 		document.data.body.forEach((slice) => {
-			if (slice.slice_type === "collections") {
-				console.log(slice.items[0].collection.data);
+			if (slice.slice_type === "indented_content") {
+				console.log(slice);
 			}
 		});
 
@@ -167,7 +167,7 @@ router.get(
 				return null;
 			});
 
-		console.log("here too");
+		console.log(document.data.links.forEach((link) => console.log(link)));
 
 		if (!document) {
 			res.status(404).render("pages/404", { ...defaults, lang: lang });
