@@ -7,7 +7,7 @@ block content
 	section.not-found
 		.fill
 		.content
-			h1.header=document.data.title
-			p.tagline!=document.data.tagline.replace(/\n/g, '<br>')
-			p.description!=document.data.description.replace(/\n/g, '<br>')
-		a.back(href=Link(document))=document.data.cta_label
+			h1.header=notFound.data.title
+			p.tagline!=notFound.data.tagline.replace(/\n/g, '<br>')
+			p.description!=notFound.data.description.replace(/\n/g, '<br>')
+		a.back(href=Link(notFound))=notFound.data.cta_label
