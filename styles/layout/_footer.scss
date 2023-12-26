@@ -86,6 +86,8 @@
 
 				.set a:first-of-type::after {
 					content: ",";
+					font-weight: 500;	
+					font-size: inherit;
 					margin-right: 0.5rem;
 				}
 			}
