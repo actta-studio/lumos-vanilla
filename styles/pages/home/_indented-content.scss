@@ -3,21 +3,29 @@
 	position: relative;
 
 	&--2 {
-		margin-top: 47.3rem;
+		margin-top: 48.7rem;
 
 		@include media("<=tablet") {
-			// TODO: Check this value
-			margin-top: 17.8rem;
+			margin-top: 18.2rem;
+		}
+
+		@include media("<=phone") {
+			margin-top: 18.6rem;
 		}
 	}
 
 	&--3 {
 		margin-top: 49.5rem;
-		margin-bottom: 22.6rem;
+		margin-bottom: 19.7rem;
 
 		@include media("<=tablet") {
-			margin-top: 18.8rem;
-			margin-bottom: 17.4rem;
+			margin-top: 19.2rem;
+			margin-bottom: 21.5rem;
+		}
+
+		@include media("<=phone") {
+			margin-top: 18.6rem;
+			margin-bottom: 17.6rem;
 		}
 	}
 
