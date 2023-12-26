@@ -5,6 +5,7 @@ module.exports = {
 	noFooter: ["product", "404"],
 	noHeaderLogo: ["404", "contact"],
 	defaultLanguage: "en-us",
+	supportedLanguages: ["en-us", "fr-ca"],
 	getLang: () => {
 		return store.get("lang") || "en-us";
 	},

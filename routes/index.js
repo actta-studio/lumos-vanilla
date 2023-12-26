@@ -6,7 +6,9 @@ const siteConfig = require("../config/site-config");
 const router = require("express").Router();
 
 const handleDefaultRequests = async (lang) => {
-	siteConfig.setLang(lang || siteConfig.defaultLanguage);
+	lang = siteConfig.supportedLanguages.includes(lang)
+		? lang
+		: siteConfig.defaultLanguage;
 
 	const preloader = await client
 		.getSingle("preloader", {
@@ -44,10 +46,28 @@ const handleDefaultRequests = async (lang) => {
 			return null;
 		});
 
+	const notFound = await client
+		.getSingle("404", {
+			lang,
+		})
+		.catch((err) => {
+			if (
+				!(err instanceof PrismicError) ||
+				err.message !== "No documents were returned"
+			) {
+				console.log(err);
+			}
+			return null;
+		});
+
+	const document = navigation;
+
 	return {
 		preloader,
 		meta,
 		navigation,
+		document,
+		notFound,
 	};
 };
 
@@ -80,11 +100,7 @@ router.get(
 				return null;
 			});
 
-		document.data.body.forEach((slice) => {
-			if (slice.slice_type === "indented_content") {
-				console.log(slice);
-			}
-		});
+		console.log("here=>>>>", defaults);
 
 		if (!document) {
 			res.status(404).render("pages/404", { ...defaults, lang: lang });
@@ -148,6 +164,34 @@ router.get(
 );
 
 router.get(
+	"/:lang/press/:uid",
+	asyncHandler(async (req, res) => {
+		const { lang, uid } = req.params;
+		const defaults = await handleDefaultRequests(lang);
+
+		const document = await client
+			.getByUID("article", uid, {
+				lang,
+			})
+			.catch((err) => {
+				if (
+					!(err instanceof PrismicError) ||
+					err.message !== "No documents were returned"
+				) {
+					console.log(err);
+				}
+				return null;
+			});
+
+		if (!document) {
+			res.status(404).render("pages/404", { ...defaults, lang: lang });
+		} else {
+			res.render("pages/press", { ...defaults, document });
+		}
+	})
+);
+
+router.get(
 	"/:lang/contact",
 	asyncHandler(async (req, res) => {
 		const lang = req.params.lang;
@@ -183,23 +227,12 @@ router.get(
 		const lang = req.params.lang;
 		const defaults = await handleDefaultRequests(lang);
 
-		const document = await client
-			.getSingle("404", {
-				lang,
-			})
-			.catch((err) => {
-				if (
-					!(err instanceof PrismicError) ||
-					err.message !== "No documents were returned"
-				) {
-					console.log(err);
-				}
-				return null;
-			});
+		console.log("this is the path: ============.>>>>...s");
 
-		console.log("here: ", document);
-
-		res.status(404).render("pages/404", { ...defaults, lang: lang, document });
+		res.status(404).render("pages/404", {
+			...defaults,
+			lang: lang,
+		});
 	})
 );
 
