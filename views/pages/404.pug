@@ -4,10 +4,11 @@ block variables
 	- var template = '404'
 
 block content
-	section.not-found
-		.fill
-		.content
-			h1.header=notFound.data.title
-			p.tagline!=notFound.data.tagline.replace(/\n/g, '<br>')
-			p.description!=notFound.data.description.replace(/\n/g, '<br>')
-		a.back(href=Link(notFound))=notFound.data.cta_label
+	._404
+		section.not-found
+			.fill
+			.content
+				h1.header=notFound.data.title
+				p.tagline!=notFound.data.tagline.replace(/\n/g, '<br>')
+				p.description!=notFound.data.description.replace(/\n/g, '<br>')
+			a.back(href=Link(notFound))=notFound.data.cta_label

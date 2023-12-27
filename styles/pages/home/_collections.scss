@@ -1,4 +1,5 @@
 section.collections {
+	padding: 0 var(--layout-spacing);
 	margin: 50.2rem 0 57.8rem 0;
 
 	@include media("<=tablet") {

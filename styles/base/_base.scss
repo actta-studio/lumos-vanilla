@@ -34,11 +34,6 @@ body {
 	}
 }
 
-main {
-	padding-left: var(--layout-spacing);
-	padding-right: var(--layout-spacing);
-}
-
 @supports (-webkit-font-smoothing: antialiased) or
 	(-moz-osx-font-smoothing: grayscale) {
 	body {

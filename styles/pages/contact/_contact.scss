@@ -1,5 +1,6 @@
 .contact {
 	position: relative;
+	padding: 0 var(--layout-spacing);
 	padding-top: calc(14.3rem - (5.8rem * 2));
 
 	@include media("<=tablet") {
