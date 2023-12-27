@@ -6,11 +6,11 @@ section.not-found {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	padding: 7.6rem var(--layout-spacing);
+	padding: 7.6rem 0;
 	padding-bottom: 2.3rem;
 
 	@include media("<=tablet") {
-		padding: 5.4rem var(--layout-spacing);
+		padding: 5.4rem 0;
 		padding-bottom: 1.9rem;
 	}
 

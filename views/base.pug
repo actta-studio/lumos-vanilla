@@ -46,9 +46,8 @@ html(lang=`en`)
 				if (!noHeader.includes(template))
 					include ./partials/header
 
-			main.page-wrapper
-				.content#content(data-template=template)
-					block content
+			main.content#content(data-template=template)
+				block content
 
 			if (!noFooter.includes(template))
 				include ./partials/footer
