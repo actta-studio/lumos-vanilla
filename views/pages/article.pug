@@ -4,4 +4,22 @@ block variables
 	- var template = 'article'
 
 block content
+	section.press-release
+		.press-release__content
+			.press-release__content-header
+				.text__content 
+					.group 
+						h1.title=document.data.title
+						span.label
+					.group
+						p.summary
+							span
+						a(target='_blank') Read more
+				figure.press-release__content-featured-image
+					//- img(src=meta.data.image.url alt=meta.data.image.alt)
+			
+			
+			
+				
+
 	

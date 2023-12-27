@@ -100,8 +100,6 @@ router.get(
 				return null;
 			});
 
-		console.log("here=>>>>", defaults);
-
 		if (!document) {
 			res.status(404).render("pages/404", { ...defaults, lang: lang });
 		} else {
@@ -183,10 +181,12 @@ router.get(
 				return null;
 			});
 
+		console.log("article: =--->", document);
+
 		if (!document) {
 			res.status(404).render("pages/404", { ...defaults, lang: lang });
 		} else {
-			res.render("pages/press", { ...defaults, document });
+			res.render("pages/article", { ...defaults, document });
 		}
 	})
 );
@@ -211,8 +211,6 @@ router.get(
 				return null;
 			});
 
-		console.log(document.data.links.forEach((link) => console.log(link)));
-
 		if (!document) {
 			res.status(404).render("pages/404", { ...defaults, lang: lang });
 		} else {
@@ -226,8 +224,6 @@ router.get(
 	asyncHandler(async (req, res) => {
 		const lang = req.params.lang;
 		const defaults = await handleDefaultRequests(lang);
-
-		console.log("this is the path: ============.>>>>...s");
 
 		res.status(404).render("pages/404", {
 			...defaults,
