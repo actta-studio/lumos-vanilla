@@ -9,7 +9,10 @@ block content
 			.press-release__content__header
 				.press-release__content__header__text-content(class=`press-release__content__header__text-content--${document.lang}`) 
 					.group 
-						h1.title!=document.data.title.replace(/\n/g, '<br />')
+						- var lines = document.data.title.split('\n')
+						h1.title(class=`title--${document.lang}`)
+							each line in lines
+								span!= line
 						span.label #{document.lang === "fr-ca" ? "L' Article №" + document.data.label : "Article №" + document.data.label}
 					.group
 						- var summaryDesktop = document.data.summary.split('\n')
