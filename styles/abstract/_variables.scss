@@ -1,16 +1,19 @@
 :root {
 	--layout-spacing: 3rem;
+	--header-pt: 2.3rem;
 }
 
 @include media("<=tablet") {
 	:root {
 		--layout-spacing: 2rem;
+		--header-pt: 1.9rem;
 	}
 }
 
 @include media("<=phone") {
 	:root {
 		--layout-spacing: 1rem;
+		--header-pt: 1.8rem;
 	}
 }
 
