@@ -23,6 +23,7 @@ html {
 body {
 	@extend %description-23;
 	font-family: "PP Neue Montreal", sans-serif;
+	font-weight: 500;
 	overscroll-behavior-y: none;
 	overflow-x: hidden;
 	background-color: $color-cararra;
@@ -84,4 +85,19 @@ a {
 	@include media("<=phone") {
 		display: block;
 	}
+}
+
+p::selection,
+span::selection,
+h1::selection,
+h2::selection,
+h3::selection,
+h4::selection,
+h5::selection,
+h6::selection,
+a::selection,
+label::selection,
+img::selection {
+	color: #eceae4;
+	background: #bebebe;
 }
