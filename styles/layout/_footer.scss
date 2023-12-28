@@ -1,7 +1,6 @@
 .navigation {
-	position: relative;
-
 	&--footer {
+		position: relative;
 		padding: 0 var(--layout-spacing);
 		z-index: z("navigation");
 
@@ -86,7 +85,7 @@
 
 				.set a:first-of-type::after {
 					content: ",";
-					font-weight: 500;	
+					font-weight: 500;
 					font-size: inherit;
 					margin-right: 0.5rem;
 				}
