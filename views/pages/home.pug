@@ -7,8 +7,8 @@ block content
 	.home 
 		section.hero-placeholder
 		if document
-			- var showcaseIndex = 0
 			- var indentedIndex = 0
+			- var showcaseIndex = 0
 			- var collectionItemIndex = 0
 			each section, index in document.data.body
 				if (section.slice_type == 'indented_content')
