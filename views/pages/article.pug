@@ -4,19 +4,62 @@ block variables
 	- var template = 'article'
 
 block content
-	section.press-release
+	section.press-release(class=`press-release--${document.lang}`)
 		.press-release__content
-			.press-release__content-header
-				.text__content 
+			.press-release__content__header
+				.press-release__content__header__text-content(class=`press-release__content__header__text-content--${document.lang}`) 
 					.group 
-						h1.title=document.data.title
-						span.label
+						h1.title!=document.data.title.replace(/\n/g, '<br />')
+						span.label #{document.lang === "fr-ca" ? "L' Article №" + document.data.label : "Article №" + document.data.label}
 					.group
-						p.summary
-							span
-						a(target='_blank') Read more
-				figure.press-release__content-featured-image
-					//- img(src=meta.data.image.url alt=meta.data.image.alt)
+						- var summaryDesktop = document.data.summary.split('\n')
+						- var summaryTablet = document.data.summary_tablet.split('\n')
+						- var summaryPhone = document.data.summary_phone.split('\n')
+						p.summary(class=`summary--desktop`)
+							each line in summaryDesktop
+								span!= line
+						p.summary(class=`summary--tablet`)
+							each line in summaryTablet
+								span!= line
+						p.summary(class=`summary--phone`)
+							each line in summaryPhone
+								span!= line
+						a(target='_blank' href=Link(document.data.link)) #{document.lang === "fr-ca" ? "Voir plus d'articles" : "View more articles"}
+				figure.press-release__content__header__featured-image(class=`press-release__content__header__featured-image--${document.lang}`)
+					img(src=document.data.featured_image.url alt=document.data.featured_image.alt draggable="false")
+			.press-release__content__body(class=`press-release__content__body--${document.lang}`)
+				- var textBlockIndex = 0
+				- var imageGridIndex = 0
+				each section, index in document.data.body
+					if (section.slice_type == "text_block")
+						- textBlockIndex++
+						section.text-block(class=`text-block--${textBlockIndex} text-block--${document.lang}`)
+							- var title = section.primary.block_title.split('\n');
+							h2.title
+								each line in title
+									span!= line
+							- var contentDesktop = section.primary.block_text.split('**');
+							- var contentTablet = section.primary.block_text_tablet.split('**');
+							- var contentPhone = section.primary.block_text_phone.split('**');
+							.text(class=`text--desktop text--${document.lang}`)
+								each line in contentDesktop
+									p!= line
+							.text(class=`text--tablet text--${document.lang}`)
+								each line in contentTablet
+									p!= line
+							.text(class=`text--phone text--${document.lang}`)
+								each line in contentPhone
+									p!= line
+					if (section.slice_type == "image_grid")
+						section.image-grid(class=`image-grid--${document.lang}`)
+							each image, index in section.items 
+								figure.image-grid__item(class=`image-grid__item--${index + 1}`)
+									img(src=image.image.url alt=image.image.alt draggable="false")
+				figure.image-grid__item--phone
+					- var images = document.data.body.filter(slice => slice.slice_type === "image_grid")
+					img(src=images[0].items[1].image.url alt=images[0].items[1].image.alt draggable="false")
+					
+
 			
 			
 			

@@ -153,40 +153,12 @@ router.get(
 				return null;
 			});
 
+		console.log("product: =--->", document);
+
 		if (!document) {
 			res.status(404).render("pages/404", { ...defaults, lang: lang });
 		} else {
 			res.render("pages/product", { ...defaults, document });
-		}
-	})
-);
-
-router.get(
-	"/:lang/press/:uid",
-	asyncHandler(async (req, res) => {
-		const { lang, uid } = req.params;
-		const defaults = await handleDefaultRequests(lang);
-
-		const document = await client
-			.getByUID("article", uid, {
-				lang,
-			})
-			.catch((err) => {
-				if (
-					!(err instanceof PrismicError) ||
-					err.message !== "No documents were returned"
-				) {
-					console.log(err);
-				}
-				return null;
-			});
-
-		console.log("article: =--->", document);
-
-		if (!document) {
-			res.status(404).render("pages/404", { ...defaults, lang: lang });
-		} else {
-			res.render("pages/article", { ...defaults, document });
 		}
 	})
 );
@@ -215,6 +187,40 @@ router.get(
 			res.status(404).render("pages/404", { ...defaults, lang: lang });
 		} else {
 			res.render("pages/contact", { ...defaults, document });
+		}
+	})
+);
+
+router.get(
+	"/:lang/press/:uid",
+	asyncHandler(async (req, res) => {
+		const { lang, uid } = req.params;
+		const defaults = await handleDefaultRequests(lang);
+
+		const document = await client
+			.getByUID("article", uid, {
+				lang,
+			})
+			.catch((err) => {
+				if (
+					!(err instanceof PrismicError) ||
+					err.message !== "No documents were returned"
+				) {
+					console.log(err);
+				}
+				return null;
+			});
+
+		var items = document.data.body.filter(
+			(slice) => slice.slice_type === "image_grid"
+		);
+
+		console.log("article: =--->", items[0].items[1]);
+
+		if (!document) {
+			res.status(404).render("pages/404", { ...defaults, lang: lang });
+		} else {
+			res.render("pages/article", { ...defaults, document });
 		}
 	})
 );
