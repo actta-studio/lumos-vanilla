@@ -195,6 +195,7 @@
 				a {
 					@extend %description-27;
 					font-weight: 500;
+					align-self: flex-start;
 
 					@include media("<=tablet") {
 						font-size: 1.6rem;

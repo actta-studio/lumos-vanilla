@@ -153,8 +153,6 @@ router.get(
 				return null;
 			});
 
-		console.log("product: =--->", document);
-
 		if (!document) {
 			res.status(404).render("pages/404", { ...defaults, lang: lang });
 		} else {
@@ -214,8 +212,6 @@ router.get(
 		var items = document.data.body.filter(
 			(slice) => slice.slice_type === "image_grid"
 		);
-
-		console.log("article: =--->", items[0].items[1]);
 
 		if (!document) {
 			res.status(404).render("pages/404", { ...defaults, lang: lang });
