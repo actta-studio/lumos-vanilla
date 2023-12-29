@@ -14,14 +14,11 @@ const prismic = require("@prismicio/client");
 const port = 3000;
 const {
 	handleLinkResolver,
-	isolatedViews,
 	noHeader,
 	noFooter,
 	noHeaderLogo,
 	handleLanguageDisplay,
 } = require("./config/site-config");
-const asyncHandler = require("./utils/async-handler");
-const siteConfig = require("./config/site-config");
 
 app.use(express.static(path.join(__dirname, "public")));
 

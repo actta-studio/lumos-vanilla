@@ -1,3 +1,4 @@
+require("dotenv").config();
 // node-fetch is used to make network requests to the Prismic Rest API.
 // In Node.js Prismic projects, you must provide a fetch method to the
 // Prismic client.
