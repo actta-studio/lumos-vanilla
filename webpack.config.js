@@ -15,10 +15,6 @@ const dirAssets = path.join(__dirname, "assets");
 const dirStyles = path.join(__dirname, "styles");
 const dirNode = "node_modules";
 
-console.log(
-	`IS_DEVELOPMENT: ${IS_DEVELOPMENT} dirApp: ${dirApp} dirAssets: ${dirAssets} dirStyles: ${dirStyles}`
-);
-
 module.exports = {
 	entry: [path.join(dirApp, "index.js"), path.join(dirStyles, "index.scss")],
 	resolve: {
