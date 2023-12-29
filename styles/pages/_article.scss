@@ -238,11 +238,30 @@
 		}
 
 		&__body {
+			position: relative;
 			display: flex;
 			flex-direction: column;
 
 			@include media("<=phone") {
 				padding: 0 var(--layout-spacing);
+				padding-bottom: 2.5rem;
+			}
+
+			.cta-more {
+				@extend %description-27;
+				font-weight: 500;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+
+				@include media("<=tablet") {
+					font-size: 1.6rem;
+				}
+
+				@include media("<=phone") {
+					left: var(--layout-spacing);
+					font-size: 1.4rem;
+				}
 			}
 
 			.text-block {
@@ -393,6 +412,7 @@
 
 						@include media("<=phone") {
 							display: flex;
+							margin-bottom: 0.8rem;
 						}
 					}
 				}
@@ -437,6 +457,23 @@
 					--h3: 47.5rem;
 					--s: 0.4rem;
 					margin-bottom: 7rem;
+				}
+
+				.cta-link {
+					position: absolute;
+					top: calc(var(--h1) + var(--s));
+					left: 0;
+					font-weight: 500;
+					@extend %description-27;
+
+					@include media("<=tablet") {
+						font-size: 1.6rem;
+					}
+
+					@include media("<=phone") {
+						display: none;
+						visibility: hidden;
+					}
 				}
 
 				&__item {

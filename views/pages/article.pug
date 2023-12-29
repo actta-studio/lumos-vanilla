@@ -55,9 +55,12 @@ block content
 									p!= line
 					if (section.slice_type == "image_grid")
 						section.image-grid(class=`image-grid--${document.lang}`)
+							a.cta-link #{document.lang === "fr-ca" ? "Voir toutes les collections" : "View all collections"}
 							each image, index in section.items 
 								figure.image-grid__item(class=`image-grid__item--${index + 1}`)
 									img(src=image.image.url alt=image.image.alt draggable="false")
+									//- TODO: MAKE CONTACT PAGE LINK
+				a.cta-more(href="#") #{document.lang === "fr-ca" ? "Lire la suite" : "Read more"}
 				figure.image-grid__item--phone
 					- var images = document.data.body.filter(slice => slice.slice_type === "image_grid")
 					img(src=images[0].items[1].image.url alt=images[0].items[1].image.alt draggable="false")
