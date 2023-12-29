@@ -8,7 +8,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
-const IS_DEVELOPMENT = process.env.NODE_ENV === "dev";
+const IS_DEVELOPMENT = process.env.NODE_ENV === "production";
 
 const dirApp = path.join(__dirname, "app");
 const dirAssets = path.join(__dirname, "assets");
