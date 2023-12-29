@@ -3,12 +3,11 @@ const webpack = require("webpack");
 
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-// NOTE: Fetches CSS from JS files and creates a separate CSS file
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
-const IS_DEVELOPMENT = process.env.NODE_ENV === "production";
+const IS_DEVELOPMENT = process.env.NODE_ENV === "dev";
 
 const dirApp = path.join(__dirname, "app");
 const dirAssets = path.join(__dirname, "assets");
@@ -19,10 +18,8 @@ console.log(
 	`IS_DEVELOPMENT: ${IS_DEVELOPMENT} dirApp: ${dirApp} dirAssets: ${dirAssets} dirStyles: ${dirStyles}`
 );
 
-// NOTE: Entry point for the application.
 module.exports = {
 	entry: [path.join(dirApp, "index.js"), path.join(dirStyles, "index.scss")],
-	// NOTE: It is configuring the resolve property to specify directories to search for modules.
 	resolve: {
 		modules: [dirApp, dirAssets, dirStyles, dirNode],
 	},
@@ -47,8 +44,6 @@ module.exports = {
 			minimizer: {
 				implementation: ImageMinimizerPlugin.imageminMinify,
 				options: {
-					// Lossless optimization with custom option
-					// Feel free to experiment with options for better result for you
 					plugins: [
 						["gifsicle", { interlaced: true }],
 						["jpegtran", { progressive: true }],
