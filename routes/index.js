@@ -209,9 +209,7 @@ router.get(
 				return null;
 			});
 
-		var items = document.data.body.filter(
-			(slice) => slice.slice_type === "image_grid"
-		);
+		console.log(document.data);
 
 		if (!document) {
 			res.status(404).render("pages/404", { ...defaults, lang: lang });

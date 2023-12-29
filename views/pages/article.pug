@@ -27,7 +27,7 @@ block content
 						p.summary(class=`summary--phone`)
 							each line in summaryPhone
 								span!= line
-						a(target='_blank' href=Link(document.data.link)) #{document.lang === "fr-ca" ? "Voir plus d'articles" : "View more articles"}
+						a(href=Link(document.data.link)) #{document.lang === "fr-ca" ? "Voir plus d'articles" : "View more articles"}
 				figure.press-release__content__header__featured-image(class=`press-release__content__header__featured-image--${document.lang}`)
 					img(src=document.data.featured_image.url alt=document.data.featured_image.alt draggable="false")
 			.press-release__content__body(class=`press-release__content__body--${document.lang}`)
@@ -55,12 +55,11 @@ block content
 									p!= line
 					if (section.slice_type == "image_grid")
 						section.image-grid(class=`image-grid--${document.lang}`)
-							a.cta-link #{document.lang === "fr-ca" ? "Voir toutes les collections" : "View all collections"}
+							a.cta-link(href=Link(document.data.shop_link)) #{document.lang === "fr-ca" ? "Voir toutes les collections" : "View all collections"}
 							each image, index in section.items 
 								figure.image-grid__item(class=`image-grid__item--${index + 1}`)
 									img(src=image.image.url alt=image.image.alt draggable="false")
-									//- TODO: MAKE CONTACT PAGE LINK
-				a.cta-more(href="#") #{document.lang === "fr-ca" ? "Lire la suite" : "Read more"}
+				a.cta-more(href=Link(document.data.link)) #{document.lang === "fr-ca" ? "Lire la suite" : "Read more"}
 				figure.image-grid__item--phone
 					- var images = document.data.body.filter(slice => slice.slice_type === "image_grid")
 					img(src=images[0].items[1].image.url alt=images[0].items[1].image.alt draggable="false")
