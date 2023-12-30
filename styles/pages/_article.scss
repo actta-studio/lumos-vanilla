@@ -303,6 +303,7 @@
 					font-weight: 500;
 					text-transform: uppercase;
 					@extend %description-20;
+					line-height: 1;
 
 					@include media("<=tablet") {
 						// NOTE: FOR POLLY - HAD TO DROP THIS A POINT SIZE TO MAKE IT FIT
@@ -521,7 +522,11 @@
 						width: var(--w3);
 						height: var(--h3);
 						top: calc(var(--h2) + var(--s));
-						right: 0;
+						right: 32.3rem;
+
+						@include media("<=tablet") {
+							right: 15rem;
+						}
 
 						@include media("<=phone") {
 							visibility: hidden;

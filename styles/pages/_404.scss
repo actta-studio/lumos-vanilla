@@ -7,15 +7,14 @@ section.not-found {
 	flex-direction: column;
 	justify-content: space-between;
 	padding: 7.6rem var(--layout-spacing);
-	padding-bottom: 2.3rem;
+	padding-bottom: 7.3rem;
 
 	@include media("<=tablet") {
 		padding: 5.4rem var(--layout-spacing);
-		padding-bottom: 1.9rem;
 	}
 
 	@include media("<=phone") {
-		padding-bottom: 1.8rem;
+		padding-bottom: 7.4rem;
 	}
 
 	.fill {
