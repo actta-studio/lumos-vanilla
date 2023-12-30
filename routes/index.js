@@ -81,6 +81,10 @@ router.get(
 		const lang = req.params.lang;
 		const defaults = await handleDefaultRequests(lang);
 
+		if (!siteConfig.supportedLanguages.includes(lang)) {
+			res.status(404).render("pages/404", { ...defaults, lang: lang });
+		}
+
 		const document = await client
 			.getSingle("home", {
 				fetchLinks: [
