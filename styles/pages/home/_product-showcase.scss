@@ -1,8 +1,7 @@
 .product-showcase {
-	position: relative;
 	padding: 0 var(--layout-spacing);
 
-	&--1 {
+	&:nth-of-type(3) {
 		margin-top: 22.6rem;
 
 		@include media("<=tablet") {
@@ -14,7 +13,7 @@
 		}
 	}
 
-	&--2 {
+	&:nth-of-type(5) {
 		margin-top: 25.9rem;
 
 		@include media("<=tablet") {
@@ -26,7 +25,7 @@
 		}
 	}
 
-	&--3 {
+	&:nth-of-type(8) {
 		margin-top: 45rem;
 
 		@include media("<=tablet") {
@@ -37,220 +36,219 @@
 			margin-top: 16.5rem;
 		}
 	}
+}
 
-	&__link {
-		@extend %description-27;
-		font-weight: 500;
+.product-showcase__wrapper {
+	--link-offset: -0.6rem;
+	position: relative;
 
-		@include media("<=tablet") {
-			font-size: 1.6rem;
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	@include media("<=tablet") {
+		--link-offset: -0.3rem;
+	}
+}
+
+.product-showcase__wrapper--cta-left .product-showcase__item,
+.product-showcase__wrapper--cta-right .product-showcase__item {
+	position: absolute;
+	bottom: 0;
+}
+
+.product-showcase__wrapper .product-showcase__item {
+	object-fit: cover;
+}
+
+.product-showcase__link {
+	@extend %description-27;
+	font-weight: 500;
+
+	position: absolute;
+	bottom: var(--link-offset);
+
+	@include media("<=tablet") {
+		font-size: 1.6rem;
+	}
+}
+
+.product-showcase__wrapper--cta-left {
+	height: 54.7rem;
+
+	--w1: 41.5rem;
+	--w2: 34rem;
+	--w3: 49.5rem;
+	--h1: 44.3rem;
+	--h2: 34rem;
+	--h3: 54.4rem;
+	--s: 1.7rem;
+
+	@include media("<=tablet") {
+		height: 26.6rem;
+
+		--w1: 17.2rem;
+		--w2: 14rem;
+		--w3: 23.7rem;
+		--h1: 20.1rem;
+		--h2: 15.3rem;
+		--h3: 26.2rem;
+		--s: 0.6rem;
+	}
+
+	@include media("<=phone") {
+		height: 18.1rem;
+
+		--w1: 0;
+		--w2: 9.6rem;
+		--w3: 17rem;
+		--h1: 0;
+		--h2: 8.7rem;
+		--h3: 17.8rem;
+		--s: 0.4rem;
+	}
+}
+
+.product-showcase__wrapper--cta-left .product-showcase__item {
+	&:nth-of-type(1) {
+		width: var(--w1);
+		height: var(--h1);
+		left: 0;
+
+		@include media("<=phone") {
+			display: none;
 		}
 	}
 
-	&__wrapper {
-		--link-offset: -0.6rem;
-		position: relative;
-
-		img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
-
-		&--cta-left {
-			height: 54.7rem;
-
-			--w1: 41.5rem;
-			--w2: 34rem;
-			--w3: 49.5rem;
-			--h1: 44.3rem;
-			--h2: 34rem;
-			--h3: 54.4rem;
-			--s: 1.7rem;
-
-			@include media("<=tablet") {
-				height: 26.6rem;
-
-				--w1: 17.2rem;
-				--w2: 14rem;
-				--w3: 23.7rem;
-				--h1: 20.1rem;
-				--h2: 15.3rem;
-				--h3: 26.2rem;
-				--s: 0.6rem;
-			}
-
-			@include media("<=phone") {
-				height: 18.1rem;
-
-				--w1: 0;
-				--w2: 9.6rem;
-				--w3: 17rem;
-				--h1: 0;
-				--h2: 8.7rem;
-				--h3: 17.8rem;
-				--s: 0.4rem;
-			}
-
-			.product-showcase__link {
-				position: absolute;
-				bottom: var(--link-offset);
-				left: calc(var(--w1) + var(--s));
-
-				@include media("<=phone") {
-					left: 0;
-				}
-			}
-
-			.product-showcase__item {
-				position: absolute;
-				bottom: 0;
-				object-fit: cover;
-			}
-
-			.product-showcase__item:nth-of-type(1) {
-				width: var(--w1);
-				height: var(--h1);
-				left: 0;
-
-				@include media("<=phone") {
-					display: none;
-				}
-			}
-
-			.product-showcase__item:nth-of-type(2) {
-				width: var(--w2);
-				height: var(--h2);
-				right: calc(var(--w3) + var(--s));
-			}
-
-			.product-showcase__item:nth-of-type(3) {
-				right: 0;
-				width: var(--w3);
-				height: var(--h3);
-			}
-		}
-
-		&--cta-right {
-			height: 55.2rem;
-
-			--w1: 41.5rem;
-			--w2: 55.8rem;
-			--w3: 49.5rem;
-			--h1: 49.5rem;
-			--h2: 30.7rem;
-			--h3: 54.5rem;
-			--s: 1.7rem;
-
-			@include media("<=tablet") {
-				height: 26.6rem;
-
-				--w1: 17.2rem;
-				--w2: 16.7rem;
-				--w3: 23.6rem;
-				--h1: 20.1rem;
-				--h2: 12.8rem;
-				--h3: 26.2rem;
-				--s: 0.6rem;
-			}
-
-			@include media("<=phone") {
-				height: 18.9rem;
-
-				--w1: 14rem;
-				--w2: 9.8rem;
-				--w3: 5.9rem;
-				--h1: 18.5rem;
-				--h2: 9.1rem;
-				--h3: 6rem;
-				--s: 0.4rem;
-			}
-
-			.product-showcase__link {
-				position: absolute;
-				bottom: var(--link-offset);
-				left: calc(var(--w1) + var(--w2) + calc(var(--s) * 2));
-			}
-
-			.product-showcase__item {
-				position: absolute;
-				bottom: 0;
-				object-fit: cover;
-			}
-
-			.product-showcase__item:nth-of-type(1) {
-				width: var(--w1);
-				height: var(--h1);
-				left: 0;
-			}
-
-			.product-showcase__item:nth-of-type(2) {
-				width: var(--w2);
-				height: var(--h2);
-				left: calc(var(--w1) + var(--s));
-			}
-
-			.product-showcase__item:nth-of-type(3) {
-				right: 0;
-				width: var(--w3);
-				height: var(--h3);
-			}
-		}
-
-		&--cta-none {
-			--w1: 134.8rem;
-			--w2: 49.5rem;
-			--h1: 94.6rem;
-			--h2: 30.7rem;
-			--s: 1.7rem;
-
-			display: flex;
-			align-items: flex-end;
-			height: 94.6rem;
-			gap: var(--s);
-
-			@include media("<=tablet") {
-				height: 33.6rem;
-
-				--w1: 48.5rem;
-				--w2: 23.7rem;
-				--h1: 33.6rem;
-				--h2: 12.8rem;
-				--s: 0.6rem;
-			}
-
-			@include media("<=phone") {
-				height: 19.4rem;
-
-				--w1: 24.8rem;
-				--w2: 15.8rem;
-				--h1: 19.4rem;
-				--h2: 8.2rem;
-				--s: 0.4rem;
-			}
-
-			.product-showcase__link {
-				display: none;
-				visibility: hidden;
-			}
-
-			.product-showcase__item {
-				object-fit: cover;
-			}
-
-			.product-showcase__item:nth-of-type(1) {
-				width: var(--w1);
-				height: var(--h1);
-			}
-
-			.product-showcase__item:nth-of-type(2) {
-				width: var(--w2);
-				height: var(--h2);
-			}
-		}
-
-		@include media("<=tablet") {
-			--link-offset: -0.3rem;
-		}
+	&:nth-of-type(2) {
+		width: var(--w2);
+		height: var(--h2);
+		right: calc(var(--w3) + var(--s));
 	}
+
+	&:nth-of-type(3) {
+		right: 0;
+		width: var(--w3);
+		height: var(--h3);
+	}
+}
+
+.product-showcase__wrapper--cta-left .product-showcase__link {
+	left: calc(var(--w1) + var(--s));
+
+	@include media("<=phone") {
+		left: 0;
+	}
+}
+
+.product-showcase__wrapper--cta-right {
+	height: 55.2rem;
+
+	--w1: 41.5rem;
+	--w2: 55.8rem;
+	--w3: 49.5rem;
+	--h1: 49.5rem;
+	--h2: 30.7rem;
+	--h3: 54.5rem;
+	--s: 1.7rem;
+
+	@include media("<=tablet") {
+		height: 26.6rem;
+
+		--w1: 17.2rem;
+		--w2: 16.7rem;
+		--w3: 23.6rem;
+		--h1: 20.1rem;
+		--h2: 12.8rem;
+		--h3: 26.2rem;
+		--s: 0.6rem;
+	}
+
+	@include media("<=phone") {
+		height: 18.9rem;
+
+		--w1: 14rem;
+		--w2: 9.8rem;
+		--w3: 5.9rem;
+		--h1: 18.5rem;
+		--h2: 9.1rem;
+		--h3: 6rem;
+		--s: 0.4rem;
+	}
+}
+
+.product-showcase__wrapper--cta-right .product-showcase__link {
+	left: calc(var(--w1) + var(--w2) + calc(var(--s) * 2));
+}
+
+.product-showcase__wrapper--cta-right .product-showcase__item {
+	&:nth-of-type(1) {
+		width: var(--w1);
+		height: var(--h1);
+		left: 0;
+	}
+
+	&:nth-of-type(2) {
+		width: var(--w2);
+		height: var(--h2);
+		left: calc(var(--w1) + var(--s));
+	}
+
+	&:nth-of-type(3) {
+		right: 0;
+		width: var(--w3);
+		height: var(--h3);
+	}
+}
+
+.product-showcase__wrapper--cta-none {
+	--w1: 134.8rem;
+	--w2: 49.5rem;
+	--h1: 94.6rem;
+	--h2: 30.7rem;
+	--s: 1.7rem;
+
+	display: flex;
+	align-items: flex-end;
+	height: 94.6rem;
+	gap: var(--s);
+
+	@include media("<=tablet") {
+		height: 33.6rem;
+
+		--w1: 48.5rem;
+		--w2: 23.7rem;
+		--h1: 33.6rem;
+		--h2: 12.8rem;
+		--s: 0.6rem;
+	}
+
+	@include media("<=phone") {
+		height: 19.4rem;
+
+		--w1: 24.8rem;
+		--w2: 15.8rem;
+		--h1: 19.4rem;
+		--h2: 8.2rem;
+		--s: 0.4rem;
+	}
+}
+
+.product-showcase__wrapper--cta-none .product-showcase__item {
+	&:nth-of-type(1) {
+		width: var(--w1);
+		height: var(--h1);
+	}
+
+	&:nth-of-type(2) {
+		width: var(--w2);
+		height: var(--h2);
+	}
+}
+
+.product-showcase__wrapper--cta-none .product-showcase__link {
+	display: none;
+	visibility: hidden;
 }

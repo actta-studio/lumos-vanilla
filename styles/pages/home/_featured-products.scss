@@ -10,36 +10,34 @@
 	@include media("<=phone") {
 		margin-bottom: 19.2rem;
 	}
+}
 
-	&__wrapper {
-		display: flex;
-		flex-direction: row;
-		gap: 1.7rem;
+.featured-products__wrapper {
+	display: flex;
+	flex-direction: row;
+	gap: 1.7rem;
 
-		@include media("<=tablet") {
-			gap: 0.6rem;
-		}
+	@include media("<=tablet") {
+		gap: 0.6rem;
+	}
 
-		@include media("<=phone") {
-			gap: 0.4rem;
-		}
+	@include media("<=phone") {
+		gap: 0.4rem;
+	}
+}
 
-		.product {
-			&__image {
-				position: relative;
-				width: 49.1rem;
-				height: 30.6rem;
+.featured-products__wrapper .product__image {
+	position: relative;
+	width: 49.1rem;
+	height: 30.6rem;
 
-				@include media("<=tablet") {
-					width: 23.7rem;
-					height: 12.7rem;
-				}
+	@include media("<=tablet") {
+		width: 23.7rem;
+		height: 12.7rem;
+	}
 
-				@include media("<=phone") {
-					width: 15rem;
-					height: 9.1rem;
-				}
-			}
-		}
+	@include media("<=phone") {
+		width: 15rem;
+		height: 9.1rem;
 	}
 }

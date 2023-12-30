@@ -7,35 +7,27 @@ block content
 	.home 
 		section.hero-placeholder
 		if document
-			- var indentedIndex = 0
-			- var showcaseIndex = 0
 			- var collectionItemIndex = 0
 			each section, index in document.data.body
 				if (section.slice_type == 'indented_content')
-					//- store index in a variable
-					//- --lang modifier for french and english
-					- indentedIndex++
-					section.indented-content(class=`indented-content--${indentedIndex} indented-content--${document.lang}`)
+					section.indented-content(class=`indented-content--${document.lang}`)
 						.indented-content__wrapper
 							h2.indented-content__label(class=`indented-content__label--position-${section.primary.label_position.toLowerCase()}`)
 								span.indented-content__label__text=section.primary.label
-								//- store text for all three breakpoints in variables
 							- var textDesktop = section.primary.text.split('\n')
 							- var textTablet = section.primary.text_tablet.split('\n')
 							- var textPhone = section.primary.text_phone.split('\n')
-							//- check if its desktop, tablet or phone.
-							p.indented-content__text(class=`indented-content__text--${section.primary.indent_size.toLowerCase()} indented-content__text--desktop`)
+							p.indented-content__text(class=`indented-content__text--${section.primary.indent_size.toLowerCase()}`)
 								each paragraph in textDesktop
 									span!= paragraph
-							p.indented-content__text(class=`indented-content__text--${section.primary.indent_size.toLowerCase()} indented-content__text--tablet`)
+							p.indented-content__text(class=`indented-content__text--${section.primary.indent_size.toLowerCase()}`)
 								each paragraph in textTablet
 									span!= paragraph
-							p.indented-content__text(class=`indented-content__text--${section.primary.indent_size.toLowerCase()} indented-content__text--phone`)
+							p.indented-content__text(class=`indented-content__text--${section.primary.indent_size.toLowerCase()}`)
 								each paragraph in textPhone
 									span!= paragraph
 				if (section.slice_type == 'product_showcase')
-					- showcaseIndex++
-					section.product-showcase(class=`product-showcase--${showcaseIndex} product-showcase--${document.lang}`)
+					section.product-showcase
 						.product-showcase__wrapper(class=`product-showcase__wrapper--${section.primary.type.toLowerCase()}`)
 							each item in section.items
 								figure.product-showcase__item
@@ -46,7 +38,7 @@ block content
 						ul.collections__wrapper
 							each collection in section.items
 								- collectionItemIndex++
-								li.collections__item(class=`collections__item--${collectionItemIndex} collections__item--${collectionItemIndex}--${document.lang}`)
+								li.collections__item(class=`collections__item--${document.lang}`)
 									a.collections__item__title(href=Link(collection.collection))=collection.collection.data.collection_title
 				if (section.slice_type == "article_cta") 
 					section.article-cta(class=`article-cta--${document.lang}`)
