@@ -64,6 +64,12 @@ block content
 									.article__text
 										a.article__text__cta(href="#") #{document.lang === "fr-ca" ? "Lire" : "Read"}
 										p.article__text__description Article №023
-
+				if (section.slice_type == "featured_products")
+					section.featured-products
+						.featured-products__wrapper
+							each product in section.items
+								a(href=Link(product.product)).product
+									figure.product__image
+										img(src=product.product.data.image.url draggable="false" alt=product.product.data.image.alt) 
 
 

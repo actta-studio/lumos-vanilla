@@ -6,4 +6,11 @@
 		@return null;
 	}
 }
- 
+
+.modal {
+	z-index: z("modal");
+}
+
+.noscript {
+	z-index: z("unsupported");
+}

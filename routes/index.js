@@ -100,6 +100,14 @@ router.get(
 				return null;
 			});
 
+		document.data.body.forEach((slice) => {
+			if (slice.slice_type === "featured_products") {
+				slice.items.forEach((item) => {
+					console.log(item);
+				});
+			}
+		});
+
 		if (!document) {
 			res.status(404).render("pages/404", { ...defaults, lang: lang });
 		} else {
