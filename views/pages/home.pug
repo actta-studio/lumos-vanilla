@@ -46,7 +46,7 @@ block content
 						ul.collections__wrapper
 							each collection in section.items
 								- collectionItemIndex++
-								li.collections__item(class=`collections__item--${collectionItemIndex}`)
+								li.collections__item(class=`collections__item--${collectionItemIndex} collections__item--${collectionItemIndex}--${document.lang}`)
 									a.collections__item__title(href=Link(collection.collection))=collection.collection.data.collection_title
 				if (section.slice_type == "article_cta") 
 					section.article-cta(class=`article-cta--${document.lang}`)

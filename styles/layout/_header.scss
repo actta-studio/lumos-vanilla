@@ -23,7 +23,6 @@
 
 		.nav {
 			padding: var(--layout-spacing);
-			// top: 2.3rem;
 			z-index: z("navigation");
 
 			position: fixed;
@@ -34,7 +33,6 @@
 			&--expanded {
 				display: flex;
 				flex-direction: row;
-				justify-content: space-between;
 				align-items: center;
 
 				@include media("<=phone") {
@@ -50,85 +48,36 @@
 					}
 				}
 
-				.group {
-					display: flex;
-					flex-direction: row;
-					align-items: center;
+				.navigation-links {
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
+					left: 103.7rem;
 
-					.navigation-links {
-						margin-right: 13.5rem;
-						display: flex;
-						flex-direction: row;
-						align-items: center;
-						gap: 0.5rem;
+					@-moz-document url-prefix() {
+						left: 104rem;
+					}
 
-						@include media("<=tablet") {
-							margin-right: 6.5rem;
+					&--fr-ca {
+						left: 103.8rem;
 
-							&--fr-ca {
-								margin-right: 3.4rem;
-							}
-						}
-
-						.navigation-link {
-							display: flex;
-							align-items: center;
-
-							&__link {
-								@extend %description-23;
-								font-weight: 500;
-
-								@include media("<=tablet") {
-									font-size: 1.4rem;
-								}
-							}
-						}
-
-						.navigation-link:hover {
-							text-decoration: underline;
-						}
-
-						.navigation-link::after {
-							position: relative;
-							bottom: 0;
-							content: ",";
-							font-size: inherit;
-							font-weight: 500;
-
-							@include media("<=tablet") {
-								bottom: 0.5rem;
-							}
-						}
-
-						.navigation-link:last-of-type::after {
-							content: "";
+						@-moz-document url-prefix() {
+							left: 104.2rem;
 						}
 					}
 
-					.language-toggle {
+					@include media("<=tablet") {
+						left: 31rem;
+					}
+
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					gap: 0.5rem;
+
+					.navigation-link {
 						display: flex;
 						align-items: center;
-						margin-right: 24.8rem;
-						display: flex;
-						gap: 0.5rem;
-
-						&--tablet {
-							display: none;
-
-							@include media("<=tablet") {
-								display: flex;
-								align-self: center;
-								margin-right: 11.3rem;
-
-								&--fr-ca {
-									margin-right: 10.9rem;
-								}
-							}
-						}
-
-						@include media("<=tablet") {
-							display: none;
-						}
 
 						&__link {
 							@extend %description-23;
@@ -138,33 +87,105 @@
 								font-size: 1.4rem;
 							}
 						}
+					}
 
-						a:hover {
-							text-decoration: underline;
-						}
+					.navigation-link:hover {
+						text-decoration: underline;
+					}
 
-						a::after {
-							content: ",";
-							font-size: inherit;
-							font-weight: 500;
-						}
+					.navigation-link::after {
+						position: relative;
+						bottom: 0;
+						content: ",";
+						font-size: inherit;
+						font-weight: 500;
 
-						a:last-of-type::after {
-							content: "";
+						@include media("<=tablet") {
+							bottom: 0.5rem;
 						}
 					}
 
-					.time-data {
+					.navigation-link:last-of-type::after {
+						content: "";
+					}
+				}
+
+				.language-toggle {
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
+					left: 139.3rem;
+
+					display: flex;
+					align-items: center;
+					gap: 0.5rem;
+
+					&--fr-ca {
+						@-moz-document url-prefix() {
+							left: 139.7rem;
+						}
+					}
+
+					&--tablet {
+						display: none;
+
+						@include media("<=tablet") {
+							position: absolute;
+							top: 50%;
+							transform: translateY(-50%);
+							display: flex;
+							left: 51rem;
+						}
+					}
+
+					@include media("<=tablet") {
+						display: none;
+					}
+
+					&__link {
 						@extend %description-23;
 						font-weight: 500;
-						align-self: center;
-
-						display: flex;
-						align-items: center;
 
 						@include media("<=tablet") {
 							font-size: 1.4rem;
 						}
+					}
+
+					a:hover {
+						text-decoration: underline;
+					}
+
+					a::after {
+						content: ",";
+						font-size: inherit;
+						font-weight: 500;
+					}
+
+					a:last-of-type::after {
+						content: "";
+					}
+				}
+
+				.time-data {
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
+					left: 170.6rem;
+
+					&--fr-ca {
+						left: 103.8rem;
+					}
+
+					@extend %description-23;
+					font-weight: 500;
+					align-self: center;
+
+					display: flex;
+					align-items: center;
+
+					@include media("<=tablet") {
+						font-size: 1.4rem;
+						left: 63.6rem;
 					}
 				}
 			}

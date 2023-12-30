@@ -1,31 +1,23 @@
 section.collections {
-	padding: 0 var(--layout-spacing);
-	margin: 50.2rem 0 57.8rem 0;
+	position: relative;
+	padding: 50.2rem 0 57.8rem 0;
 
 	@include media("<=tablet") {
-		margin: 19.7rem 0 34.9rem 0;
+		padding: 19.7rem 0 34.9rem 0;
 	}
 
 	@include media("<=phone") {
-		margin: 19rem 0 32.8rem 0;
+		padding: 19rem 0 32.8rem 0;
 	}
 
 	.collections__wrapper {
-		display: flex;
-		flex-direction: row;
-		justify-content: flex-end;
-		align-items: center;
-		gap: 22.7rem;
-
-		@include media("<=tablet") {
-			gap: 9.8rem;
-		}
-
-		@include media("<=phone") {
-			gap: 2.4rem;
-		}
+		position: relative;
 
 		.collections__item {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+
 			@extend %description-20;
 			font-weight: 500;
 			text-transform: uppercase;
@@ -37,18 +29,112 @@ section.collections {
 			@include media("<=phone") {
 				font-size: 1.1rem;
 			}
-		}
 
-		.collections__item--1 {
-			@extend %description-25;
-			flex: 1;
+			&--1 {
+				@extend %description-25;
+				left: var(--layout-spacing);
 
-			@include media("<=tablet") {
-				font-size: 1.4rem;
+				@include media("<=tablet") {
+					font-size: 1.4rem;
+				}
+
+				@include media("<=phone") {
+					font-size: 1.1rem;
+				}
 			}
 
-			@include media("<=phone") {
-				font-size: 1.1rem;
+			&--2 {
+				left: 103.7rem;
+
+				@-moz-document url-prefix() {
+					left: 104rem;
+				}
+
+				&--fr-ca {
+					left: 103.8rem;
+
+					@-moz-document url-prefix() {
+						left: 104.2rem;
+					}
+				}
+
+				@include media("<=tablet") {
+					left: 31.1rem;
+
+					@-moz-document url-prefix() {
+						left: 31.1rem;
+					}
+
+					&--fr-ca {
+						left: 31rem;
+
+						@-moz-document url-prefix() {
+							left: 31rem;
+						}
+					}
+				}
+
+				@include media("<=phone") {
+					left: 15rem;
+
+					@-moz-document url-prefix() {
+						left: 15rem;
+					}
+
+					&--fr-ca {
+						left: 15rem;
+
+						@-moz-document url-prefix() {
+							left: 15rem;
+						}
+					}
+				}
+			}
+
+			&--3 {
+				left: 139.3rem;
+
+				&--fr-ca {
+					@-moz-document url-prefix() {
+						left: 139.7rem;
+					}
+				}
+
+				@include media("<=tablet") {
+					left: 48.8rem;
+
+					@-moz-document url-prefix() {
+						left: 48.8rem;
+					}
+
+					&--fr-ca {
+						left: 48rem;
+
+						@-moz-document url-prefix() {
+							left: 48rem;
+						}
+					}
+				}
+
+				@include media("<=phone") {
+					left: 24.6rem;
+
+					@-moz-document url-prefix() {
+						left: 24.6rem;
+					}
+
+					&--fr-ca {
+						left: 24.6rem;
+
+						@-moz-document url-prefix() {
+							left: 24.6rem;
+						}
+					}
+				}
+			}
+
+			&--4 {
+				right: var(--layout-spacing);
 			}
 		}
 	}

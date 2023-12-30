@@ -1,25 +1,24 @@
 if navigation
 	nav(class="nav nav--expanded")
 		a.tagline(href=Link(document.lang))=navigation.data.tagline
-		.group
-			ul.navigation-links(class=`navigation-links--${document.lang}`)
-				each entry in navigation.data.list
-					li.navigation-link
-						a.navigation-link__link(href=Link(entry.link) data-animate="underline")=entry.text
-			.language-toggle
-				if(document.lang === "fr-ca")
-					each lang in document.alternate_languages
-						a.language-toggle__link(href=Link(lang))=Lang(lang.lang)
-					a.language-toggle__link(href=Link(document))=Lang(document.lang)
-				else
-					a.language-toggle__link(href=Link(document))=Lang(document.lang)
-					each lang in document.alternate_languages
-						a.language-toggle__link(href=Link(lang))=Lang(lang.lang)
-			.language-toggle--tablet(class=`language-toggle--tablet--${document.lang}`)
+		ul.navigation-links(class=`navigation-links--${document.lang}`)
+			each entry in navigation.data.list
+				li.navigation-link
+					a.navigation-link__link(href=Link(entry.link) data-animate="underline")=entry.text
+		.language-toggle(class=`language-toggle--${document.lang}`)
+			if(document.lang === "fr-ca")
 				each lang in document.alternate_languages
 					a.language-toggle__link(href=Link(lang))=Lang(lang.lang)
-			.time 
-				p.time-data=navigation.data.location
+				a.language-toggle__link(href=Link(document))=Lang(document.lang)
+			else
+				a.language-toggle__link(href=Link(document))=Lang(document.lang)
+				each lang in document.alternate_languages
+					a.language-toggle__link(href=Link(lang))=Lang(lang.lang)
+		.language-toggle--tablet(class=`language-toggle--tablet--${document.lang}`)
+			each lang in document.alternate_languages
+				a.language-toggle__link(href=Link(lang))=Lang(lang.lang)
+		.time 
+			p.time-data=navigation.data.location
 	nav(class="nav nav--collapsed")
 		button.nav-toggle 
 			span
