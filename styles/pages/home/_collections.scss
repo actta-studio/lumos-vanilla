@@ -18,33 +18,35 @@ section.collections {
 			top: 50%;
 			transform: translateY(-50%);
 
-			@extend %description-20;
 			font-weight: 500;
 			text-transform: uppercase;
 
-			@include media("<=tablet") {
-				font-size: 1.4rem;
-			}
-
-			@include media("<=phone") {
-				font-size: 1.1rem;
-			}
-
 			&--1 {
-				@extend %description-25;
+				font-size: 2.5rem;
 				left: var(--layout-spacing);
 
+				&--fr-ca {
+					font-size: 2.5rem;
+				}
+
 				@include media("<=tablet") {
-					font-size: 1.4rem;
+					font-size: 1.6rem;
+					&--fr-ca {
+						font-size: 1.4rem;
+					}
 				}
 
 				@include media("<=phone") {
 					font-size: 1.1rem;
+					&--fr-ca {
+						font-size: 0.9rem;
+					}
 				}
 			}
 
 			&--2 {
 				left: 103.7rem;
+				font-size: 2rem;
 
 				@-moz-document url-prefix() {
 					left: 104rem;
@@ -52,6 +54,7 @@ section.collections {
 
 				&--fr-ca {
 					left: 103.8rem;
+					font-size: 2rem;
 
 					@-moz-document url-prefix() {
 						left: 104.2rem;
@@ -60,6 +63,7 @@ section.collections {
 
 				@include media("<=tablet") {
 					left: 31.1rem;
+					font-size: 1.2rem;
 
 					@-moz-document url-prefix() {
 						left: 31.1rem;
@@ -67,6 +71,7 @@ section.collections {
 
 					&--fr-ca {
 						left: 31rem;
+						font-size: 1.4rem;
 
 						@-moz-document url-prefix() {
 							left: 31rem;
@@ -76,6 +81,7 @@ section.collections {
 
 				@include media("<=phone") {
 					left: 15rem;
+					font-size: 1.1rem;
 
 					@-moz-document url-prefix() {
 						left: 15rem;
@@ -83,6 +89,7 @@ section.collections {
 
 					&--fr-ca {
 						left: 15rem;
+						font-size: 0.9rem;
 
 						@-moz-document url-prefix() {
 							left: 15rem;
@@ -93,14 +100,17 @@ section.collections {
 
 			&--3 {
 				left: 139.3rem;
+				font-size: 2rem;
 
 				&--fr-ca {
+					font-size: 2rem;
 					@-moz-document url-prefix() {
 						left: 139.7rem;
 					}
 				}
 
 				@include media("<=tablet") {
+					font-size: 1.2rem;
 					left: 48.8rem;
 
 					@-moz-document url-prefix() {
@@ -108,6 +118,7 @@ section.collections {
 					}
 
 					&--fr-ca {
+						font-size: 1.4rem;
 						left: 48rem;
 
 						@-moz-document url-prefix() {
@@ -118,6 +129,7 @@ section.collections {
 
 				@include media("<=phone") {
 					left: 24.6rem;
+					font-size: 1.1rem;
 
 					@-moz-document url-prefix() {
 						left: 24.6rem;
@@ -125,6 +137,7 @@ section.collections {
 
 					&--fr-ca {
 						left: 24.6rem;
+						font-size: 0.9rem;
 
 						@-moz-document url-prefix() {
 							left: 24.6rem;
@@ -135,6 +148,27 @@ section.collections {
 
 			&--4 {
 				right: var(--layout-spacing);
+				font-size: 2rem;
+
+				&--fr-ca {
+					font-size: 2rem;
+				}
+
+				@include media("<=tablet") {
+					font-size: 1.2rem;
+
+					&--fr-ca {
+						font-size: 1.4rem;
+					}
+				}
+
+				@include media("<=phone") {
+					font-size: 1.1rem;
+
+					&--fr-ca {
+						font-size: 0.9rem;
+					}
+				}
 			}
 		}
 	}
