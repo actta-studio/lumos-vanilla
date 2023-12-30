@@ -5,19 +5,20 @@
 	display: none;
 
 	color: $color-white;
-	background-color: $color-silver;
+	background-color: $color-westar;
 	z-index: z("preloader");
 
-	&__text {
-		@extend %title-30;
-		max-width: 90rem;
-		text-align: center;
-	}
-
 	&__progress {
-		position: absolute;
-		bottom: calc(var(--layout-spacing) * 2);
-		left: 50%;
-		transform: translateX(-50%);
+		text-align: center;
+		color: $color-black;
+		@extend %description-27;
+
+		@include media("<=tablet") {
+			font-size: 1.6rem;
+		}
+
+		@include media("<=phone") {
+			font-size: 1.4rem;
+		}
 	}
 }
