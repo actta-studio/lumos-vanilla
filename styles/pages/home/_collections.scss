@@ -88,11 +88,11 @@ section.collections {
 					}
 
 					&--fr-ca {
-						left: 15rem;
+						left: 14.9rem;
 						font-size: 0.9rem;
 
 						@-moz-document url-prefix() {
-							left: 15rem;
+							left: 14.9rem;
 						}
 					}
 				}
@@ -136,11 +136,11 @@ section.collections {
 					}
 
 					&--fr-ca {
-						left: 24.6rem;
+						left: 25.2rem;
 						font-size: 0.9rem;
 
 						@-moz-document url-prefix() {
-							left: 24.6rem;
+							left: 25.2rem;
 						}
 					}
 				}
@@ -170,18 +170,6 @@ section.collections {
 					}
 				}
 			}
-		}
-	}
-}
-
-section.collections--fr-ca {
-	.collections__wrapper {
-		@include media("<=tablet") {
-			gap: 5.7rem;
-		}
-
-		@include media("<=phone") {
-			gap: 3rem;
 		}
 	}
 }
