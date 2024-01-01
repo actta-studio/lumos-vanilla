@@ -31,7 +31,9 @@ block content
 						.product-showcase__wrapper(class=`product-showcase__wrapper--${section.primary.type.toLowerCase()}`)
 							each item in section.items
 								figure.product-showcase__item
-									img.product-showcase__item__image(src=item.image.url draggable="false")
+									picture 
+										source(srcset= media="(min-width: 1024px)")
+										img.product-showcase__item__image(src=item.image.url draggable="false")
 							a.product-showcase__link(href=Link(section.primary.cta_link))=section.primary.cta_label
 				if (section.slice_type == 'collections')
 					section.collections(class=`collections--${document.lang}`)
