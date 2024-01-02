@@ -39,4 +39,13 @@ module.exports = {
 				return "En";
 		}
 	},
+	handleShowcaseImage: (item, showcaseIndex, imageIndex, type) => {
+		const showcaseKey = `ps${showcaseIndex}-${imageIndex}-${type}`;
+		if (imageIndex === 1) {
+			console.log(item.image);
+		}
+		// console.log(`${showcaseIndex} - ${imageIndex} - ${type}`, showcaseImages);
+		// return showcaseImages;
+
+	},
 };

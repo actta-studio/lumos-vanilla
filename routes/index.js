@@ -104,14 +104,14 @@ router.get(
 				return null;
 			});
 
-		document.data.body.forEach((slice) => {
-			if (slice.slice_type === "product_showcase") {
-				slice.items.forEach((image) => {
-					console.log(image);
-				});
-				console.log("=========>>>>>>>");
-			}
-		});
+		// document.data.body.forEach((slice) => {
+		// 	if (slice.slice_type === "product_showcase") {
+		// 		slice.items.forEach((item, index) => {
+		// 			let img = item.image[`ps1-${index + 1}-small`].url;
+		// 			console.log(`index ${index + 1} --`, img);
+		// 		});
+		// 	}
+		// });
 
 		if (!document) {
 			res.status(404).render("pages/404", { ...defaults, lang: lang });
