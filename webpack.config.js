@@ -35,7 +35,7 @@ module.exports = {
 			],
 		}),
 		new MiniCssExtractPlugin({
-			filename: "[name].miin.css",
+			filename: "[name].min.css",
 			chunkFilename: "[id].css",
 		}),
 		new ImageMinimizerPlugin({
