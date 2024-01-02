@@ -104,6 +104,15 @@ router.get(
 				return null;
 			});
 
+		document.data.body.forEach((slice) => {
+			if (slice.slice_type === "product_showcase") {
+				slice.items.forEach((image) => {
+					console.log(image);
+				});
+				console.log("=========>>>>>>>");
+			}
+		});
+
 		if (!document) {
 			res.status(404).render("pages/404", { ...defaults, lang: lang });
 		} else {
