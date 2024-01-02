@@ -91,6 +91,7 @@ module.exports = {
 						}
 						// generate random hash for file name - use name to preserve the original name - you can also do [name].[hash].[ext]
 						// NOTE: The benefit of generating a random hash for the filename is that it helps to prevent browser caching issues. When a file's content changes, but its filename remains the same, the browser may continue to use the cached version of the file instead of downloading the updated version.
+						return "[name].[ext]";
 						return "[hash].[ext]";
 					},
 				},
