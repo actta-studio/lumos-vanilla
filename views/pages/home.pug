@@ -35,7 +35,7 @@ block content
 								- var image = URL(item, productShowcaseIndex, index + 1 ,'small')
 								figure.product-showcase__item
 									picture
-										source(srcset=item.image.url+"&q=30" media="(max-width: 430px)" width=item.image.dimensions.width height=item.image.dimensions.height)
+										source(srcset=item.image.url+"&q=20" media="(max-width: 430px)" width=item.image.dimensions.width height=item.image.dimensions.height)
 										source(srcset=item.image.url+"&q=50" media="(max-width: 767px)" width=item.image.dimensions.width height=item.image.dimensions.height)
 										source(srcset=item.image.url+"&q=75" media="(min-width: 768px)" width=item.image.dimensions.width height=item.image.dimensions.height)
 										img.product-showcase__item__image(src=item.image.url draggable="false" alt=item.image.alt width=item.image.dimensions.width height=item.image.dimensions.height)
