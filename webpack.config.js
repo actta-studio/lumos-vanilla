@@ -7,6 +7,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const IS_DEVELOPMENT = process.env.NODE_ENV === "development";
 
@@ -34,7 +35,7 @@ module.exports = {
 			],
 		}),
 		new MiniCssExtractPlugin({
-			filename: "[name].css",
+			filename: "[name].miin.css",
 			chunkFilename: "[id].css",
 		}),
 		new ImageMinimizerPlugin({
@@ -51,7 +52,6 @@ module.exports = {
 		}),
 		new CleanWebpackPlugin(),
 	],
-
 	module: {
 		rules: [
 			{
@@ -115,9 +115,20 @@ module.exports = {
 			},
 		],
 	},
-
 	optimization: {
 		minimize: true,
-		minimizer: [new TerserPlugin()],
+		minimizer: [
+			new TerserPlugin(),
+			new CssMinimizerPlugin({
+				minimizerOptions: {
+					preset: [
+						"default",
+						{
+							discardComments: { removeAll: false },
+						},
+					],
+				},
+			}),
+		],
 	},
 };
