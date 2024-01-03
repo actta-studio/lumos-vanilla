@@ -34,7 +34,11 @@ block content
 							each item, index in section.items
 								- var image = URL(item, productShowcaseIndex, index + 1 ,'small')
 								figure.product-showcase__item
-									img.product-showcase__item__image(src=item.image.url+"&q=60" draggable="false" alt=item.image.alt)
+									picture
+										source(srcset=item.image.url+"&q=01" media="(max-width: 430px)")
+										source(srcset=item.image.url+"&q=50" media="(max-width: 767px)")
+										source(srcset=item.image.url+"&q=75" media="(min-width: 768px)")
+										img.product-showcase__item__image(src=item.image.url+"&q=40" draggable="false" alt=item.image.alt)
 							a.product-showcase__link(href=Link(section.primary.cta_link))=section.primary.cta_label
 				if (section.slice_type == 'collections')
 					section.collections(class=`collections--${document.lang}`)
