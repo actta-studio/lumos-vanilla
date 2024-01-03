@@ -32,10 +32,9 @@ block content
 					section.product-showcase
 						.product-showcase__wrapper(class=`product-showcase__wrapper--${section.primary.type.toLowerCase()}`)
 							each item, index in section.items
-								- var image = URL(item, productShowcaseIndex, index + 1 ,'small')
 								figure.product-showcase__item
 									picture
-										source(srcset=item.image.url+"&q=01" media="(max-width: 430px)")
+										source(srcset=item.image.url+"&q=01"+"&max-w=430" media="(max-width: 430px)")
 										source(srcset=item.image.url+"&q=50" media="(max-width: 767px)")
 										source(srcset=item.image.url+"&q=75" media="(min-width: 768px)")
 										img.product-showcase__item__image(src=item.image.url+"&q=40" draggable="false" alt=item.image.alt)
