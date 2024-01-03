@@ -46,6 +46,5 @@ module.exports = {
 		}
 		// console.log(`${showcaseIndex} - ${imageIndex} - ${type}`, showcaseImages);
 		// return showcaseImages;
-
 	},
 };

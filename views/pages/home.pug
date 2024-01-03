@@ -34,9 +34,9 @@ block content
 							each item, index in section.items
 								figure.product-showcase__item
 									picture
-										source(srcset=item.image.url+"&q=01&auto=compress"+"&max-w=430" media="(max-width: 430px)")
-										source(srcset=item.image.url+"&q=50&auto=compress" media="(max-width: 767px)")
-										source(srcset=item.image.url+"&q=75&auto=compress" media="(min-width: 768px)")
+										source(srcset=item.image.url+"&w=0.2" media="(max-width: 430px)")
+										source(srcset=item.image.url+"&w=0.75" media="(max-width: 767px)")
+										source(srcset=item.image.url+"&w=1" media="(min-width: 768px)")
 										img.product-showcase__item__image(src=item.image.url+"&q=40" draggable="false" alt=item.image.alt width=item.image.dimensions.width height=item.image.dimensions.height)
 							a.product-showcase__link(href=Link(section.primary.cta_link))=section.primary.cta_label
 				if (section.slice_type == 'collections')
@@ -51,7 +51,10 @@ block content
 						.article-cta__wrapper
 							.cta-content
 								figure.cta-content__image__wrapper
-									img.cta-content__image(src=section.primary.image.url draggable="false")
+									source(srcset=section.primary.image.url+"&w=0.025" media="(max-width: 430px)" width=Math.round(section.primary.image.dimensions.width*.2) height=Math.round(section.primary.image.dimensions.height*.2))
+									source(srcset=section.primary.image.url+"&w=0.75" media="(max-width: 767px)" width=Math.round(section.primary.image.dimensions.width*.75) height=Math.round(section.primary.image.dimensions.height*.75))
+									source(srcset=section.primary.image.url+"&w=1" media="(min-width: 768px)" width=Math.round(section.primary.image.dimensions.width) height=Math.round(section.primary.image.dimensions.height))
+									img.cta-content__image(src=section.primary.image.url draggable="false" alt=section.primary.image.alt )
 								.cta-content__text
 									h3.cta-content__text__title=section.primary.title
 									a.cta-content__text__link(href=Link(section.primary.cta_link))=section.primary.cta_label
@@ -68,6 +71,10 @@ block content
 							each product in section.items
 								a(href=Link(product.product)).product
 									figure.product__image
-										img(src=product.product.data.image.url draggable="false" alt=product.product.data.image.alt) 
+										picture
+											source(srcset=product.product.data.image.url+"&w=0.2" media="(max-width: 430px)")
+											source(srcset=product.product.data.image.url+"&w=0.75" media="(max-width: 767px)")
+											source(srcset=product.product.data.image.url+"&w=1" media="(min-width: 768px)")
+											img(src=product.product.data.image.url draggable="false" alt=product.product.data.image.alt width=product.product.data.image.dimensions.width height=product.product.data.image.dimensions.height) 
 
 
