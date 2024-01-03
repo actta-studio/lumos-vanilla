@@ -36,12 +36,7 @@ html(lang=`en`)
 		style
 			include ../public/main.min.css
 
-		//- script(async='' src='https://www.googletagmanager.com/gtag/js?id=G-EFZYR4Z6NX')
-		//- 	script.
-		//- 		window.dataLayer = window.dataLayer || [];
-		//- 		function gtag(){dataLayer.push(arguments);}
-		//- 		gtag('js', new Date());
-		//- 		gtag('config', 'G-EFZYR4Z6NX');
+		
 
 	body
 			include ./partials/preloader
@@ -54,6 +49,13 @@ html(lang=`en`)
 
 			if (!noFooter.includes(template))
 				include ./partials/footer
+
+		script(async='' src='https://www.googletagmanager.com/gtag/js?id=G-EFZYR4Z6NX')
+			script.
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'G-EFZYR4Z6NX');
 
 			
 
