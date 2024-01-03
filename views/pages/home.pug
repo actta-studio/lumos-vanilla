@@ -34,9 +34,9 @@ block content
 							each item, index in section.items
 								figure.product-showcase__item
 									picture
-										source(srcset=item.image.url+"&q=01"+"&max-w=430" media="(max-width: 430px)")
-										source(srcset=item.image.url+"&q=50" media="(max-width: 767px)")
-										source(srcset=item.image.url+"&q=75" media="(min-width: 768px)")
+										source(srcset=item.image.url+"&q=01&auto=compress"+"&max-w=430" media="(max-width: 430px)")
+										source(srcset=item.image.url+"&q=50&auto=compress" media="(max-width: 767px)")
+										source(srcset=item.image.url+"&q=75&auto=compress" media="(min-width: 768px)")
 										img.product-showcase__item__image(src=item.image.url+"&q=40" draggable="false" alt=item.image.alt width=item.image.dimensions.width height=item.image.dimensions.height)
 							a.product-showcase__link(href=Link(section.primary.cta_link))=section.primary.cta_label
 				if (section.slice_type == 'collections')
