@@ -124,7 +124,7 @@ module.exports = {
 					preset: [
 						"default",
 						{
-							discardComments: { removeAll: false },
+							discardComments: { removeAll: true },
 						},
 					],
 				},
