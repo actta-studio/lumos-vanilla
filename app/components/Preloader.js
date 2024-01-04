@@ -43,7 +43,7 @@ export default class Preloader extends Component {
 
 			this.animateOut.to(this.element, {
 				autoAlpha: 0,
-				duration: 1,
+				duration: 0.1,
 				ease: "power2.inOut",
 				onComplete: resolve,
 			});
