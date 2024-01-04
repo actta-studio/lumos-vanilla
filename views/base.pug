@@ -21,6 +21,9 @@ html(lang=`en`)
 		link(rel="mask-icon" href="/safari-pinned-tab.svg" color="#ECEAE4")
 		meta(name="theme-color" content="#ECEAE4")
 
+		link(rel="stylesheet" href="main.min.css")
+
+
 		meta(property="og:type" content="website")
 		meta(property="og:title" content=meta.data.title ? meta.data.title : '')
 		meta(property="og:description" content=meta.data.description ? meta.data.description : '')
@@ -31,33 +34,31 @@ html(lang=`en`)
 		meta(name="twitter:description" content=meta.data.description ? meta.data.description : '')
 		meta(name="twitter:image" content=meta.data.image ? meta.data.image.url : '')
 
-		//- link(rel="stylesheet" hreZf="../public/main.min.css")
 
-		style
-			include ../public/main.min.css
-
-		
-
+		//- style
+		//- 	include ../public/main.min.css
 	body
-			include ./partials/preloader
-			header(class=`${noHeaderLogo.includes(template) ? "no-logo navigation--" + template :""} navigation navigation--header`) 
-				if (!noHeader.includes(template))
-					include ./partials/header
+		include ./partials/preloader
+		header(class=`${noHeaderLogo.includes(template) ? "no-logo navigation--" + template :""} navigation navigation--header`) 
+			if (!noHeader.includes(template))
+				include ./partials/header
 
-			main.content#content(data-template=template)
-				block content
+		main.content#content(data-template=template)
+			block content
 
-			if (!noFooter.includes(template))
-				include ./partials/footer
+		if (!noFooter.includes(template))
+			include ./partials/footer
+		
+		script(src="main.js")
 
 
-			//- TODO: Consent Manager
-			//- script(async='' src='https://www.googletagmanager.com/gtag/js?id=G-EFZYR4Z6NX')
-			//- 	script.
-			//- 		window.dataLayer = window.dataLayer || [];
-			//- 		function gtag(){dataLayer.push(arguments);}
-			//- 		gtag('js', new Date());
-			//- 		gtag('config', 'G-EFZYR4Z6NX');
+		//- TODO: Consent Manager
+		//- script(async='' src='https://www.googletagmanager.com/gtag/js?id=G-EFZYR4Z6NX')
+		//- 	script.
+		//- 		window.dataLayer = window.dataLayer || [];
+		//- 		function gtag(){dataLayer.push(arguments);}
+		//- 		gtag('js', new Date());
+		//- 		gtag('config', 'G-EFZYR4Z6NX');
 
 			
 
