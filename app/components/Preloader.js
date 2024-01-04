@@ -38,12 +38,12 @@ export default class Preloader extends Component {
 	onLoaded() {
 		return new Promise((resolve) => {
 			this.animateOut = GSAP.timeline({
-				delay: 2,
+				delay: 1.5,
 			});
 
 			this.animateOut.to(this.element, {
 				autoAlpha: 0,
-				duration: 0.5,
+				duration: 1,
 				ease: "power2.inOut",
 				onComplete: resolve,
 			});
