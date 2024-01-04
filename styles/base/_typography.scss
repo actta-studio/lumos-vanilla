@@ -1,9 +1,13 @@
 @font-face {
 	font-family: "PP Neue Montreal";
 	src: url("../fonts/pp-neue-montreal-medium.eot");
-	src: url("../fonts/pp-neue-montreal-medium.woff2") format("woff2"),
+	src: url("../fonts/pp-neue-montreal-medium.eot?#iefix")
+			format("embedded-opentype"),
+		url("../fonts/pp-neue-montreal-medium.woff2") format("woff2"),
 		url("../fonts/pp-neue-montreal-medium.woff") format("woff"),
-		url("../fonts/pp-neue-montreal-medium.ttf") format("truetype");
+		url("../fonts/pp-neue-montreal-medium.ttf") format("truetype"),
+		url("../fonts/pp-neue-montreal-medium.svg#PPNeueMontreal-Medium")
+			format("svg");
 	font-weight: 500;
 	font-style: normal;
 	font-display: swap;
