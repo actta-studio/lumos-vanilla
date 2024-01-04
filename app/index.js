@@ -1,16 +1,19 @@
 import each from "lodash/each";
 
-import Home from "./pages/home";
-import Shop from "./pages/shop";
-import Product from "./pages/product";
-import Article from "./pages/article";
-import Contact from "./pages/contact";
-import NotFound from "./pages/notFound";
+import Home from "pages/home";
+import Shop from "pages/shop";
+import Product from "pages/product";
+import Article from "pages/article";
+import Contact from "pages/contact";
+import NotFound from "pages/notFound";
+import Preloader from "components/Preloader";
 
 class App {
 	constructor() {
+		this.createPreloader();
 		this.createContent();
 		this.createPages();
+
 		this.addLinkListeners();
 	}
 
@@ -36,6 +39,14 @@ class App {
 		this.page = this.pages.get(this.template);
 		this.page.create();
 		this.page.show();
+	}
+
+	createPreloader() {
+		this.preloader = new Preloader();
+		// TODO: Research closures and how they work
+		// element looses its scope when passed into the onPreloaded function
+		// basically binds the onPreloaded function to the preloader object so that it can be called
+		this.preloader.once("completed", this.onPreloaded.bind(this));
 	}
 
 	async onChange(url) {
@@ -64,11 +75,14 @@ class App {
 			this.page = this.pages.get(this.template);
 			this.page.create();
 			this.page.show();
+			this.addLinkListeners();
 		} else {
 			console.log(404);
 		}
+	}
 
-		console.log(request);
+	onPreloaded() {
+		this.preloader.destroy();
 	}
 
 	addLinkListeners() {
@@ -77,11 +91,6 @@ class App {
 		each(links, (link) => {
 			link.onclick = (event) => {
 				event.preventDefault();
-
-				// const {
-				// 	target: { href },
-				// } = event;
-
 				const { href } = link;
 
 				this.onChange(href);

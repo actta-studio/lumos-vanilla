@@ -2,10 +2,8 @@
 	@extend %cover;
 	@extend %center;
 
-	display: none;
-
 	color: $color-white;
-	background-color: $color-westar;
+	background-color: $color-cararra;
 	z-index: z("preloader");
 
 	&__progress {

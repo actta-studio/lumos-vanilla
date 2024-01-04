@@ -134,18 +134,6 @@
 
 /*! ./overlay/styles.js */
 
-/*! ./pages/article */
-
-/*! ./pages/contact */
-
-/*! ./pages/home */
-
-/*! ./pages/notFound */
-
-/*! ./pages/product */
-
-/*! ./pages/shop */
-
 /*! ./socket.js */
 
 /*! ./stubFalse */
@@ -166,7 +154,11 @@
 
 /*! ansi-html-community */
 
+/*! classes/Component */
+
 /*! classes/Page */
+
+/*! components/Preloader */
 
 /*! events */
 
@@ -175,6 +167,18 @@
 /*! html-entities */
 
 /*! lodash/each */
+
+/*! pages/article */
+
+/*! pages/contact */
+
+/*! pages/home */
+
+/*! pages/notFound */
+
+/*! pages/product */
+
+/*! pages/shop */
 
 /*! tapable/lib/SyncBailHook */
 
@@ -204,6 +208,10 @@
   !*** ./app/pages/shop/index.js ***!
   \*********************************/
 
+/*!**********************************!*\
+  !*** ./app/classes/Component.js ***!
+  \**********************************/
+
 /*!************************************!*\
   !*** ./app/pages/article/index.js ***!
   \************************************/
@@ -219,6 +227,10 @@
 /*!************************************!*\
   !*** ./node_modules/gsap/index.js ***!
   \************************************/
+
+/*!*************************************!*\
+  !*** ./app/components/Preloader.js ***!
+  \*************************************/
 
 /*!*************************************!*\
   !*** ./app/pages/notFound/index.js ***!
