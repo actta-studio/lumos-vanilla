@@ -1,3 +1,5 @@
+import each from "lodash/each";
+
 import Home from "./pages/home";
 import Shop from "./pages/shop";
 import Product from "./pages/product";
@@ -9,6 +11,7 @@ class App {
 	constructor() {
 		this.createContent();
 		this.createPages();
+		this.addLinkListeners();
 	}
 
 	// selects the main content div wrapper
@@ -33,6 +36,57 @@ class App {
 		this.page = this.pages.get(this.template);
 		this.page.create();
 		this.page.show();
+	}
+
+	async onChange(url) {
+		await this.page.hide();
+		const request = await window.fetch(url);
+
+		if (request.status === 200) {
+			const html = await request.text();
+			// create a new div element
+			const div = document.createElement("div");
+
+			// set the innerHTML of the div to the html that was fetched
+			div.innerHTML = html;
+
+			// get the content div from the new html
+			const divContent = div.querySelector("#content");
+			this.template = divContent.getAttribute("data-template");
+
+			this.content.setAttribute(
+				"data-template",
+				divContent.getAttribute("data-template")
+			);
+			// assign the new content to the current content
+			this.content.innerHTML = divContent.innerHTML;
+
+			this.page = this.pages.get(this.template);
+			this.page.create();
+			this.page.show();
+		} else {
+			console.log(404);
+		}
+
+		console.log(request);
+	}
+
+	addLinkListeners() {
+		const links = document.querySelectorAll("a");
+
+		each(links, (link) => {
+			link.onclick = (event) => {
+				event.preventDefault();
+
+				// const {
+				// 	target: { href },
+				// } = event;
+
+				const { href } = link;
+
+				this.onChange(href);
+			};
+		});
 	}
 }
 

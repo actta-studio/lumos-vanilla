@@ -26,24 +26,40 @@
 	}
 }
 
-.featured-products__wrapper .product__image {
+.featured-product {
+	display: block;
 	position: relative;
-	width: 43.2rem;
-	height: 30.8rem;
+
+	width: 49.1rem;
+	height: 30.7rem;
+
+	picture {
+		width: 100%;
+		height: 100%;
+	}
 
 	@include media("<=tablet") {
 		width: 23.7rem;
-		height: 16.9rem;
+		height: 14.81rem;
 	}
 
 	@include media("<=phone") {
 		width: 15rem;
-		height: 10.7rem;
+		height: 9.37rem;
 	}
 }
 
-.featured-products__wrapper .product__image img {
+.featured-products__wrapper .featured-product img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+}
+
+.featured-products__wrapper .featured-product__link {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }

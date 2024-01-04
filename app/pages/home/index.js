@@ -11,15 +11,4 @@ export default class Home extends Page {
 			},
 		});
 	}
-
-	create() {
-		super.create();
-
-		this.elements.get("links").forEach((link) => {
-			link.addEventListener("click", (event) => {
-				event.preventDefault();
-				console.log("clicked");
-			});
-		});
-	}
 }

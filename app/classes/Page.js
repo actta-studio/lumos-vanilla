@@ -1,4 +1,5 @@
 import each from "lodash/each";
+import GSAP from "gsap";
 
 export default class Page {
 	constructor({ id, element, elements }) {
@@ -37,9 +38,21 @@ export default class Page {
 		});
 	}
 
-	show () {}
+	show() {
+		return new Promise((resolve) => {
+			GSAP.from(this.element, {
+				autoAlpha: 0,
+				onComplete: resolve,
+			});
+		});
+	}
 
-	hide () {
-		
+	hide() {
+		return new Promise((resolve) => {
+			GSAP.to(this.element, {
+				autoAlpha: 0,
+				onComplete: resolve,
+			});
+		});
 	}
 }
