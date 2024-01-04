@@ -34,7 +34,7 @@ block content
 							each item, index in section.items
 								figure.product-showcase__item
 									picture
-										source(srcset=item.image.url+"&w=0.2" media="(max-width: 430px)")
+										source(srcset=item.image.url+"&w=0.1" media="(max-width: 430px)")
 										source(srcset=item.image.url+"&w=0.75" media="(max-width: 767px)")
 										source(srcset=item.image.url+"&w=.85" media="(min-width: 768px)")
 										img.product-showcase__item__image(data-src=item.image.url draggable="false" alt=item.image.alt width=item.image.dimensions.width height=item.image.dimensions.height)
@@ -73,7 +73,7 @@ block content
 									figure.featured-product
 										a.featured-product__link(href=Link(item.product) class="a--link")
 										picture
-											source(srcset=item.image.url+"&w=0.2" media="(max-width: 430px)" width=Math.round(item.image.dimensions.width*.2) height=Math.round(item.image.dimensions.height*.2))
+											source(srcset=item.image.url+"&w=0.1" media="(max-width: 430px)" width=Math.round(item.image.dimensions.width*.2) height=Math.round(item.image.dimensions.height*.2))
 											source(srcset=item.image.url+"&w=0.75" media="(max-width: 767px)" width=Math.round(item.image.dimensions.width*.2) height=Math.round(item.image.dimensions.height*.2))
 											source(srcset=item.image.url+"&w=.85" media="(min-width: 768px)" width=Math.round(item.image.dimensions.width*.2) height=Math.round(item.image.dimensions.height*.2))
 											img(data-src=item.image.url draggable="false" alt=item.image.alt) 

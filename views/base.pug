@@ -21,7 +21,7 @@ html(lang=`en`)
 		link(rel="mask-icon" href="/safari-pinned-tab.svg" color="#ECEAE4")
 		meta(name="theme-color" content="#ECEAE4")
 
-		link(rel="stylesheet" href="main.min.css")
+		//- link(rel="stylesheet" href="main.min.css")
 
 
 		meta(property="og:type" content="website")
@@ -35,8 +35,9 @@ html(lang=`en`)
 		meta(name="twitter:image" content=meta.data.image ? meta.data.image.url : '')
 
 
-		//- style
-		//- 	include ../public/main.min.css
+		style
+			include ../public/main.min.css
+			
 	body
 		include ./partials/preloader
 		header(class=`${noHeaderLogo.includes(template) ? "no-logo navigation--" + template :""} navigation navigation--header`) 
