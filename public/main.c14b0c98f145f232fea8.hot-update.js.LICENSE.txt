@@ -1,0 +1,15 @@
+/*! ./pages/article */
+
+/*! ./pages/contact */
+
+/*! ./pages/home */
+
+/*! ./pages/notFound */
+
+/*! ./pages/product */
+
+/*! ./pages/shop */
+
+/*!**********************!*\
+  !*** ./app/index.js ***!
+  \**********************/

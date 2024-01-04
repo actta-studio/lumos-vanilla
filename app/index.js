@@ -15,8 +15,6 @@ class App {
 	createContent() {
 		this.content = document.querySelector("#content");
 		this.template = this.content.getAttribute("data-template");
-
-		console.log("template - ", this.template);
 	}
 
 	// creates pages by storing them in a new Map() with key value pairs
@@ -33,7 +31,8 @@ class App {
 		this.pages.set("404", new NotFound());
 
 		this.page = this.pages.get(this.template);
-		console.log("page: ", this.page);
+		this.page.create();
+		this.page.show();
 	}
 }
 

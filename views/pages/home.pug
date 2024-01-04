@@ -38,14 +38,15 @@ block content
 										source(srcset=item.image.url+"&w=0.75" media="(max-width: 767px)")
 										source(srcset=item.image.url+"&w=.85" media="(min-width: 768px)")
 										img.product-showcase__item__image(src=item.image.url+"&q=40" draggable="false" alt=item.image.alt width=item.image.dimensions.width height=item.image.dimensions.height)
-							a.product-showcase__link(href=Link(section.primary.cta_link))=section.primary.cta_label
+							if(section.primary.type.toLowerCase() !== "cta-none")
+								a.product-showcase__link(href=Link(section.primary.cta_link) class="a--link")=section.primary.cta_label
 				if (section.slice_type == 'collections')
 					section.collections(class=`collections--${document.lang}`)
 						ul.collections__wrapper
 							each collection in section.items
 								- collectionItemIndex++
 								li.collections__item(class=`collections__item--${document.lang}`)
-									a.collections__item__title(href=Link(collection.collection))=collection.collection.data.collection_title
+									a.collections__item__title(href=Link(collection.collection) class="a--link")=collection.collection.data.collection_title
 				if (section.slice_type == "article_cta") 
 					section.article-cta(class=`article-cta--${document.lang}`)
 						.article-cta__wrapper
@@ -57,13 +58,13 @@ block content
 									img.cta-content__image(src=section.primary.image.url draggable="false" alt=section.primary.image.alt )
 								.cta-content__text
 									h3.cta-content__text__title=section.primary.title
-									a.cta-content__text__link(href=Link(section.primary.cta_link))=section.primary.cta_label
+									a.cta-content__text__link(href=Link(section.primary.cta_link) class="a--link")=section.primary.cta_label
 							.article
 								.article__wrapper
 									figure.article__image-wrapper
 										div.article__primary-image
 									.article__text
-										a.article__text__cta(href="#") #{document.lang === "fr-ca" ? "Lire" : "Read"}
+										a.article__text__cta(href="#" class="a--link") #{document.lang === "fr-ca" ? "Lire" : "Read"}
 										p.article__text__description Article №023
 				if (section.slice_type == "featured_products")
 					section.featured-products
