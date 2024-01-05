@@ -91,6 +91,8 @@ router.get(
 					"product.image",
 					"product.title",
 					"collection.collection_title",
+					"article.label",
+					"article.featured_image",
 				],
 				lang,
 			})
@@ -105,10 +107,8 @@ router.get(
 			});
 
 		document.data.body.forEach((slice) => {
-			if (slice.slice_type === "featured_products") {
-				slice.items.forEach((item) => {
-					console.log(item);
-				});
+			if (slice.slice_type === "article_cta") {
+				console.log(slice.primary.article.data);
 			}
 		});
 

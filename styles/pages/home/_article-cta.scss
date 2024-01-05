@@ -30,7 +30,7 @@ section.article-cta {
 	justify-content: space-between;
 
 	@include media("<=tablet") {
-		height: 15.3rem;
+		height: 11rem;
 	}
 }
 
@@ -72,12 +72,12 @@ section.article-cta {
 
 	@include media("<=tablet") {
 		width: 17.2rem;
-		height: 15.3rem;
+		height: 11rem;
 	}
 
 	@include media("<=phone") {
 		width: 7.4rem;
-		height: 7.5rem;
+		height: 4.73rem;
 	}
 }
 
@@ -107,20 +107,28 @@ section.article-cta {
 	}
 }
 
-.article-cta__wrapper .article .article__image-wrapper .article__primary-image {
+.article-cta__wrapper .article .article__image-wrapper {
 	width: 85.2rem;
-	height: 90.613rem;
-	background-color: #d9d9d9;
+	height: 98.03rem;
+	object-fit: cover;
+	object-position: bottom;
 
 	@include media("<=tablet") {
 		width: 38.3rem;
-		height: 33.6rem;
+		height: 44.06rem;
+		// height: 33.6rem;
 	}
 
 	@include media("<=phone") {
 		width: 27rem;
-		height: 19.6rem;
+		height: 31.06rem;
+		// height: 19.6rem;
 	}
+}
+
+.article__primary-image {
+	width: 100%;
+	height: 100%;
 }
 
 .article-cta__wrapper .article .article__wrapper {
