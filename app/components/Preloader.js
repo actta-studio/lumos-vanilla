@@ -41,12 +41,16 @@ export default class Preloader extends Component {
 				delay: 1.5,
 			});
 
-			this.animateOut.to(this.element, {
-				autoAlpha: 0,
-				duration: 1,
-				ease: "power2.inOut",
-				onComplete: resolve,
-			});
+			this.animateOut
+				.to(this.elements.get("progress"), {
+					yPercent: -100,
+				})
+				.to(this.element, {
+					autoAlpha: 0,
+					duration: 1,
+					ease: "power2.inOut",
+					onComplete: resolve,
+				});
 
 			this.animateOut.call((_) => this.emit("completed"));
 		});

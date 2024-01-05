@@ -6,7 +6,8 @@
 	background-color: $color-cararra;
 	z-index: z("preloader");
 
-	&__progress {
+	p {
+		overflow: hidden;
 		text-align: center;
 		color: $color-black;
 		@extend %description-27;
@@ -18,5 +19,9 @@
 		@include media("<=phone") {
 			font-size: 1.4rem;
 		}
+	}
+
+	&__progress {
+		display: inline-block;
 	}
 }
