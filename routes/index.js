@@ -106,11 +106,11 @@ router.get(
 				return null;
 			});
 
-		document.data.body.forEach((slice) => {
-			if (slice.slice_type === "article_cta") {
-				console.log(slice.primary.article.data);
-			}
-		});
+		// document.data.body.forEach((slice) => {
+		// 	if (slice.slice_type === "article_cta") {
+		// 		console.log(slice.primary.article.data);
+		// 	}
+		// });
 
 		if (!document) {
 			res.status(404).render("pages/404", { ...defaults, lang: lang });

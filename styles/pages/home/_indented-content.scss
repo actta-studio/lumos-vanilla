@@ -66,6 +66,7 @@
 	font-weight: 500;
 	@extend %description-75;
 	letter-spacing: -0.05px;
+	overflow-x: hidden;
 
 	&:nth-of-type(1) {
 		@include media("<=tablet") {

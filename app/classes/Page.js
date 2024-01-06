@@ -1,5 +1,8 @@
-import each from "lodash/each";
+import { each, map } from "lodash";
 import GSAP from "gsap";
+import Lenis from "@studio-freight/lenis";
+
+import Indents from "animations/Indents";
 
 export default class Page {
 	constructor({ id, element, elements }) {
@@ -7,7 +10,13 @@ export default class Page {
 		this.selector = element;
 		this.selectorChildren = {
 			...elements,
+			animatedIndents: "[data-animation='indents']",
 		};
+
+		this.lenis = new Lenis({
+			lerp: 0.2,
+			wheelMultiplier: 0,
+		});
 	}
 
 	create() {
@@ -32,23 +41,63 @@ export default class Page {
 				}
 			}
 		});
+
+		this.createAnimations();
+	}
+
+	createAnimations() {
+		// console.log(this.elements.get("animatedIndents"));
+
+		this.animatedIndents = map(
+			this.elements.get("animatedIndents"),
+			(element) => {
+				return new Indents({
+					element,
+				});
+			}
+		);
+
+		// console.log(this.animatedIndents);
 	}
 
 	show() {
+		window.scrollTo(0, 0);
+
 		return new Promise((resolve) => {
-			GSAP.from(this.element, {
-				autoAlpha: 0,
-				onComplete: resolve,
+			this.animateIn = GSAP.timeline();
+
+			this.animateIn.to(this.element, {
+				autoAlpha: 1,
+			});
+
+			this.animateIn.call((_) => {
+				this.initLenis();
+				resolve();
 			});
 		});
 	}
 
 	hide() {
 		return new Promise((resolve) => {
-			GSAP.to(this.element, {
+			this.animateOut = GSAP.timeline();
+
+			this.animateOut.to(this.element, {
 				autoAlpha: 0,
-				onComplete: resolve,
+			});
+
+			this.animateOut.call((_) => {
+				resolve();
 			});
 		});
+	}
+
+	raf(time) {
+		this.lenis.raf(time);
+		requestAnimationFrame(this.raf.bind(this));
+	}
+
+	initLenis() {
+		this.lenis.on("scroll", (e) => {});
+		requestAnimationFrame(this.raf.bind(this));
 	}
 }

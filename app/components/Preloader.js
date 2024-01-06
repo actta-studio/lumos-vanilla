@@ -28,7 +28,9 @@ export default class Preloader extends Component {
 		this.length += 1;
 		const percent = this.length / this.elements.get("images").length;
 
-		this.elements.get("progress").innerHTML = Math.round(percent * 100) + "%";
+		const clampedPercent = Math.max(0, Math.min(percent * 100, 100));
+
+		this.elements.get("progress").innerHTML = Math.round(clampedPercent) + "%";
 
 		if (percent === 1) {
 			this.onLoaded();
@@ -41,16 +43,17 @@ export default class Preloader extends Component {
 				delay: 1.5,
 			});
 
-			this.animateOut
-				.to(this.elements.get("progress"), {
-					yPercent: -100,
-				})
-				.to(this.element, {
-					autoAlpha: 0,
-					duration: 1,
-					ease: "power2.inOut",
-					onComplete: resolve,
-				});
+			this.animateOut.to(this.elements.get("progress"), {
+				yPercent: 100,
+				duration: 0.75,
+				ease: "expo.out",
+				onComplete: resolve,
+			});
+			// .to(this.element, {
+			// 	autoAlpha: 0,
+			// 	duration: 1,
+			// 	ease: "power2.inOut",
+			// });
 
 			this.animateOut.call((_) => this.emit("completed"));
 		});

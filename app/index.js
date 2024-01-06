@@ -38,7 +38,6 @@ class App {
 
 		this.page = this.pages.get(this.template);
 		this.page.create();
-		this.page.show();
 	}
 
 	createPreloader() {
@@ -83,6 +82,8 @@ class App {
 
 	onPreloaded() {
 		this.preloader.destroy();
+		this.page.show();
+		document.body.classList.remove("lenis-stopped");
 	}
 
 	addLinkListeners() {

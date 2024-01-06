@@ -38,7 +38,7 @@ html(lang=`en`)
 		style
 			include ../public/main.min.css
 			
-	body
+	body(class="lenis-stopped")
 		include ./partials/preloader
 		header(class=`${noHeaderLogo.includes(template) ? "no-logo navigation--" + template :""} navigation navigation--header`) 
 			if (!noHeader.includes(template))
