@@ -6,6 +6,7 @@ export default class Indents extends Animation {
 	constructor({ element, elements }) {
 		super({ element, elements });
 		this.lines;
+		GSAP.registerPlugin(CustomEase);
 	}
 
 	animateIn() {

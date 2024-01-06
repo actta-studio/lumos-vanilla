@@ -52,6 +52,7 @@ class App {
 		await this.page.hide();
 		const request = await window.fetch(url);
 
+
 		if (request.status === 200) {
 			const html = await request.text();
 			// create a new div element

@@ -14,8 +14,9 @@ export default class Page {
 		};
 
 		this.lenis = new Lenis({
-			lerp: 0.2,
-			wheelMultiplier: 0,
+			// duration: 1.2,
+			easing: (x) =>
+				x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2,
 		});
 	}
 
