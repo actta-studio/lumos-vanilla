@@ -129,3 +129,12 @@ html.lenis {
 body.lenis-stopped {
 	overflow: hidden;
 }
+
+// Tweakpane
+
+.tp-dfwv {
+	position: fixed !important;
+	top: var(--layout-spacing);
+	right: var(--layout-spacing);
+	z-index: z("dev");
+}

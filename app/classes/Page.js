@@ -1,6 +1,7 @@
 import { each, map } from "lodash";
 import GSAP from "gsap";
 import Lenis from "@studio-freight/lenis";
+import { Pane } from "tweakpane";
 
 import Indents from "animations/Indents";
 
@@ -13,10 +14,13 @@ export default class Page {
 			animatedIndents: "[data-animation='indents']",
 		};
 
+		this.PARAMS = {
+			easingFunction:
+				"x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2",
+		};
+
 		this.lenis = new Lenis({
-			// duration: 1.2,
-			easing: (x) =>
-				x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2,
+			easing: new Function("x", `return ${this.PARAMS.easingFunction}`),
 		});
 	}
 
