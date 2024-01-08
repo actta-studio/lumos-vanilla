@@ -1,7 +1,6 @@
 import { each, map } from "lodash";
 import GSAP from "gsap";
 import Lenis from "@studio-freight/lenis";
-import { Pane } from "tweakpane";
 
 import Indents from "animations/Indents";
 
@@ -18,13 +17,35 @@ export default class Page {
 			easingFunction:
 				"x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2",
 		};
+	}
 
+	raf(time) {
+		this.lenis.raf(time);
+		requestAnimationFrame(this.raf);
+	}
+
+	initLenis() {
 		this.lenis = new Lenis({
 			easing: new Function("x", `return ${this.PARAMS.easingFunction}`),
 		});
+
+		this.raf = this.raf.bind(this);
+		requestAnimationFrame(this.raf);
+
+		this.lenis.scrollTo(0, {
+			immediate: true,
+		});
+	}
+
+	destroy() {
+		this.lenis.scrollTo(0, {
+			immediate: true,
+		});
+		this.lenis.destroy();
 	}
 
 	create() {
+		this.initLenis();
 		this.element = document.querySelector(this.selector);
 		this.elements = new Map();
 
@@ -50,9 +71,15 @@ export default class Page {
 		this.createAnimations();
 	}
 
-	createAnimations() {
-		// console.log(this.elements.get("animatedIndents"));
+	assignImages() {
+		this.images = Array.from(this.element.querySelectorAll("img"));
 
+		each(this.images, (image) => {
+			image.src = image.getAttribute("data-src");
+		});
+	}
+
+	createAnimations() {
 		this.animatedIndents = map(
 			this.elements.get("animatedIndents"),
 			(element) => {
@@ -61,13 +88,9 @@ export default class Page {
 				});
 			}
 		);
-
-		// console.log(this.animatedIndents);
 	}
 
 	show() {
-		window.scrollTo(0, 0);
-
 		return new Promise((resolve) => {
 			this.animateIn = GSAP.timeline();
 
@@ -76,7 +99,6 @@ export default class Page {
 			});
 
 			this.animateIn.call((_) => {
-				this.initLenis();
 				resolve();
 			});
 		});
@@ -91,18 +113,9 @@ export default class Page {
 			});
 
 			this.animateOut.call((_) => {
+				this.destroy();
 				resolve();
 			});
 		});
-	}
-
-	raf(time) {
-		this.lenis.raf(time);
-		requestAnimationFrame(this.raf.bind(this));
-	}
-
-	initLenis() {
-		this.lenis.on("scroll", (e) => {});
-		requestAnimationFrame(this.raf.bind(this));
 	}
 }

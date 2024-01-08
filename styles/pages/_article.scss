@@ -2,6 +2,7 @@
 	padding: 0 var(--layout-spacing);
 	padding-top: 19rem;
 	margin-bottom: 5.9rem;
+	opacity: 0;
 
 	@include media("<=tablet") {
 		padding-top: 12.1rem;

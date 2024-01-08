@@ -52,7 +52,6 @@ class App {
 		await this.page.hide();
 		const request = await window.fetch(url);
 
-
 		if (request.status === 200) {
 			const html = await request.text();
 			// create a new div element
@@ -74,6 +73,7 @@ class App {
 
 			this.page = this.pages.get(this.template);
 			this.page.create();
+			this.page.assignImages();
 			this.page.show();
 			this.addLinkListeners();
 		} else {
