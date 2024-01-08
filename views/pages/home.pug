@@ -30,9 +30,9 @@ block content
 				if (section.slice_type == 'product_showcase')
 					- productShowcaseIndex++
 					section.product-showcase
-						.product-showcase__wrapper(class=`product-showcase__wrapper--${section.primary.type.toLowerCase()}`)
+						.product-showcase__wrapper(data-animation='images' class=`product-showcase__wrapper--${section.primary.type.toLowerCase()}`)
 							each item, index in section.items
-								figure.product-showcase__item(data-animation='images')
+								figure.product-showcase__item()
 									picture
 										source(srcset=item.image.url+"&w=0.2" media="(max-width: 430px)")
 										source(srcset=item.image.url+"&w=0.65" media="(max-width: 767px)")

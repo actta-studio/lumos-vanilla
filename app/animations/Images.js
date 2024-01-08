@@ -13,15 +13,17 @@ export default class Images extends Animation {
 		let timeline = GSAP.timeline();
 
 		let prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+		let q = GSAP.utils.selector(this.element);
 
 		if (prefersReduced.matches) {
-			timeline.from(this.element, {
+			timeline.from(q("figure"), {
 				autoAlpha: 0,
 				ease: CustomEase.create("custom", "0.4, 0, 0.22, 1"),
 			});
 		} else {
-			timeline.from(this.element, {
+			timeline.from(q("figure"), {
 				yPercent: 10,
+				stagger: 0.05,
 				autoAlpha: 0,
 				ease: CustomEase.create("custom", "0.68, -0.55, 0.265, 1.55"),
 			});
