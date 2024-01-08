@@ -21,7 +21,7 @@ export default class Images extends Animation {
 			});
 		} else {
 			timeline.from(this.element, {
-				yPercent: 30,
+				yPercent: 10,
 				autoAlpha: 0,
 				ease: CustomEase.create("custom", "0.68, -0.55, 0.265, 1.55"),
 			});
