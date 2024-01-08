@@ -32,7 +32,7 @@ block content
 					section.product-showcase
 						.product-showcase__wrapper(class=`product-showcase__wrapper--${section.primary.type.toLowerCase()}`)
 							each item, index in section.items
-								figure.product-showcase__item
+								figure.product-showcase__item(data-animation='images')
 									picture
 										source(srcset=item.image.url+"&w=0.2" media="(max-width: 430px)")
 										source(srcset=item.image.url+"&w=0.65" media="(max-width: 767px)")

@@ -18,7 +18,6 @@ export default class Preloader extends Component {
 	}
 
 	createLoader() {
-		console.log(this.elements.get("images"));
 		each(this.elements.get("images"), (element) => {
 			element.onload = (_) => this.onAssetLoaded(element);
 			element.src = element.getAttribute("data-src");
@@ -44,17 +43,25 @@ export default class Preloader extends Component {
 				delay: 1.5,
 			});
 
-			this.animateOut.to(this.elements.get("progress"), {
-				yPercent: 100,
-				duration: 0.75,
-				ease: "expo.out",
-				onComplete: resolve,
-			});
-			// .to(this.element, {
-			// 	autoAlpha: 0,
-			// 	duration: 1,
-			// 	ease: "power2.inOut",
-			// });
+			let prefersReduced = window.matchMedia(
+				"(prefers-reduced-motion: reduce)"
+			);
+
+			if (prefersReduced.matches) {
+				this.animateOut.to(this.elements.get("progress"), {
+					autoAlpha: 0,
+					duration: 0.75,
+					ease: "expo.out",
+					onComplete: resolve,
+				});
+			} else {
+				this.animateOut.to(this.elements.get("progress"), {
+					yPercent: 100,
+					duration: 0.75,
+					ease: "expo.out",
+					onComplete: resolve,
+				});
+			}
 
 			this.animateOut.call((_) => this.emit("completed"));
 		});

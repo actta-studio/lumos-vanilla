@@ -3,6 +3,7 @@ import GSAP from "gsap";
 import Lenis from "@studio-freight/lenis";
 
 import Indents from "animations/Indents";
+import Images from "animations/Images";
 
 export default class Page {
 	constructor({ id, element, elements }) {
@@ -11,6 +12,7 @@ export default class Page {
 		this.selectorChildren = {
 			...elements,
 			animatedIndents: "[data-animation='indents']",
+			animatedImages: "[data-animation='images']",
 		};
 
 		this.PARAMS = {
@@ -84,6 +86,15 @@ export default class Page {
 			this.elements.get("animatedIndents"),
 			(element) => {
 				return new Indents({
+					element,
+				});
+			}
+		);
+
+		this.animatedImages = map(
+			this.elements.get("animatedImages"),
+			(element) => {
+				return new Images({
 					element,
 				});
 			}

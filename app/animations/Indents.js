@@ -2,11 +2,11 @@ import GSAP from "gsap";
 import Animation from "classes/Animation";
 import { CustomEase } from "gsap/all";
 
+GSAP.registerPlugin(CustomEase);
+
 export default class Indents extends Animation {
 	constructor({ element, elements }) {
 		super({ element, elements });
-		this.lines;
-		GSAP.registerPlugin(CustomEase);
 	}
 
 	animateIn() {
@@ -39,13 +39,20 @@ export default class Indents extends Animation {
 					)
 				);
 
-				indents.from(this.lines, {
-					xPercent: -5,
-					stagger: 0.1,
-					autoAlpha: 0,
-					transformOrigin: "50% 50%",
-					ease: CustomEase.create("custom", "0.4, 0, 0.22, 1"),
-				});
+				if (reduceMotion) {
+					indents.from(this.lines, {
+						autoAlpha: 0,
+						ease: CustomEase.create("custom", "0.4, 0, 0.22, 1"),
+					});
+				} else {
+					indents.from(this.lines, {
+						xPercent: -5,
+						stagger: 0.1,
+						autoAlpha: 0,
+						transformOrigin: "50% 50%",
+						ease: CustomEase.create("custom", "0.4, 0, 0.22, 1"),
+					});
+				}
 			}
 		);
 	}
