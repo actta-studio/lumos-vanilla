@@ -14,8 +14,9 @@ export default class Animation extends Component {
 				if (entry.isIntersecting) {
 					console.log("intersecting");
 					this.animateIn();
-					this.observer.unobserve(this.element);
+					// this.observer.unobserve(this.element);
 				} else {
+					this.animateOut();
 					console.log("not intersecting");
 				}
 			});

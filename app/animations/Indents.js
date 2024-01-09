@@ -7,9 +7,13 @@ GSAP.registerPlugin(CustomEase);
 export default class Indents extends Animation {
 	constructor({ element, elements }) {
 		super({ element, elements });
+		this.lines;
 	}
 
 	animateIn() {
+
+		if(this.isAnimatedIn) return;
+
 		let mm = GSAP.matchMedia();
 
 		mm.add(
@@ -40,22 +44,40 @@ export default class Indents extends Animation {
 				);
 
 				if (reduceMotion) {
-					indents.from(this.lines, {
-						autoAlpha: 0,
-						ease: CustomEase.create("custom", "0.4, 0, 0.22, 1"),
-					});
+					indents.fromTo(
+						this.lines,
+						{
+							autoAlpha: 0,
+						},
+						{
+							autoAlpha: 1,
+							ease: CustomEase.create("custom", "0.4, 0, 0.22, 1"),
+						}
+					);
 				} else {
-					indents.from(this.lines, {
-						xPercent: -5,
-						stagger: 0.1,
-						autoAlpha: 0,
-						transformOrigin: "50% 50%",
-						ease: CustomEase.create("custom", "0.4, 0, 0.22, 1"),
-					});
+					indents.fromTo(
+						this.lines,
+						{
+							xPercent: -5,
+							autoAlpha: 0,
+						},
+						{
+							xPercent: 0,
+							autoAlpha: 1,
+							stagger: 0.1,
+							transformOrigin: "50% 50%",
+							ease: CustomEase.create("custom", "0.4, 0, 0.22, 1"),
+						}
+					);
 				}
 			}
 		);
 	}
 
-	animateOut() {}
+	animateOut() {
+		this.isAnimatedIn = false;
+		GSAP.set(this.lines, {
+			autoAlpha: 0,
+		});
+	}
 }

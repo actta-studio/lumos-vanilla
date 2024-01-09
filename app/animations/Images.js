@@ -10,18 +10,20 @@ export default class Images extends Animation {
 	}
 
 	animateIn() {
-		let timeline = GSAP.timeline();
-
 		let prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)");
 		let q = GSAP.utils.selector(this.element);
 
+		GSAP.set(q("figure"), {
+			autoAlpha: 1,
+		});
+
 		if (prefersReduced.matches) {
-			timeline.from(q("figure"), {
+			GSAP.from(q("figure"), {
 				autoAlpha: 0,
 				ease: CustomEase.create("custom", "0.4, 0, 0.22, 1"),
 			});
 		} else {
-			timeline.from(q("figure"), {
+			GSAP.from(q("figure"), {
 				yPercent: 10,
 				stagger: 0.05,
 				autoAlpha: 0,
@@ -30,5 +32,12 @@ export default class Images extends Animation {
 		}
 	}
 
-	animateOut() {}
+	animateOut() {
+		let prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+		let q = GSAP.utils.selector(this.element);
+
+		GSAP.set(q("figure"), {
+			autoAlpha: 0,
+		});
+	}
 }
