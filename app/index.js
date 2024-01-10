@@ -7,11 +7,14 @@ import Article from "pages/article";
 import Contact from "pages/contact";
 import NotFound from "pages/notFound";
 import Preloader from "components/Preloader";
+import Navigation from "components/Navigation";
 
 class App {
 	constructor() {
-		this.createPreloader();
 		this.createContent();
+
+		this.createPreloader();
+		this.createNavigation();
 		this.createPages();
 
 		this.addLinkListeners();
@@ -48,6 +51,12 @@ class App {
 		this.preloader.once("completed", this.onPreloaded.bind(this));
 	}
 
+	createNavigation() {
+		this.navigation = new Navigation({
+			template: this.template,
+		});
+	}
+
 	async onChange(url) {
 		await this.page.hide();
 		const request = await window.fetch(url);
@@ -68,6 +77,9 @@ class App {
 				"data-template",
 				divContent.getAttribute("data-template")
 			);
+
+			this.navigation.onChange(this.template);
+
 			// assign the new content to the current content
 			this.content.innerHTML = divContent.innerHTML;
 
