@@ -4,7 +4,10 @@ block variables
 	- var template = 'home'
 
 block content
-	.home 
+	.home
+		.logo 
+			h1(aria-label="Lumos")
+				a.logo__link(href=Link(document.lang) aria-label="Lumos" draggable="false")		 
 		section.hero-placeholder
 		if document
 			- var collectionItemIndex = 0

@@ -40,7 +40,7 @@ html(lang=`en`)
 			
 	body(class="lenis-stopped")
 		include ./partials/preloader
-		header(class=`${noHeaderLogo.includes(template) ? "no-logo navigation--" + template :""} navigation navigation--header`) 
+		header(class=`${"navigation--" + template} navigation navigation--header`) 
 			if (!noHeader.includes(template))
 				include ./partials/header
 

@@ -16,7 +16,6 @@ const {
 	handleLinkResolver,
 	noHeader,
 	noFooter,
-	noHeaderLogo,
 	handleLanguageDisplay,
 	handleShowcaseImage,
 } = require("./config/site-config");
@@ -34,7 +33,6 @@ app.use((req, res, next) => {
 	res.locals.Link = handleLinkResolver;
 	res.locals.noHeader = noHeader;
 	res.locals.noFooter = noFooter;
-	res.locals.noHeaderLogo = noHeaderLogo;
 	res.locals.Lang = handleLanguageDisplay;
 	res.locals.URL = handleShowcaseImage;
 	next();

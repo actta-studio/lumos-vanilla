@@ -1,4 +1,16 @@
 .home {
 	position: relative;
 	opacity: 0;
+
+	.logo {
+		margin-top: 11rem;
+
+		@include media("<=tablet") {
+			margin-top: 6.9rem;
+		}
+
+		@include media("<=phone") {
+			margin-top: 6.1rem;
+		}
+	}
 }

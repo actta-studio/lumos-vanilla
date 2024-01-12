@@ -9,18 +9,6 @@
 	&--header {
 		padding: 0 var(--layout-spacing);
 
-		.logo {
-			margin-top: 11rem;
-
-			@include media("<=tablet") {
-				margin-top: 6.9rem;
-			}
-
-			@include media("<=phone") {
-				margin-top: 6.1rem;
-			}
-		}
-
 		.nav {
 			padding: var(--layout-spacing);
 			z-index: z("navigation");
