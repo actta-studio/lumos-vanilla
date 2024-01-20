@@ -1,6 +1,6 @@
 import GSAP from "gsap";
 import Animation from "classes/Animation";
-import { CustomEase } from "gsap/all";
+import CustomEase from "gsap/CustomEase";
 
 GSAP.registerPlugin(CustomEase);
 
