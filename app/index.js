@@ -8,6 +8,9 @@ import Contact from "pages/contact";
 import NotFound from "pages/notFound";
 import Preloader from "components/Preloader";
 import Navigation from "components/Navigation";
+import Grid from "components/Grid";
+import { ColorsManager } from "classes/Colors";
+import Cursor from "./components/Cursor";
 
 class App {
 	constructor() {
@@ -16,14 +19,26 @@ class App {
 		this.createPreloader();
 		this.createNavigation();
 		this.createPages();
+		this.createDesignGrid();
+		// this.createCursor();
 
 		this.addLinkListeners();
 	}
 
-	// selects the main content div wrapper
 	createContent() {
 		this.content = document.querySelector("#content");
 		this.template = this.content.getAttribute("data-template");
+	}
+
+	createCursor() {
+		this.cursor = new Cursor({
+			element: ".cursor",
+		});
+	}
+
+	createDesignGrid() {
+		this.grid = new Grid(5);
+		this.grid.create();
 	}
 
 	// creates pages by storing them in a new Map() with key value pairs
@@ -57,19 +72,17 @@ class App {
 		});
 	}
 
-	async onChange(url) {
+	async onChange({ url, push = true }) {
 		await this.page.hide();
 		const request = await window.fetch(url);
 
 		if (request.status === 200) {
 			const html = await request.text();
-			// create a new div element
 			const div = document.createElement("div");
-
-			// set the innerHTML of the div to the html that was fetched
+			if (push) {
+				window.history.pushState({}, "", url);
+			}
 			div.innerHTML = html;
-
-			// get the content div from the new html
 			const divContent = div.querySelector("#content");
 			this.template = divContent.getAttribute("data-template");
 
@@ -85,7 +98,6 @@ class App {
 
 			this.page = this.pages.get(this.template);
 			this.page.create();
-			this.page.assignImages();
 			this.page.show();
 			this.addLinkListeners();
 		} else {
@@ -99,6 +111,18 @@ class App {
 		document.body.classList.remove("lenis-stopped");
 	}
 
+	onPopState() {
+		this.onChange({ url: window.location.pathname, push: false });
+	}
+
+	addEventListeners() {
+		window.addEventListener("popstate", this.onPopState.bind(this));
+	}
+
+	removeEventListeners() {
+		window.removeEventListener("popstate", this.onPopState.bind(this));
+	}
+
 	addLinkListeners() {
 		const links = document.querySelectorAll("a");
 
@@ -107,7 +131,9 @@ class App {
 				event.preventDefault();
 				const { href } = link;
 
-				this.onChange(href);
+				console.log("link =----> ", href);
+
+				this.onChange({ url: href });
 			};
 		});
 	}
