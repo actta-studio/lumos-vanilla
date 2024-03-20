@@ -12,6 +12,8 @@ const favicon = require("serve-favicon");
 
 const prismic = require("@prismicio/client");
 const port = 3000;
+const UAParser = require("ua-parser-js");
+
 const {
 	handleLinkResolver,
 	noHeader,
@@ -26,6 +28,20 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
 app.use((req, res, next) => {
+	const ua = UAParser(req.headers["user-agent"]);
+
+	res.locals.isDesktop = ua.device.type === undefined;
+	res.locals.isTablet = ua.device.type === "tablet";
+	res.locals.isPhone = ua.device.type === "mobile";
+
+	console.log(
+		"ua - ",
+		ua.device.type,
+		res.locals.isDesktop,
+		res.locals.isTablet,
+		res.locals.isPhone
+	);
+
 	if (req.query.lang) {
 		store.set("lang", req.query.lang);
 	}
