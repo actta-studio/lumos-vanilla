@@ -41,6 +41,16 @@
 	display: grid;
 	place-items: center;
 
+	@include media("<=tablet") {
+		margin-top: 12.8rem;
+		margin-bottom: 16.5rem;
+	}
+
+	@include media("<=phone") {
+		margin-top: 6.6rem;
+		margin-bottom: 13.9rem;
+	}
+
 	img {
 		width: auto;
 		height: 59.7rem;

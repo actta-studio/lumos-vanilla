@@ -6,7 +6,7 @@ import CustomEase from "gsap/CustomEase";
 
 export default class Products extends Animation {
 	constructor({ element, elements }) {
-		super({ element, elements });
+		super({ element, elements, threshold: 0.4 });
 	}
 
 	animateIn() {

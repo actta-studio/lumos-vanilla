@@ -65,7 +65,8 @@ export default class Home extends Page {
 
 				if (
 					rect.top <=
-						(window.innerHeight || document.documentElement.clientHeight) &&
+						(window.innerHeight || document.documentElement.clientHeight) -
+							(window.innerWidth <= 768 ? 900 : 0) &&
 					rect.bottom >= 0
 				) {
 					GSAP.from(element, {
@@ -73,7 +74,6 @@ export default class Home extends Page {
 						yPercent: 30,
 						ease: CustomEase.create("custom", "0.4, 0, 0.22, 1"),
 					});
-					return;
 				} else {
 					return new Products({
 						element,
