@@ -17,11 +17,11 @@ block content
 							li.links__item
 								span.links__item__label=item.label
 								if item.link_type==="email"
-									a.links__item__link(href='mailto:'+item.value data-state="disabled")=item.value
+									a.links__item__link(href='mailto:'+item.value data-state="disabled" data-)=item.value
 								else if item.link_type==="website"
-									a.links__item__link(target="_blank" href='https://'+item.value data-state="disabled")=item.value
+									a.links__item__link(target="_blank" href='https://'+item.value data-link="external")=item.value
 								else
-									a.links__item__link(target="_blank" href='https://instagram.com/'+item.value data-state="disabled")="@"+item.value
+									a.links__item__link(target="_blank" href='https://instagram.com/'+item.value data-link="external")="@"+item.value
 				figure.image
 					img(data-src=document.data.image.url alt=document.data.image.alt draggable="false")
 					//- TODO: IMAGE OPTIMIZATION
