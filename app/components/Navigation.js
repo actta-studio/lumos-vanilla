@@ -10,6 +10,7 @@ export default class Navigation extends Component {
 				// toggle: document.querySelector(".nav--collapsed .nav-toggle"),
 				// lines: document.querySelectorAll(".nav--collapsed .nav-toggle span"),
 				menu: document.querySelector(".nav--collapsed .menu"),
+				clock: document.querySelector(".nav .time-data"),
 			},
 		});
 
@@ -17,6 +18,7 @@ export default class Navigation extends Component {
 
 		this.onClickEvent = this.toggle.bind(this);
 		this.onResizeEvent = this.resize.bind(this);
+		this.addTime();
 
 		console.log(this.elements.get("links"));
 
@@ -96,6 +98,30 @@ export default class Navigation extends Component {
 		);
 
 		this.addEventListeners();
+	}
+
+	addTime() {
+		const updateClock = () => {
+			const date = new Date();
+
+			// Convert to Montreal time
+			const options = {
+				timeZone: "America/Toronto",
+				hour: "2-digit",
+				minute: "2-digit",
+				hour12: false,
+			};
+			const formatter = new Intl.DateTimeFormat("en-CA", options);
+
+			// Update clock
+			this.elements.get("clock").textContent =
+				formatter.format(date) + " Montreal, CA";
+
+			// Update clock every minute
+			setTimeout(updateClock, 60000);
+		};
+
+		updateClock();
 	}
 
 	reinitialize() {

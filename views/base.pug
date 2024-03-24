@@ -64,12 +64,12 @@ html(lang=`en` class=`${isDesktop ? 'desktop' : isTablet ? 'tablet' : 'phone'}`)
 
 
 		//- TODO: Consent Manager
-		//- script(async='' src='https://www.googletagmanager.com/gtag/js?id=G-EFZYR4Z6NX')
-		//- 	script.
-		//- 		window.dataLayer = window.dataLayer || [];
-		//- 		function gtag(){dataLayer.push(arguments);}
-		//- 		gtag('js', new Date());
-		//- 		gtag('config', 'G-EFZYR4Z6NX');
+		script(async='' src='https://www.googletagmanager.com/gtag/js?id=G-EFZYR4Z6NX')
+			script.
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'G-EFZYR4Z6NX');
 
 			
 
