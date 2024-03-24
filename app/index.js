@@ -190,7 +190,9 @@ class App {
 		});
 
 		const links = Array.from(allLinks).filter(
-			(link) => link.getAttribute("data-state") !== "disabled"
+			(link) =>
+				link.getAttribute("data-state") !== "disabled" &&
+				link.getAttribute("data-link") !== "external"
 		);
 
 		each(links, (link) => {
