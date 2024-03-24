@@ -71,15 +71,15 @@ export default class Shop extends Page {
 	async fetchProductInfo({ url, push = true }) {
 		// maybe zoom out content and slide in modal
 
-		GSAP.to("body", {
-			scale: 0.985,
-			duration: 0.5,
-			ease: "power2.inOut",
-		});
+		// GSAP.to("body", {
+		// 	scale: 0.985,
+		// 	duration: 0.5,
+		// 	ease: "power2.inOut",
+		// });
 
 		// slide in product modal
 
-		// return;
+		return;
 
 		const request = await window.fetch(url);
 
