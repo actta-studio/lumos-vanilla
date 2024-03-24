@@ -1,7 +1,14 @@
 import Page from "classes/Page";
 
 export default class Contact extends Page {
-	constructor() {
-		super({ id: "contact", element: ".contact",  });
+	constructor({ lenis }) {
+		super({ id: "contact", element: ".contact" });
+
+		this.lenis = lenis;
+	}
+
+	show() {
+		super.show();
+		this.lenis.start();
 	}
 }

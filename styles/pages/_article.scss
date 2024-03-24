@@ -1,4 +1,5 @@
 .press-release {
+	@extend %page;
 	padding: 0 var(--layout-spacing);
 	padding-top: 19rem;
 	margin-bottom: 5.9rem;

@@ -12,9 +12,10 @@ module.exports = {
 		store.set("lang", lang || "en-us");
 	},
 	handleLinkResolver: (doc) => {
-		if (typeof doc === "string") {
-			return doc;
-		} else if (doc.type === "shop") {
+		// if (typeof doc === "string") {
+		// 	return doc;
+		// } else
+		if (doc.type === "shop") {
 			return `/${doc.lang}/shop`;
 		} else if (doc.type === "lookbook") {
 			return `/${doc.lang}/lookbook`;
@@ -37,13 +38,5 @@ module.exports = {
 			default:
 				return "En";
 		}
-	},
-	handleShowcaseImage: (item, showcaseIndex, imageIndex, type) => {
-		const showcaseKey = `ps${showcaseIndex}-${imageIndex}-${type}`;
-		if (imageIndex === 1) {
-			console.log(item.image);
-		}
-		// console.log(`${showcaseIndex} - ${imageIndex} - ${type}`, showcaseImages);
-		// return showcaseImages;
 	},
 };

@@ -16,6 +16,8 @@
 	display: flex;
 	flex-direction: row;
 	gap: 1.7rem;
+	align-items: center;
+	overflow: hidden;
 
 	@include media("<=tablet") {
 		gap: 0.6rem;
@@ -27,12 +29,21 @@
 }
 
 .featured-product {
+	--spacing: 1.7rem;
 	display: block;
 	position: relative;
 	flex: 1 0 auto;
 
 	width: 49.1rem;
 	height: 30.7rem;
+
+	@include media("<=tablet") {
+		--spacing: 0.6rem;
+	}
+
+	@include media("<=phone") {
+		--spacing: 0.4rem;
+	}
 
 	picture {
 		display: block;

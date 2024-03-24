@@ -1,18 +1,16 @@
 import GSAP from "gsap";
 import Animation from "classes/Animation";
-import { CustomEase } from "gsap/all";
-
-GSAP.registerPlugin(CustomEase);
+import CustomEase from "gsap/CustomEase";
 
 export default class Indents extends Animation {
 	constructor({ element, elements }) {
-		super({ element, elements });
+		super({ element, elements, threshold: 0.7 });
 		this.lines;
+		this.timeline = GSAP.timeline();
 	}
 
 	animateIn() {
-
-		if(this.isAnimatedIn) return;
+		if (this.isAnimatedIn) return;
 
 		let mm = GSAP.matchMedia();
 
@@ -74,10 +72,5 @@ export default class Indents extends Animation {
 		);
 	}
 
-	animateOut() {
-		this.isAnimatedIn = false;
-		GSAP.set(this.lines, {
-			autoAlpha: 0,
-		});
-	}
+	animateOut() {}
 }

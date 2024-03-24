@@ -31,8 +31,11 @@ $section-spacing: 45rem;
 
 $z-indexes: (
 	"dev",
+	"page-transition",
+	"cursor",
 	"preloader",
+	"product-showcase",
 	"navigation",
 	"content",
-	"unsupported",
+	"unsupported"
 );

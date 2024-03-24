@@ -6,6 +6,11 @@
 	height: 100%;
 }
 
+%page {
+	opacity: 0;
+	visibility: hidden;
+}
+
 %center {
 	display: flex;
 	align-items: center;

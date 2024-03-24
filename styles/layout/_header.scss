@@ -77,10 +77,6 @@
 						}
 					}
 
-					.navigation-link:hover {
-						text-decoration: underline;
-					}
-
 					.navigation-link::after {
 						position: relative;
 						bottom: 0;
@@ -139,10 +135,6 @@
 						}
 					}
 
-					a:hover {
-						text-decoration: underline;
-					}
-
 					a::after {
 						content: ",";
 						font-size: inherit;
@@ -188,14 +180,65 @@
 				}
 
 				.nav-toggle {
+					position: relative;
 					display: flex;
+					width: 3.4rem;
 					flex-direction: column;
+					align-items: flex-end;
 					gap: 0.3rem;
+					z-index: 10;
+
+					transform-origin: calc(100% - 0.7rem) 50%;
 
 					span {
+						position: relative;
+						display: block;
 						width: 3.4rem;
 						height: 2px;
 						background-color: var(--theme-color);
+					}
+				}
+
+				.menu {
+					position: fixed;
+					top: 0;
+					left: 0;
+					width: 100vw;
+					height: 100dvh;
+					visibility: hidden;
+					transform: scaleY(0);
+					transform-origin: top;
+					background-color: $color-black;
+					z-index: 5;
+					color: $color-cararra;
+
+					.navigation-links {
+						position: absolute;
+						bottom: 23rem;
+						left: var(--layout-spacing);
+
+						display: flex;
+						flex-direction: column;
+						gap: 1rem;
+					}
+
+					.navigation-link {
+						display: flex;
+						align-items: center;
+
+						&__link {
+							font-size: 3.2rem;
+						}
+					}
+
+					.language-toggle {
+						position: absolute;
+						bottom: 2.8rem;
+						left: var(--layout-spacing);
+
+						a {
+							font-size: 1.2rem;
+						}
 					}
 				}
 			}
@@ -207,5 +250,16 @@
 	.logo {
 		display: none;
 		visibility: hidden;
+	}
+}
+
+@keyframes slide {
+	from {
+		opacity: 0;
+		transform: translateX(-5rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
 	}
 }

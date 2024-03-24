@@ -1,0 +1,21 @@
+.cursor {
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 0.5rem 1rem;
+	border-radius: 25px;
+	background-color: #363636;
+	color: #eceae5;
+	z-index: z("cursor");
+	pointer-events: none;
+	visibility: hidden;
+
+	font-size: 2rem;
+	text-transform: uppercase;
+}
+
+// [data-label]:hover,
+// [data-label],
+// [data-label] a {
+// 	cursor: none !important;
+// }

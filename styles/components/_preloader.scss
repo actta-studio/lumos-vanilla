@@ -1,18 +1,22 @@
 .preloader {
 	@extend %cover;
-	@extend %center;
 
 	position: fixed;
 
-	color: $color-white;
-	background-color: $color-cararra;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background-color: #eceae5;
+	color: #363636;
 	z-index: z("preloader");
 
 	p {
 		overflow: hidden;
 		text-align: center;
-		color: $color-black;
-		@extend %description-27;
+		vertical-align: bottom;
+		// color: $color-cararra;
+		font-size: 2.4rem;
 
 		@include media("<=tablet") {
 			font-size: 1.6rem;

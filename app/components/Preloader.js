@@ -18,15 +18,22 @@ export default class Preloader extends Component {
 	}
 
 	createLoader() {
+		if (this.elements.get("images").length === 0) {
+			this.elements.get("progress").innerHTML = "100%";
+			this.onLoaded();
+			return;
+		}
+
 		each(this.elements.get("images"), (element) => {
 			element.onload = (_) => this.onAssetLoaded(element);
 			element.src = element.getAttribute("data-src");
+			element.classList.add("loaded");
 		});
 	}
 
 	onAssetLoaded(image) {
 		this.length += 1;
-		const percent = this.length / this.elements.get("images").length;
+		const percent = this.length / (this.elements.get("images").length ?? 1);
 
 		const clampedPercent = Math.max(0, Math.min(percent * 100, 100));
 
@@ -56,10 +63,10 @@ export default class Preloader extends Component {
 				});
 			} else {
 				this.animateOut.to(this.elements.get("progress"), {
-					yPercent: 100,
-					duration: 0.75,
+					autoAlpha: 0,
 					ease: "expo.out",
 					onComplete: resolve,
+					delay: 0.5,
 				});
 			}
 

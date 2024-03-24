@@ -1,10 +1,10 @@
 if navigation
 	nav(class="nav nav--expanded")
-		a.tagline(href=Link(document.lang))=navigation.data.tagline
+		a.tagline(href=Link(navigation))=navigation.data.tagline
 		ul.navigation-links(class=`navigation-links--${document.lang}`)
 			each entry in navigation.data.list
 				li.navigation-link
-					a.navigation-link__link(href=Link(entry.link) data-animate="underline")=entry.text
+					a.navigation-link__link(href=Link(entry.link))=entry.text
 		.language-toggle(class=`language-toggle--${document.lang}`)
 			if(document.lang === "fr-ca")
 				each lang in document.alternate_languages
@@ -20,7 +20,19 @@ if navigation
 		.time 
 			p.time-data=navigation.data.location
 	nav(class="nav nav--collapsed")
-		button.nav-toggle 
+		button.nav-toggle(aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav" ) 
 			span
 			span
+		.menu(aria-hidden="true")
+			ul.navigation-links
+				each entry in navigation.data.list
+					li.navigation-link
+						a.navigation-link__link(href=Link(entry.link))=entry.text
+			.language-toggle
+				if(document.lang === "fr-ca")
+					each lang in document.alternate_languages
+						a.language-toggle__link(href=Link(lang)) ENGLISH
+				else
+					each lang in document.alternate_languages
+						a.language-toggle__link(href=Link(lang)) Français
 	

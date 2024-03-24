@@ -5,4 +5,13 @@ block variables
 
 block content
 	.product
-		p=document.data.title
+		button.product__toggle CLOSE
+		.product__info
+			.product__title LINOS
+			//- .product__descrition!=product.description.replace(/\n/g, '<br>')
+			ul.product__highlights
+				li.product__highlight
+					span.product__highlight-title Material:
+					span.product__highlight-value 100% cotton
+			a.product__cta Add to Cart
+		.product__images

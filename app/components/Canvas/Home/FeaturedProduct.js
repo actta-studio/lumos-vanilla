@@ -67,8 +67,6 @@ export default class FeaturedProduct {
 		const distance = x.start - x.end;
 
 		this.scroll.target = this.scroll.start - distance;
-
-		console.log("scroll", this.scroll.target);
 	}
 
 	onTouchUp({ x, y }) {}

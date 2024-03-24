@@ -1,7 +1,5 @@
 section.not-found {
 	@extend %cover;
-	background-color: #000;
-	color: $color-cararra;
 
 	display: flex;
 	flex-direction: column;
@@ -87,8 +85,7 @@ section.not-found {
 		}
 
 		@include media("<=phone") {
-			// TODO: MAKE TEXT UNDERLINED ON MOBILE
-			text-decoration: underline !important;
+			text-decoration: underline;
 			font-size: 1.4rem;
 			// SUGGESTED: 1.6rem
 		}

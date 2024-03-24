@@ -4,6 +4,9 @@ import Lenis from "@studio-freight/lenis";
 
 import Indents from "animations/Indents";
 import Images from "animations/Images";
+import Products from "animations/Products";
+
+import AsyncLoad from "classes/AsyncLoad";
 
 export default class Page {
 	constructor({ id, element, elements }) {
@@ -13,41 +16,12 @@ export default class Page {
 			...elements,
 			animatedIndents: "[data-animation='indents']",
 			animatedImages: "[data-animation='images']",
+			animatedProducts: "[data-animation='products']",
+			asyncImages: "[data-src]",
 		};
-
-		this.PARAMS = {
-			easingFunction:
-				"x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2",
-		};
-	}
-
-	raf(time) {
-		this.lenis.raf(time);
-		requestAnimationFrame(this.raf);
-	}
-
-	initLenis() {
-		this.lenis = new Lenis({
-			easing: new Function("x", `return ${this.PARAMS.easingFunction}`),
-		});
-
-		this.raf = this.raf.bind(this);
-		requestAnimationFrame(this.raf);
-
-		this.lenis.scrollTo(0, {
-			immediate: true,
-		});
-	}
-
-	destroy() {
-		this.lenis.scrollTo(0, {
-			immediate: true,
-		});
-		this.lenis.destroy();
 	}
 
 	create() {
-		this.initLenis();
 		this.element = document.querySelector(this.selector);
 		this.elements = new Map();
 
@@ -70,36 +44,47 @@ export default class Page {
 			}
 		});
 
-		this.createAnimations();
+		this.loadImages();
 	}
 
-	assignImages() {
-		this.images = Array.from(this.element.querySelectorAll("img"));
-
-		each(this.images, (image) => {
-			image.src = image.getAttribute("data-src");
-		});
+	loadImages() {
+		if (this.elements.get("asyncImages") instanceof window.HTMLImageElement) {
+			return new AsyncLoad({ element: this.elements.get("asyncImages") });
+		} else {
+			this.preloaders = map(this.elements.get("asyncImages"), (element) => {
+				return new AsyncLoad({ element });
+			});
+		}
 	}
 
-	createAnimations() {
-		this.animatedIndents = map(
-			this.elements.get("animatedIndents"),
-			(element) => {
-				return new Indents({
-					element,
-				});
-			}
-		);
+	// createAnimations() {
+	// 	// this.animatedIndents = map(
+	// 	// 	this.elements.get("animatedIndents"),
+	// 	// 	(element) => {
+	// 	// 		return new Indents({
+	// 	// 			element,
+	// 	// 		});
+	// 	// 	}
+	// 	// );
 
-		this.animatedImages = map(
-			this.elements.get("animatedImages"),
-			(element) => {
-				return new Images({
-					element,
-				});
-			}
-		);
-	}
+	// 	this.animatedImages = map(
+	// 		this.elements.get("animatedImages"),
+	// 		(element) => {
+	// 			return new Images({
+	// 				element,
+	// 			});
+	// 		}
+	// 	);
+
+	// 	this.animatedProducts = map(
+	// 		this.elements.get("animatedProducts"),
+	// 		(element) => {
+	// 			return new Products({
+	// 				element,
+	// 			});
+	// 		}
+	// 	);
+	// }
 
 	show() {
 		return new Promise((resolve) => {
@@ -128,5 +113,9 @@ export default class Page {
 				resolve();
 			});
 		});
+	}
+
+	destroy() {
+		// console.log("destroying page", this.id);
 	}
 }

@@ -1,3 +1,12 @@
 .product {
-	opacity: 0;
+	@extend %page;
+}
+
+.product__toggle {
+	position: fixed;
+	top: var(--layout-spacing);
+	right: var(--layout-spacing);
+
+	font-size: 1rem;
+	text-transform: uppercase;
 }

@@ -1,39 +1,73 @@
 import each from "lodash/each";
 
+import Detection from "classes/Detection";
+import Lenis from "@studio-freight/lenis";
+import GSAP from "gsap";
+
 import Home from "pages/home";
 import Shop from "pages/shop";
 import Product from "pages/product";
 import Article from "pages/article";
 import Contact from "pages/contact";
 import NotFound from "pages/notFound";
+
 import Preloader from "components/Preloader";
 import Navigation from "components/Navigation";
 import Grid from "components/Grid";
-import { ColorsManager } from "classes/Colors";
-import Cursor from "./components/Cursor";
+import Cursor from "components/Cursor";
+import Transition from "components/Transition";
+
+import CustomEase from "gsap/CustomEase";
+
+GSAP.registerPlugin(CustomEase);
 
 class App {
 	constructor() {
 		this.createContent();
 
+		this.initLenis();
 		this.createPreloader();
 		this.createNavigation();
 		this.createPages();
 		this.createDesignGrid();
-		// this.createCursor();
+		this.createCursor();
+		this.createTransition();
 
 		this.addLinkListeners();
+		this.addEventListeners();
 	}
 
 	createContent() {
 		this.content = document.querySelector("#content");
 		this.template = this.content.getAttribute("data-template");
+		this.navContent = document.querySelector("header");
 	}
 
 	createCursor() {
-		this.cursor = new Cursor({
-			element: ".cursor",
+		this.cursor = new Cursor();
+	}
+
+	initLenis() {
+		window.scrollTo(0, 0);
+		this.lenis = new Lenis({
+			easing: (x) => {
+				return -(Math.cos(Math.PI * x) - 1) / 2;
+			},
 		});
+
+		this.raf = this.raf.bind(this);
+		requestAnimationFrame(this.raf);
+
+		this.lenis.stop();
+	}
+
+	raf(time) {
+		this.lenis.raf(time);
+		requestAnimationFrame(this.raf);
+	}
+
+	createTransition() {
+		this.transition = new Transition();
 	}
 
 	createDesignGrid() {
@@ -41,39 +75,55 @@ class App {
 		this.grid.create();
 	}
 
-	// creates pages by storing them in a new Map() with key value pairs
+	suspendScroll() {
+		this.lenis.stop();
+	}
+
+	resumeScroll() {
+		this.lenis.start();
+	}
+
 	createPages() {
-		// create a new Map() to store the pages and what class they are going to initialize
 		this.pages = new Map();
 
-		// set the key value pairs for all existing pages
-		this.pages.set("home", new Home());
-		this.pages.set("shop", new Shop());
-		this.pages.set("product", new Product());
-		this.pages.set("article", new Article());
-		this.pages.set("contact", new Contact());
-		this.pages.set("404", new NotFound());
+		this.pages.set("home", new Home({ lenis: this.lenis }));
+		this.pages.set("shop", new Shop({ lenis: this.lenis }));
+		this.pages.set("product", new Product({ lenis: this.lenis }));
+		this.pages.set("article", new Article({ lenis: this.lenis }));
+		this.pages.set("contact", new Contact({ lenis: this.lenis }));
+		this.pages.set("404", new NotFound({ lenis: this.lenis }));
 
 		this.page = this.pages.get(this.template);
-		this.page.create();
+		this.page.create({ sourcePreloader: true });
 	}
 
 	createPreloader() {
 		this.preloader = new Preloader();
-		// TODO: Research closures and how they work
-		// element looses its scope when passed into the onPreloaded function
-		// basically binds the onPreloaded function to the preloader object so that it can be called
 		this.preloader.once("completed", this.onPreloaded.bind(this));
 	}
 
 	createNavigation() {
 		this.navigation = new Navigation({
 			template: this.template,
+			lenis: this.lenis,
 		});
 	}
 
 	async onChange({ url, push = true }) {
-		await this.page.hide();
+		if (url === window.location.href) return;
+
+		if (url.includes("/shop") && window.location.href.includes("/shop")) {
+			await this.pages.get("shop").animateOutProducts();
+		}
+
+		await this.navigation.onChange();
+
+		await this.transition.animateIn();
+		window.scrollTo(0, 0);
+
+		this.page.hide();
+		this.page.destroy();
+
 		const request = await window.fetch(url);
 
 		if (request.status === 200) {
@@ -86,19 +136,25 @@ class App {
 			const divContent = div.querySelector("#content");
 			this.template = divContent.getAttribute("data-template");
 
+			this.navigation.removeEventListeners();
+
+			const navDiv = div.querySelector("header");
+			this.navContent.innerHTML = navDiv.innerHTML;
+
+			this.navigation.addEventListeners();
+			this.navigation.reinitialize();
+
 			this.content.setAttribute(
 				"data-template",
 				divContent.getAttribute("data-template")
 			);
 
-			this.navigation.onChange(this.template);
-
-			// assign the new content to the current content
 			this.content.innerHTML = divContent.innerHTML;
 
 			this.page = this.pages.get(this.template);
-			this.page.create();
+			this.page.create({ sourcePreloader: false });
 			this.page.show();
+			this.transition.animateOut();
 			this.addLinkListeners();
 		} else {
 			console.log(404);
@@ -106,13 +162,13 @@ class App {
 	}
 
 	onPreloaded() {
+		window.scrollTo(0, 0);
 		this.preloader.destroy();
 		this.page.show();
-		document.body.classList.remove("lenis-stopped");
 	}
 
-	onPopState() {
-		this.onChange({ url: window.location.pathname, push: false });
+	async onPopState() {
+		await this.onChange({ url: window.location.pathname, push: false });
 	}
 
 	addEventListeners() {
@@ -124,18 +180,29 @@ class App {
 	}
 
 	addLinkListeners() {
-		const links = document.querySelectorAll("a");
+		const allLinks = document.querySelectorAll("a");
+		const disabledLinks = document.querySelectorAll("a[data-state='disabled']");
+
+		each(disabledLinks, (link) => {
+			link.onclick = (event) => {
+				event.preventDefault();
+			};
+		});
+
+		const links = Array.from(allLinks).filter(
+			(link) => link.getAttribute("data-state") !== "disabled"
+		);
 
 		each(links, (link) => {
 			link.onclick = (event) => {
 				event.preventDefault();
 				const { href } = link;
 
-				console.log("link =----> ", href);
-
 				this.onChange({ url: href });
 			};
 		});
+
+		this.navigation.reinitialize();
 	}
 }
 

@@ -5,4 +5,43 @@ block variables
 
 block content 
 	.shop
-		h1.shop__title Shop
+		.logo
+			a(href=Link(navigation))
+				svg(viewbox='0 0 1861 316' fill='none' xmlns='http://www.w3.org/2000/svg')
+					path(d='M518 0.800049V189C518 212.7 509.1 230.4 491.4 242.3C474.1 253.8 449.2 259.6 416.9 259.6C384.6 259.6 359.4 253.8 341.7 242.3C324 230.5 315.1 212.7 315.1 189V0.800049H225.1V193.8C225.1 221.9 233.8 245.2 251.2 263.8H113V0.800049H0V314.8H376.5V314.9L400.4 314.4C405.8 314.6 411.2 314.7 416.8 314.7C475.9 314.7 522.5 304.5 556.7 284C590.9 263.2 608 233.1 608 193.8V0.800049H518Z' fill='#363636')
+					path(d='M737 314.8V0.800049H817.9L930.3 189.5L1042.8 0.800049H1123.1V314.8H1042.8V110.5L953.6 260.7H907.2L817.4 110.5V314.8H737Z' fill='#363636')
+					path(d='M1849.1 187.6C1817.4 139.8 1722.1 135 1668 119.9C1646.3 112.9 1631.1 109.4 1629.8 88.2C1628.8 34.1 1799.8 58.9 1835 69.8V13.5C1765.7 -2.8 1638.6 -7.7 1581.5 23.4C1577.1 25.4 1573.1 27.6 1569.4 30.2C1538.4 10 1495.3 0 1440 0C1378.4 0 1331.9 12.5 1300.5 37.6C1269.1 62.6 1253.4 103.2 1253.4 159.3C1253.4 263.6 1315.6 315.7 1440.1 315.7C1482.7 315.7 1518 309.6 1546.1 297.3V298.3C1587.8 310.9 1637.9 314.7 1685.6 314.9C1779.5 317.4 1897.5 285.1 1849.1 187.6ZM1440 261C1368.6 261 1335.2 230.3 1335 159.2C1335.1 82.8 1366.1 55.6 1440 54.6C1513.8 55.6 1544.6 83.3 1544.9 159.2C1544.5 229.8 1511.3 261 1440 261ZM1745.8 254.8C1707.5 264.1 1650.7 262.4 1600.6 254.3C1616.6 231.8 1625.2 203 1626.5 168C1673.6 179.5 1731.4 187.3 1758.5 205.1C1775.1 219.4 1769.5 250.3 1745.8 254.8Z' fill='#363636')
+	
+		if document
+			- var collectionItemIndex = 0
+			each section, index in document.data.body
+				if(section.slice_type == "filters")
+					ul.shop__filters
+						li.shop__filter
+								a.shop__filter__link(href=Link(document) class="a--link") #{document.lang === 'en-us' ? 'ALL COLLECTION' : 'Toute la collection'}
+						each filter in section.items
+							li.shop__filter(class=`shop__filter--${document.lang}`)
+								a.shop__filter__link(href=Link(filter.collection) class="a--link")=filter.collection.data.collection_title
+			
+			.product-grid(data-page=products.page data-total=products.total_pages data-collection=products.collection)
+				each product, index in products.results
+					.product-grid__product(data-animation='products' class=`product-grid__product--${product.data.aspect_ratio}` data-label=product.data.title.replace(/^\d+-/, ''))
+						a.product-grid__product__wrapper(href='#'  data-state="disabled")
+							.product-grid__product__links
+								span.product-grid__product__link!=product.data.title.replace(/^\d+-/, '')
+								span.product-grid__product__link
+									| #{document.lang === 'en-us' ? 'VIEW' : 'VOIR'}
+							.product-grid__product__image
+								if (product.data.gallery.length > 1)
+									figure
+										picture
+											source(srcset=product.data.gallery[0].image.url+"&w=0.3" media="(max-width: 430px)")
+											source(srcset=product.data.gallery[0].image.url+"&w=0.5" media="(max-width: 767px)")
+											source(srcset=product.data.gallery[0].image.url+"&w=.85" media="(min-width: 768px)")
+											//- TODO: auto generate alt text
+											img(data-src=product.data.gallery[0].image.url draggable="false" alt=product.data.gallery[0].image.alt width=product.data.gallery[0].image.dimensions.width height=product.data.gallery[0].image.dimensions.height)
+								
+			.sentinel
+			img.loading-indicator(data-src=document.data.loading_indicator.url alt="loading indicator" class="active")
+
+

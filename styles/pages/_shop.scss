@@ -1,3 +1,1201 @@
 .shop {
+	--indicator-size: 5rem;
+	@extend %page;
+
+	position: relative;
+	padding: 0 var(--layout-spacing);
+	padding-top: 11rem;
 	opacity: 0;
+
+	@include media("<=tablet") {
+		--indicator-size: 3.5rem;
+		padding-top: 7rem;
+	}
+
+	@include media("<=phone") {
+		--indicator-size: 3rem;
+		padding-top: 6.1rem;
+	}
+}
+
+.shop__filters {
+	position: relative;
+	margin-top: 21rem;
+	display: block;
+	// note; remember this for media queries
+	height: 3.7rem;
+	margin-bottom: 29.7rem;
+	// margin-bottom: 29.7rem;
+
+	@include media("<=tablet") {
+		margin-bottom: 15.2rem;
+		margin-top: 15.4rem;
+	}
+
+	@include media("<=tablet") {
+		margin-bottom: 10.8rem;
+		margin-top: 8rem;
+	}
+}
+
+.shop__filters .shop__filter {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 2rem;
+	text-transform: uppercase;
+
+	@include media("<=tablet") {
+		font-size: 1.2rem;
+	}
+}
+
+.shop__filters .shop__filter:nth-child(1) {
+	left: 0;
+	font-size: 2.5rem;
+
+	// note: implement active state on links
+
+	@include media("<=tablet") {
+		font-size: 1.2rem;
+	}
+
+	@include media("<=phone") {
+		display: none;
+	}
+}
+
+.shop__filters .shop__filter:nth-child(2) {
+	right: 77.6rem;
+
+	@include media("<=tablet") {
+		right: 39.2rem;
+	}
+
+	@include media("<=phone") {
+		right: 20.6rem;
+	}
+}
+
+.shop__filters .shop__filter--fr-ca:nth-child(2) {
+	right: 77.8rem;
+
+	@include media("<=tablet") {
+		right: 39.6rem;
+	}
+
+	@include media("<=phone") {
+		right: 20.5rem;
+	}
+}
+
+.shop__filters .shop__filter:nth-child(3) {
+	right: 51.4rem;
+
+	@include media("<=tablet") {
+		right: 26rem;
+	}
+
+	@include media("<=phone") {
+		right: 10.2rem;
+	}
+}
+
+.shop__filters .shop__filter--fr-ca:nth-child(3) {
+	right: 51.5rem;
+
+	@include media("<=tablet") {
+		right: 26.2rem;
+	}
+
+	@include media("<=phone") {
+		right: 10rem;
+	}
+}
+
+.shop__filters .shop__filter:nth-child(4) {
+	right: 25.5rem;
+
+	@include media("<=tablet") {
+		right: 13rem;
+	}
+
+	@include media("<=phone") {
+		right: 0;
+	}
+}
+
+.shop__filters .shop__filter--fr-ca:nth-child(4) {
+	right: 26.4rem;
+
+	@include media("<=tablet") {
+		right: 13.4rem;
+	}
+
+	@include media("<=phone") {
+		right: 0;
+	}
+}
+
+.shop__filters .shop__filter:nth-child(5) {
+	right: 0;
+
+	@include media("<=phone") {
+		right: initial;
+		left: 0;
+	}
+}
+
+.shop .product-grid {
+	--column-size: 11;
+	--row-size: 17.5rem;
+	--gutter: 2rem;
+	position: relative;
+	padding-bottom: calc(14.2rem + (var(--indicator-size) * 2));
+
+	@include media("<=tablet") {
+		--row-size: 5.6rem;
+		// note; remember to redifine indicator size on tablet
+		padding-bottom: calc(15.9rem + (var(--indicator-size)));
+	}
+
+	@include media("<=phone") {
+		--column-size: 12;
+		--row-size: 4.1rem;
+		--gutter: 1rem;
+		padding-bottom: calc(15rem + (var(--indicator-size)));
+	}
+
+	display: grid;
+	grid-template-columns: repeat(var(--column-size), 1fr);
+	grid-auto-rows: var(--row-size);
+	grid-gap: var(--gutter);
+}
+
+.shop .product-grid[data-page="3"] {
+	padding-bottom: 17.2rem;
+
+	@include media("<=tablet") {
+		padding-bottom: 15.9rem;
+	}
+
+	@include media("<=phone") {
+		padding-bottom: 18.8rem;
+	}
+}
+
+.shop .product-grid[data-collection="table-lamps"] {
+	background-color: purple;
+	padding-bottom: 37.2rem;
+
+	// @include media("<=tablet") {
+	// 	padding-bottom: 15.9rem;
+	// }
+
+	@include media("<=phone") {
+		padding-bottom: 19.2rem;
+	}
+}
+
+@include media("<=phone") {
+	.shop
+		.product-grid[data-collection="table-lamps"]
+		.product-grid__product:nth-of-type(6) {
+		grid-row: 19 / 19;
+	}
+
+	.shop
+		.product-grid[data-collection="table-lamps"]
+		.product-grid__product:nth-of-type(8) {
+		grid-row: 24 / 24;
+	}
+
+	.shop
+		.product-grid[data-collection="table-lamps"]
+		.product-grid__product:nth-of-type(10) {
+		--height: 15.3rem;
+	}
+
+	.shop
+		.product-grid[data-collection="table-lamps"]
+		.product-grid__product:nth-of-type(11) {
+		grid-column: 2 / 2;
+		grid-row: 31 / 31;
+	}
+
+	.shop
+		.product-grid[data-collection="floor-lamps"]
+		.product-grid__product:nth-of-type(6) {
+		--width: 15.8rem;
+		--height: 15.8rem;
+	}
+
+	.shop
+		.product-grid[data-collection="night-lights"]
+		.product-grid__product:nth-of-type(2) {
+		grid-column: 5 / 5;
+		--width: 15.8rem;
+		--height: 15.8rem;
+	}
+
+	.shop
+		.product-grid[data-collection="night-lights"]
+		.product-grid__product:nth-of-type(4) {
+		grid-column: 1 / 1;
+		grid-row: 11 / 11;
+	}
+
+	.shop
+		.product-grid[data-collection="night-lights"]
+		.product-grid__product:nth-of-type(6) {
+		grid-row: 19 / 19;
+	}
+
+	.shop
+		.product-grid[data-collection="night-lights"]
+		.product-grid__product:nth-of-type(8) {
+		grid-row: 24 / 24;
+	}
+}
+
+// .shop .product-grid[data-collection="floor-lamps"] {
+// 	background-color: red;
+// }
+
+// .shop .product-grid[data-collection="night-lights"] {
+// 	background-color: green;
+// }
+
+// .shop .product-grid[data-collection="limited-edition"] {
+// 	background-color: yellowgreen;
+// }
+
+.product-grid__product {
+	position: relative;
+	visibility: hidden;
+}
+
+.product-grid__product .product-grid__product__wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+}
+
+.product-grid__product:nth-of-type(1) {
+	grid-column: 1 / 1;
+	grid-row: 1 / 1;
+
+	@include media("<=tablet") {
+		grid-column: 1 / 1;
+		grid-row: 1 / 1;
+	}
+
+	@include media("<=phone") {
+		grid-column: 1 / 1;
+		grid-row: 1 / 1;
+	}
+}
+
+.product-grid__product:nth-of-type(2) {
+	grid-column: -1 / -1;
+	grid-row: 1 / 1;
+
+	@include media("<=tablet") {
+		grid-column: -1 / -1;
+		grid-row: 1 / 1;
+	}
+
+	@include media("<=phone") {
+		grid-column: 6 / 6;
+		grid-row: 7 / 7;
+	}
+}
+
+.product-grid__product:nth-of-type(3) {
+	grid-column: 7 / 7;
+	grid-row: 3 / 3;
+
+	@include media("<=tablet") {
+		grid-column: 5 / 5;
+		grid-row: 2 / 2;
+	}
+
+	@include media("<=phone") {
+		grid-column: -1 / -1;
+		grid-row: 3 / 3;
+	}
+}
+
+.product-grid__product:nth-of-type(4) {
+	grid-column: 3 / 3;
+	grid-row: 6 / 6;
+
+	@include media("<=tablet") {
+		grid-column: 3 / 3;
+		grid-row: 7 / 7;
+	}
+
+	@include media("<=phone") {
+		grid-column: 1 / 1;
+		grid-row: 10 / 10;
+	}
+}
+
+.product-grid__product:nth-of-type(5) {
+	grid-column: -1 / -1;
+	grid-row: 6 / 6;
+
+	@include media("<=tablet") {
+		grid-column: -1 / -1;
+		grid-row: 6 / 6;
+	}
+
+	@include media("<=phone") {
+		grid-column: -1 / -1;
+		grid-row: 13 / 13;
+	}
+}
+
+.product-grid__product:nth-of-type(6) {
+	grid-column: 1 / 1;
+	grid-row: 9 / 9;
+
+	@include media("<=tablet") {
+		grid-column: 1 / 1;
+		grid-row: 10 / 10;
+	}
+
+	@include media("<=phone") {
+		grid-column: 1 / 1;
+		grid-row: 17 / 17;
+	}
+}
+
+.product-grid__product:nth-of-type(7) {
+	grid-column: -1 / -1;
+	grid-row: 10 / 10;
+
+	@include media("<=tablet") {
+		grid-column: -1 / -1;
+		grid-row: 11 / 11;
+	}
+
+	@include media("<=phone") {
+		grid-column: -1 / -1;
+		grid-row: 20 / 20;
+	}
+}
+
+.product-grid__product:nth-of-type(8) {
+	grid-column: 7 / 7;
+	grid-row: 12 / 12;
+
+	@include media("<=tablet") {
+		grid-column: 5 / 5;
+		grid-row: 13 / 13;
+	}
+
+	@include media("<=phone") {
+		grid-column: 6 / 6;
+		grid-row: 23 / 23;
+	}
+}
+
+.product-grid__product:nth-of-type(9) {
+	grid-column: 1 / 1;
+	grid-row: 14 / 14;
+
+	@include media("<=tablet") {
+		grid-column: 1 / 1;
+		grid-row: 17 / 17;
+	}
+
+	@include media("<=phone") {
+		grid-column: -1 / -1;
+		grid-row: 28 / 28;
+	}
+}
+
+.product-grid__product:nth-of-type(10) {
+	grid-column: 9 / 9;
+	grid-row: 16 / 16;
+
+	@include media("<=tablet") {
+		grid-column: 9 / 9;
+		grid-row: 19 / 19;
+	}
+
+	@include media("<=phone") {
+		grid-column: 1 / 1;
+		grid-row: 26 / 26;
+	}
+}
+
+.product-grid__product:nth-of-type(11) {
+	grid-column: 1 / 1;
+	grid-row: 18 / 18;
+
+	@include media("<=tablet") {
+		grid-column: 1 / 1;
+		grid-row: 22 / 22;
+	}
+
+	@include media("<=phone") {
+		grid-column: 1 / 1;
+		grid-row: 32 / 32;
+	}
+}
+
+.product-grid__product:nth-of-type(12) {
+	grid-column: -1 / -1;
+	grid-row: 18 / 18;
+
+	@include media("<=tablet") {
+		grid-column: -1 / -1;
+		grid-row: 22 / 22;
+	}
+
+	@include media("<=phone") {
+		grid-column: 6 / 6;
+		grid-row: 38 / 38;
+	}
+}
+
+.product-grid__product:nth-of-type(13) {
+	grid-column: 7 / 7;
+	grid-row: 20 / 20;
+
+	@include media("<=tablet") {
+		grid-column: 5 / 5;
+		grid-row: 23 / 23;
+	}
+
+	@include media("<=phone") {
+		grid-column: -1 / -1;
+		grid-row: 34 / 34;
+	}
+}
+
+.product-grid__product:nth-of-type(14) {
+	grid-column: 3 / 3;
+	grid-row: 23 / 23;
+
+	@include media("<=tablet") {
+		grid-column: 3 / 3;
+		grid-row: 28 / 28;
+	}
+
+	@include media("<=phone") {
+		grid-column: 1 / 1;
+		grid-row: 41 / 41;
+	}
+}
+
+.product-grid__product:nth-of-type(15) {
+	grid-column: -1 / -1;
+	grid-row: 23 / 23;
+
+	@include media("<=tablet") {
+		grid-column: -1 / -1;
+		grid-row: 27 / 27;
+	}
+
+	@include media("<=phone") {
+		grid-column: -1 / -1;
+		grid-row: 44 / 44;
+	}
+}
+
+.product-grid__product:nth-of-type(16) {
+	grid-column: 1 / 1;
+	grid-row: 26 / 26;
+
+	@include media("<=tablet") {
+		grid-column: 1 / 1;
+		grid-row: 31 / 31;
+	}
+
+	@include media("<=phone") {
+		grid-column: 1 / 1;
+		grid-row: 50 / 50;
+	}
+}
+
+.product-grid__product:nth-of-type(17) {
+	grid-column: -1 / -1;
+	grid-row: 27 / 27;
+
+	@include media("<=tablet") {
+		grid-column: -1 / -1;
+		grid-row: 32 / 32;
+	}
+
+	@include media("<=phone") {
+		grid-column: -1 / -1;
+		grid-row: 51 / 51;
+	}
+}
+
+.product-grid__product:nth-of-type(18) {
+	grid-column: 7 / 7;
+	grid-row: 29 / 29;
+
+	@include media("<=tablet") {
+		grid-column: 5 / 5;
+		grid-row: 34 / 34;
+	}
+
+	@include media("<=phone") {
+		grid-column: 6 / 6;
+		grid-row: 54 / 54;
+	}
+}
+
+.product-grid__product:nth-of-type(19) {
+	grid-column: 1 / 1;
+	grid-row: 31 / 31;
+
+	@include media("<=tablet") {
+		grid-column: 1 / 1;
+		grid-row: 38 / 38;
+	}
+
+	@include media("<=phone") {
+		grid-column: -1 / -1;
+		grid-row: 59 / 59;
+	}
+}
+
+.product-grid__product:nth-of-type(20) {
+	grid-column: 9 / 9;
+	grid-row: 33 / 33;
+
+	@include media("<=tablet") {
+		grid-column: 9 / 9;
+		grid-row: 40 / 40;
+	}
+
+	@include media("<=phone") {
+		grid-column: 1 / 1;
+		grid-row: 57 / 57;
+	}
+}
+
+.product-grid__product:nth-of-type(21) {
+	grid-column: 1 / 1;
+	grid-row: 35 / 35;
+
+	@include media("<=tablet") {
+		grid-column: 1 / 1;
+		grid-row: 42 / 42;
+	}
+
+	@include media("<=phone") {
+		grid-column: 1 / 1;
+		grid-row: 63 / 63;
+	}
+}
+
+.product-grid__product:nth-of-type(22) {
+	grid-column: -1 / -1;
+	grid-row: 35 / 35;
+
+	@include media("<=tablet") {
+		grid-column: -1 / -1;
+		grid-row: 42 / 42;
+	}
+
+	@include media("<=phone") {
+		grid-column: 6 / 6;
+		grid-row: 69 / 69;
+	}
+}
+
+.product-grid__product:nth-of-type(23) {
+	grid-column: 7 / 7;
+	grid-row: 37 / 37;
+
+	@include media("<=tablet") {
+		grid-column: 5 / 5;
+		grid-row: 43 / 43;
+	}
+
+	@include media("<=phone") {
+		grid-column: -1 / -1;
+		grid-row: 65 / 65;
+	}
+}
+
+.product-grid__product:nth-of-type(24) {
+	grid-column: 3 / 3;
+	grid-row: 40 / 40;
+
+	@include media("<=tablet") {
+		grid-column: 3 / 3;
+		grid-row: 48 / 48;
+	}
+
+	@include media("<=phone") {
+		grid-column: 1 / 1;
+		grid-row: 72 / 72;
+	}
+}
+
+.product-grid__product:nth-of-type(25) {
+	grid-column: -1 / -1;
+	grid-row: 40 / 40;
+
+	@include media("<=tablet") {
+		grid-column: -1 / -1;
+		grid-row: 47 / 47;
+	}
+
+	@include media("<=phone") {
+		grid-column: -1 / -1;
+		grid-row: 75 / 75;
+	}
+}
+
+.product-grid__product:nth-of-type(26) {
+	grid-column: 1 / 1;
+	grid-row: 43 / 43;
+
+	@include media("<=tablet") {
+		grid-column: 1 / 1;
+		grid-row: 51 / 51;
+	}
+
+	@include media("<=phone") {
+		grid-column: 1 / 1;
+		grid-row: 82 / 82;
+	}
+}
+
+.product-grid__product:nth-of-type(27) {
+	grid-column: -1 / -1;
+	grid-row: 44 / 44;
+
+	@include media("<=tablet") {
+		grid-column: -1 / -1;
+		grid-row: 52 / 52;
+	}
+
+	@include media("<=phone") {
+		grid-column: -1 / -1;
+		grid-row: 82 / 82;
+	}
+}
+
+.product-grid__product:nth-of-type(28) {
+	grid-column: 7 / 7;
+	grid-row: 46 / 46;
+
+	@include media("<=tablet") {
+		grid-column: 5 / 5;
+		grid-row: 54 / 54;
+	}
+
+	@include media("<=phone") {
+		grid-column: 6 / 6;
+		grid-row: 85 / 85;
+	}
+}
+
+.product-grid__product:nth-of-type(29) {
+	grid-column: 1 / 1;
+	grid-row: 48 / 48;
+
+	@include media("<=tablet") {
+		grid-column: 1 / 1;
+		grid-row: 58 / 58;
+	}
+
+	@include media("<=phone") {
+		grid-column: -1 / -1;
+		grid-row: 90 / 90;
+	}
+}
+
+.product-grid__product:nth-of-type(30) {
+	grid-column: 9 / 9;
+	grid-row: 50 / 50;
+
+	@include media("<=tablet") {
+		grid-column: 9 / 9;
+		grid-row: 60 / 60;
+	}
+
+	@include media("<=phone") {
+		grid-column: 1 / 1;
+		grid-row: 88 / 88;
+	}
+}
+
+@include media(">=tablet") {
+	.product-grid__product:nth-of-type(3),
+	.product-grid__product:nth-of-type(8),
+	.product-grid__product:nth-of-type(13),
+	.product-grid__product:nth-of-type(18),
+	.product-grid__product:nth-of-type(23),
+	.product-grid__product:nth-of-type(28),
+	.product-grid__product:nth-of-type(33),
+	.product-grid__product:nth-of-type(38) {
+		transform: translateX(calc((var(--gutter) / 3.1) * -1)) !important;
+	}
+}
+
+@include media("<=tablet", ">phone") {
+	.product-grid__product:nth-of-type(3),
+	.product-grid__product:nth-of-type(8),
+	.product-grid__product:nth-of-type(13),
+	.product-grid__product:nth-of-type(18),
+	.product-grid__product:nth-of-type(23),
+	.product-grid__product:nth-of-type(28),
+	.product-grid__product:nth-of-type(33),
+	.product-grid__product:nth-of-type(38) {
+		transform: translateX(calc(var(--gutter) * 1.29)) !important;
+	}
+}
+
+@include media("<=phone") {
+	.product-grid__product:nth-of-type(3),
+	.product-grid__product:nth-of-type(8),
+	.product-grid__product:nth-of-type(13),
+	.product-grid__product:nth-of-type(18),
+	.product-grid__product:nth-of-type(23),
+	.product-grid__product:nth-of-type(28),
+	.product-grid__product:nth-of-type(33),
+	.product-grid__product:nth-of-type(38) {
+		transform: none !important;
+	}
+}
+
+.product-grid__product .product-grid__product__wrapper {
+	position: absolute;
+	top: 0;
+}
+
+// tablet+ anchors
+
+.product-grid__product:nth-of-type(1) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(3) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(4) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(6) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(8) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(9) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(11) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(13) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(14) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(16) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(18) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(19) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(21) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(23) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(24) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(26) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(28) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(29) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(31) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(33) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(34) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(36) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(38) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(39) .product-grid__product__wrapper {
+	left: 0;
+}
+
+.product-grid__product:nth-of-type(2) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(5) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(7) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(10) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(12) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(15) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(17) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(20) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(22) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(25) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(27) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(30) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(32) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(35) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(37) .product-grid__product__wrapper,
+.product-grid__product:nth-of-type(40) .product-grid__product__wrapper {
+	right: 0;
+}
+
+// mobile anchors
+
+@include media("<=phone") {
+	.product-grid__product:nth-of-type(1) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(11) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(21) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(31) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(2) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(12) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(22) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(32) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(4) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(14) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(24) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(34) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(6) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(16) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(26) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(36) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(8) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(18) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(28) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(38) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(10) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(20) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(30) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(40) .product-grid__product__wrapper {
+		right: initial;
+		left: 0;
+	}
+
+	.product-grid__product:nth-of-type(3) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(13) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(23) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(33) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(5) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(15) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(25) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(35) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(7) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(17) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(27) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(37) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(9) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(19) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(29) .product-grid__product__wrapper,
+	.product-grid__product:nth-of-type(39) .product-grid__product__wrapper {
+		right: 0;
+		left: initial;
+	}
+}
+
+.product-grid__product .product-grid__product__image {
+	// background-color: #d9d9d9;
+}
+
+.product-grid__product .product-grid__product__image img {
+	position: relative;
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
+.product-grid__product:nth-of-type(1),
+.product-grid__product:nth-of-type(11),
+.product-grid__product:nth-of-type(21),
+.product-grid__product:nth-of-type(31) {
+	--height: 53.4rem;
+
+	@include media("<=tablet") {
+		--height: 20.1rem;
+	}
+
+	@include media("<=phone") {
+		--width: 15.8rem;
+		--height: 19.8rem;
+	}
+}
+
+.product-grid__product:nth-of-type(2),
+.product-grid__product:nth-of-type(12),
+.product-grid__product:nth-of-type(22),
+.product-grid__product:nth-of-type(32) {
+	--height: 30.9rem;
+
+	@include media("<=tablet") {
+		--height: 13.5rem;
+	}
+
+	@include media("<=phone") {
+		--width: 15.8rem;
+		--height: 19.8rem;
+	}
+}
+
+.product-grid__product:nth-of-type(3),
+.product-grid__product:nth-of-type(13),
+.product-grid__product:nth-of-type(23),
+.product-grid__product:nth-of-type(33) {
+	--height: 35.9rem;
+
+	@include media("<=tablet") {
+		--height: 18.2rem;
+	}
+
+	@include media("<=phone") {
+		--width: calc(10.6rem * 1.15);
+		--height: calc(11.6rem * 1.15);
+	}
+}
+
+.product-grid__product:nth-of-type(4),
+.product-grid__product:nth-of-type(14),
+.product-grid__product:nth-of-type(24),
+.product-grid__product:nth-of-type(34) {
+	--height: 34.2rem;
+
+	@include media("<=tablet") {
+		--height: 13.5rem;
+	}
+
+	@include media("<=phone") {
+		--width: calc(8.3rem * 1.5);
+		--height: calc(7.9rem * 1.5);
+	}
+}
+
+.product-grid__product:nth-of-type(5),
+.product-grid__product:nth-of-type(15),
+.product-grid__product:nth-of-type(25),
+.product-grid__product:nth-of-type(35) {
+	--height: 61.3rem;
+
+	@include media("<=tablet") {
+		--height: 34.4rem;
+	}
+
+	@include media("<=phone") {
+		--width: 20.6rem;
+		--height: 24.8rem;
+	}
+}
+
+.product-grid__product:nth-of-type(6),
+.product-grid__product:nth-of-type(16),
+.product-grid__product:nth-of-type(26),
+.product-grid__product:nth-of-type(36) {
+	--height: 45rem;
+
+	@include media("<=tablet") {
+		--height: 20.1rem;
+	}
+
+	@include media("<=phone") {
+		--width: 15.8rem;
+		--height: 19.8rem;
+	}
+}
+
+.product-grid__product:nth-of-type(7),
+.product-grid__product:nth-of-type(17),
+.product-grid__product:nth-of-type(27),
+.product-grid__product:nth-of-type(37) {
+	--height: 30.9rem;
+
+	@include media("<=tablet") {
+		--height: 13.5rem;
+	}
+
+	@include media("<=phone") {
+		--width: 10.6rem;
+		--height: 11.6rem;
+	}
+}
+
+.product-grid__product:nth-of-type(8),
+.product-grid__product:nth-of-type(18),
+.product-grid__product:nth-of-type(28),
+.product-grid__product:nth-of-type(38) {
+	--height: 35.9rem;
+
+	@include media("<=tablet") {
+		--height: 18.2rem;
+	}
+
+	@include media("<=phone") {
+		--width: 15.8rem;
+		--height: 19.8rem;
+	}
+}
+
+.product-grid__product:nth-of-type(9),
+.product-grid__product:nth-of-type(19),
+.product-grid__product:nth-of-type(29),
+.product-grid__product:nth-of-type(39) {
+	--height: 47.5rem;
+
+	@include media("<=tablet") {
+		--height: 20.1rem;
+	}
+
+	@include media("<=phone") {
+		--width: 20.6rem;
+		--height: 14.1rem;
+	}
+}
+
+.product-grid__product:nth-of-type(10),
+.product-grid__product:nth-of-type(20),
+.product-grid__product:nth-of-type(30),
+.product-grid__product:nth-of-type(40) {
+	--height: 27.5rem;
+
+	@include media("<=tablet") {
+		--height: 13.5rem;
+	}
+
+	@include media("<=phone") {
+		--width: calc(8.3rem * 1.3);
+		--height: calc(7.9rem * 1.3);
+	}
+}
+
+.product-grid__product:nth-of-type(1) .product-grid__product__image,
+.product-grid__product:nth-of-type(11) .product-grid__product__image,
+.product-grid__product:nth-of-type(21) .product-grid__product__image,
+.product-grid__product:nth-of-type(31) .product-grid__product__image {
+	height: var(--height);
+}
+
+.product-grid__product:nth-of-type(2) .product-grid__product__image,
+.product-grid__product:nth-of-type(12) .product-grid__product__image,
+.product-grid__product:nth-of-type(22) .product-grid__product__image,
+.product-grid__product:nth-of-type(32) .product-grid__product__image {
+	height: var(--height);
+}
+
+.product-grid__product:nth-of-type(3) .product-grid__product__image,
+.product-grid__product:nth-of-type(13) .product-grid__product__image,
+.product-grid__product:nth-of-type(23) .product-grid__product__image,
+.product-grid__product:nth-of-type(33) .product-grid__product__image {
+	height: var(--height);
+}
+
+.product-grid__product:nth-of-type(4) .product-grid__product__image,
+.product-grid__product:nth-of-type(14) .product-grid__product__image,
+.product-grid__product:nth-of-type(24) .product-grid__product__image,
+.product-grid__product:nth-of-type(34) .product-grid__product__image {
+	height: var(--height);
+}
+
+.product-grid__product:nth-of-type(5) .product-grid__product__image,
+.product-grid__product:nth-of-type(15) .product-grid__product__image,
+.product-grid__product:nth-of-type(25) .product-grid__product__image,
+.product-grid__product:nth-of-type(35) .product-grid__product__image {
+	height: var(--height);
+}
+
+.product-grid__product:nth-of-type(6) .product-grid__product__image,
+.product-grid__product:nth-of-type(16) .product-grid__product__image,
+.product-grid__product:nth-of-type(26) .product-grid__product__image,
+.product-grid__product:nth-of-type(36) .product-grid__product__image {
+	height: var(--height);
+}
+
+.product-grid__product:nth-of-type(7) .product-grid__product__image,
+.product-grid__product:nth-of-type(17) .product-grid__product__image,
+.product-grid__product:nth-of-type(27) .product-grid__product__image,
+.product-grid__product:nth-of-type(37) .product-grid__product__image {
+	height: var(--height);
+}
+
+.product-grid__product:nth-of-type(8) .product-grid__product__image,
+.product-grid__product:nth-of-type(18) .product-grid__product__image,
+.product-grid__product:nth-of-type(28) .product-grid__product__image,
+.product-grid__product:nth-of-type(38) .product-grid__product__image {
+	height: var(--height);
+}
+
+.product-grid__product:nth-of-type(9) .product-grid__product__image,
+.product-grid__product:nth-of-type(19) .product-grid__product__image,
+.product-grid__product:nth-of-type(29) .product-grid__product__image,
+.product-grid__product:nth-of-type(39) .product-grid__product__image {
+	height: var(--height);
+}
+
+.product-grid__product:nth-of-type(10) .product-grid__product__image,
+.product-grid__product:nth-of-type(20) .product-grid__product__image,
+.product-grid__product:nth-of-type(30) .product-grid__product__image,
+.product-grid__product:nth-of-type(40) .product-grid__product__image {
+	height: var(--height);
+}
+
+.product-grid__product--square-1 .product-grid__product__image {
+	aspect-ratio: 487/534;
+}
+
+.product-grid__product--square-2 .product-grid__product__image {
+	aspect-ratio: 321/342;
+}
+
+.product-grid__product--square-3 .product-grid__product__image {
+	aspect-ratio: 322/309;
+}
+
+.product-grid__product--square-4 .product-grid__product__image {
+	aspect-ratio: 415/450;
+}
+
+.product-grid__product--square-5 .product-grid__product__image {
+	aspect-ratio: 322/309;
+}
+
+.product-grid__product--square-6 .product-grid__product__image {
+	aspect-ratio: 264/275;
+}
+
+.product-grid__product--portrait-1 .product-grid__product__image {
+	aspect-ratio: 493/613;
+}
+
+.product-grid__product--portrait-2 .product-grid__product__image {
+	aspect-ratio: 320/359;
+}
+
+.product-grid__product--wide-1 .product-grid__product__image {
+	aspect-ratio: 679/475;
+}
+
+.product-grid__product .product-grid__product__links {
+	display: flex;
+	justify-content: space-between;
+	font-size: 2rem;
+
+	@include media("<=tablet") {
+		font-size: 1.2rem;
+	}
+}
+
+.product-grid__product
+	.product-grid__product__links
+	.product-grid__product__link {
+	text-transform: uppercase;
+}
+
+.shop .loading-indicator {
+	width: auto;
+	height: var(--indicator-size);
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.shop .loading-indicator.active {
+	opacity: 1;
+	animation: blink 1s infinite;
+}
+
+.sentinel {
+	position: absolute;
+	bottom: 195rem;
+	left: 0;
+	height: 1px;
+	width: 100%;
+
+	@include media("<=tablet") {
+		bottom: 75rem;
+	}
+
+	@include media("<=phone") {
+		bottom: 82rem;
+	}
 }

@@ -1,4 +1,5 @@
 .contact {
+	@extend %page;
 	position: relative;
 	padding: 0 var(--layout-spacing);
 	padding-top: 19.4rem;
