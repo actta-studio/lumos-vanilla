@@ -194,6 +194,8 @@ export default class Navigation extends Component {
 		if (isOpen) {
 			await this.toggle();
 		}
+
+		this.addTime();
 	}
 
 	toggle() {
