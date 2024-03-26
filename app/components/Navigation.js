@@ -18,7 +18,10 @@ export default class Navigation extends Component {
 
 		this.onClickEvent = this.toggle.bind(this);
 		this.onResizeEvent = this.resize.bind(this);
-		this.addTime();
+
+		document.addEventListener("DOMContentLoaded", () => {
+			this.addTime();
+		});
 
 		console.log(this.elements.get("links"));
 
