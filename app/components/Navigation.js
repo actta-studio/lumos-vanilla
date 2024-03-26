@@ -104,7 +104,6 @@ export default class Navigation extends Component {
 		const updateClock = () => {
 			const date = new Date();
 
-			// Convert to Montreal time
 			const options = {
 				timeZone: "America/Toronto",
 				hour: "2-digit",
