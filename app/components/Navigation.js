@@ -133,8 +133,7 @@ export default class Navigation extends Component {
 			setTimeout(updateClock, 60000);
 		};
 
-		this.killClock();
-		this.initClock();
+		updateClock();
 	}
 
 	reinitialize() {
@@ -206,7 +205,8 @@ export default class Navigation extends Component {
 			await this.toggle();
 		}
 
-		this.addTime();
+		this.killClock();
+		this.initClock();
 	}
 
 	toggle() {
