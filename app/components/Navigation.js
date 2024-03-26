@@ -19,9 +19,7 @@ export default class Navigation extends Component {
 		this.onClickEvent = this.toggle.bind(this);
 		this.onResizeEvent = this.resize.bind(this);
 
-		document.addEventListener("DOMContentLoaded", () => {
-			this.addTime();
-		});
+		this.initClock();
 
 		console.log(this.elements.get("links"));
 
@@ -103,6 +101,18 @@ export default class Navigation extends Component {
 		this.addEventListeners();
 	}
 
+	initClock() {
+		document.addEventListener("DOMContentLoaded", () => {
+			this.addTime();
+		});
+	}
+
+	killClock() {
+		document.removeEventListener("DOMContentLoaded", () => {
+			this.addTime();
+		});
+	}
+
 	addTime() {
 		const updateClock = () => {
 			const date = new Date();
@@ -123,7 +133,8 @@ export default class Navigation extends Component {
 			setTimeout(updateClock, 60000);
 		};
 
-		updateClock();
+		this.killClock();
+		this.initClock();
 	}
 
 	reinitialize() {
