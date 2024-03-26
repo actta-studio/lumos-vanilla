@@ -107,6 +107,10 @@ export default class Navigation extends Component {
 		});
 	}
 
+	reinitClock() {
+		this.addTime();
+	}
+
 	killClock() {
 		document.removeEventListener("DOMContentLoaded", () => {
 			this.addTime();
@@ -206,7 +210,7 @@ export default class Navigation extends Component {
 		}
 
 		this.killClock();
-		this.initClock();
+		this.addTime();
 	}
 
 	toggle() {
