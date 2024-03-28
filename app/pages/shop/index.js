@@ -102,8 +102,10 @@ export default class Shop extends Page {
 		}
 	}
 
-	updateAnimations(product) {
-		each(product, (product) => {
+	updateAnimations(products) {
+		// note: finish this
+		console.log("products to be updated: ", products);
+		each(products, (product) => {
 			return new Products({ element: product });
 		});
 	}
